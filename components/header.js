@@ -2,6 +2,7 @@ import FancyLink from '@/components/fancyLink'
 import Container from '@/components/container'
 
 import LogoIcon from '@/icons/logo.svg'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -9,9 +10,11 @@ export default function Header() {
       <Container className="border-b border-black">
         <div className="flex flex-wrap">
 
-          <div className="w-36 lg:w-40 py-1 lg:py-3">
-            <LogoIcon className="w-full" />
-          </div>
+          <Link href="/">
+            <a className="w-36 lg:w-40 py-1 lg:py-3 block">
+              <LogoIcon className="w-full" />
+            </a>
+          </Link>
 
           <nav className="ml-auto lg:space-x-6 xl:space-x-8 w-full text-lg xl:text-xl hidden lg:flex lg:w-auto">
             <FancyLink
