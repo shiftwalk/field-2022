@@ -16,3 +16,19 @@
 body {
   @apply font-sans antialiased text-black bg-white;
 }
+
+.cover-image {
+  img {
+    @apply object-cover object-center;
+  }
+}
+
+html {
+  scroll-behavior: initial;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}

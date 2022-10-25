@@ -6,6 +6,10 @@
       "@/helpers/*": ["helpers/*"],
       "@/styles/*": ["styles/*"],
       "@/public/*": ["public/*"],
+      "@/context/*": ["context/*"],
+      "@/services/*": ["services/*"],
     }
-  }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["**/*.js"]
 }
