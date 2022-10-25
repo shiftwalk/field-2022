@@ -9,7 +9,9 @@ export default function Header() {
       <Container className="border-b border-black">
         <div className="flex flex-wrap">
 
-          <LogoIcon className="w-36 lg:w-40 py-1 lg:py-3" />
+          <div className="w-36 lg:w-40 py-1 lg:py-3">
+            <LogoIcon className="w-full" />
+          </div>
 
           <nav className="ml-auto lg:space-x-6 xl:space-x-8 w-full text-lg xl:text-xl hidden lg:flex lg:w-auto">
             <FancyLink
