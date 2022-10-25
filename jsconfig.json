@@ -8,6 +8,7 @@
       "@/public/*": ["public/*"],
       "@/context/*": ["context/*"],
       "@/services/*": ["services/*"],
+      "@/icons/*": ["public/icons/*"],
     }
   },
   "exclude": ["node_modules", "dist"],
