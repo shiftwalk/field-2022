@@ -4,7 +4,7 @@ import Container from '@/components/container'
 import LogoIcon from '@/icons/logo.svg'
 import Link from 'next/link'
 
-export default function Header() {
+export default function Header({ path }) {
   return (
     <header className="absolute top-0 left-0 right-0 w-full z-10">
       <Container className="border-b border-black">
@@ -21,42 +21,44 @@ export default function Header() {
               destination="/"
               a11yText="Navigate to the home page"
               label="Home"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/'}
             />
 
             <FancyLink
               destination="/mission"
               a11yText="Navigate to the mission page"
               label="Mission"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/projects"
               a11yText="Navigate to the projects page"
               label="Projects"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/projects'}
             />
 
             <FancyLink
               destination="/team"
               a11yText="Navigate to the team page"
               label="Team"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/careers"
               a11yText="Navigate to the careers page"
               label="Careers"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/views"
               a11yText="Navigate to the views page"
               label="Views"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
             />
           </nav>
         </div>
