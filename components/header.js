@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Header({ path }) {
   return (
-    <header className="absolute top-0 left-0 right-0 w-full z-10">
+    <header className="absolute top-0 left-0 right-0 w-full z-[1000]">
       <Container className="border-b border-black">
         <div className="flex flex-wrap">
 

@@ -5,6 +5,8 @@ import { blurScale, blur, fade } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
+import Loader from '@/components/loader'
+import Header from '@/components/header'
 
 export default function Projects() {
   return (
@@ -12,13 +14,17 @@ export default function Projects() {
       <NextSeo title="Projects" />
       
       <LazyMotion features={domAnimation}>
+        <Loader />
+        
         <m.div
           initial="initial"
           animate="enter"
           exit="exit"
-        >
+        >          
           <main>
             <m.div variants={fade} className="h-[70vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden">
+              <Header path="/projects" />
+
               {/* Background gradient */}
               <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
 
@@ -57,7 +63,7 @@ export default function Projects() {
                 </article>
               </Container>
             </m.div>
-            <m.div variants={blur} className="border-t border-black relative z-10">
+            <m.div variants={blur} className="border-t border-black relative z-[100]">
               <Container>
                 <div className="md:max-w-[65%] content">
                   <h2>Some Text</h2>

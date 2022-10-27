@@ -5,6 +5,8 @@ import { blur, fade, blurScale } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
+import Loader from '@/components/loader'
+import Header from '@/components/header'
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <NextSeo title="Home" />
       
       <LazyMotion features={domAnimation}>
+        <Loader />
+        
         <m.div
           initial="initial"
           animate="enter"
@@ -19,6 +23,8 @@ export default function Home() {
         >
           <main>
             <m.div variants={fade} className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative">
+              <Header path="/" />
+
               {/* Background gradient */}
               <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
 
