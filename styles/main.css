@@ -18,13 +18,17 @@ html {
 }
 
 body {
-  @apply font-sans antialiased text-black bg-white;
+  @apply font-sans antialiased text-black bg-white selection:bg-black selection:text-off-white;
 }
 
 .cover-image {
   img {
     @apply object-cover object-center;
   }
+}
+
+a, button {
+  @apply focus-visible:border-0 focus-visible:outline-none focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-black;
 }
 
 .grain {
@@ -62,4 +66,27 @@ body {
 .radial {
   @apply blur-3xl;
   background: radial-gradient(#FFFFFF, rgba(255,255,255,0));
+}
+
+
+.delay-1ms {
+  @apply delay-[10ms]
+}
+.delay-2ms {
+  @apply delay-[20ms]
+}
+.delay-3ms {
+  @apply delay-[30ms]
+}
+.delay-4ms {
+  @apply delay-[40ms]
+}
+.delay-5ms {
+  @apply delay-[50ms]
+}
+.delay-6ms {
+  @apply delay-[60ms]
+}
+.delay-7ms {
+  @apply delay-[70ms]
 }

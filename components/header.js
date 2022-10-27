@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex flex-wrap">
 
           <Link href="/">
-            <a className="w-36 lg:w-40 py-1 lg:py-3 block">
+            <a className="w-40 lg:w-48 px-1 lg:px-3 py-1 lg:pt-3 lg:pb-2 block -translate-x-1 lg:-translate-x-3">
               <LogoIcon className="w-full" />
             </a>
           </Link>
@@ -21,42 +21,42 @@ export default function Header() {
               destination="/"
               a11yText="Navigate to the home page"
               label="Home"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:py-3"
+              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/mission"
               a11yText="Navigate to the mission page"
               label="Mission"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:py-3"
+              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/projects"
               a11yText="Navigate to the projects page"
               label="Projects"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:py-3"
+              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/team"
               a11yText="Navigate to the team page"
               label="Team"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:py-3"
+              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/careers"
               a11yText="Navigate to the careers page"
               label="Careers"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:py-3"
+              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
             />
 
             <FancyLink
               destination="/views"
               a11yText="Navigate to the views page"
               label="Views"
-              className="block lg:px-2 lg:py-3 xl:px-3 xl:py-3"
+              className="block lg:px-2 lg:py-3 xl:px-3 xl:pt-3 xl:pb-2"
             />
           </nav>
         </div>
