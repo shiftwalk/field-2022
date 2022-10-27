@@ -11,7 +11,7 @@ export default function Header({ path }) {
         <div className="flex flex-wrap">
 
           <Link href="/">
-            <a className="w-40 lg:w-48 px-1 lg:px-3 py-1 lg:pt-3 lg:pb-2 block -translate-x-1 lg:-translate-x-3">
+            <a aria-label="Navigate to the home page" className={`w-40 lg:w-48 px-1 lg:px-3 py-1 lg:pt-3 lg:pb-2 block -translate-x-1 lg:-translate-x-3 ${path == '/' && 'pointer-events-none'}`} aria-disabled={path == '/'}>
               <LogoIcon className="w-full" />
             </a>
           </Link>
