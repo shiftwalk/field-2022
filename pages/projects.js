@@ -1,11 +1,11 @@
 import Layout from '@/components/layout'
 import Footer from '@/components/footer'
 import Container from '@/components/container'
-import { fade } from '@/helpers/transitions'
+import { fade, reveal } from '@/helpers/transitions'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
-import LocalImage from '@/components/local-image'
-import { MouseParallax, ScrollParallax } from 'react-just-parallax'
+import { MouseParallax } from 'react-just-parallax'
+import { SplitText } from '@cyriacbr/react-split-text'
 
 export default function Projects() {
   return (
@@ -48,7 +48,19 @@ export default function Projects() {
 
               <Container className="h-full flex flex-col relative z-10">
                 <article className="h-full flex flex-col">
-                  <h1 className="text-[10.2vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto">Lorem Ipsum Dolor Sit</h1>
+                  <h1 className="text-[10.2vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto">
+                    <SplitText
+                      LineWrapper={({ lineIndex, children }) => (
+                        <span className="block relative overflow-hidden">
+                          <m.span variants={reveal} className="wrapper block">
+                            {children}
+                          </m.span>
+                        </span>
+                      )}
+                    >Lorem Ipsum Dolor Sit
+                    </SplitText>
+                  </h1>
+
                   <div className="w-full lg:max-w-[55%]">
                     <p className="text-lg lg:text-xl xl:text-2xl mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
                   </div>

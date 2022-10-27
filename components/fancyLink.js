@@ -1,10 +1,13 @@
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import LetterRoll from '@/components/letter-roll'
+const LetterRoll = dynamic(() => import('@/components/letter-roll'), {
+  ssr: false,
+})
 
 export default function FancyLink( {destination, a11yText, label, className, active} ) {
   return (
     <Link href={destination}>
-      <a aria-label={a11yText} className={`${className} group relative`}>
+      <a aria-label={a11yText} className={`${className} group relative ${active && 'pointer-events-none'}`} aria-disabled={active}>
         <span className="relative block overflow-hidden">
           <LetterRoll text={label} active={active} />
         </span>
