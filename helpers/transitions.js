@@ -31,15 +31,15 @@ export const blur = {
 
 export const blurScale = {
 	initial: { 
-    scale: 1.25
+    scale: 0.75
   },
   enter: { 
     scale: 1,
-    transition: { duration: 2, delay: -2 }
+    transition: { duration: 1.25, ease: [0.65, 0, 0.35, 1] }
   },
 	exit: {
-    scale: 1.25,
-		transition: { duration: 1 }
+    scale: 0.9,
+		transition: { duration: 0.75, ease: [0.65, 0, 0.35, 1] }
 	}
 }
 
