@@ -6,14 +6,20 @@ import { NextSeo } from 'next-seo'
 import LocalImage from '@/components/local-image'
 import BatteryIcon from '@/icons/battery.svg'
 import { useRef } from 'react'
+import { SplitText } from '@cyriacbr/react-split-text'
 
 export default function Mission() {
   const charts = useRef(null)
-  const isInView = useInView(charts, { 
-    once: false,
+  const chartIsInView = useInView(charts, { 
+    once: true,
     margin: "0px 75% -75% 0px"
   })
 
+  const countUp = useRef(null)
+  const countUpIsInView = useInView(countUp, { 
+    once: true,
+    margin: "0px 50% -50% 0px"
+  })
 
   return (
     <Layout>
@@ -75,47 +81,47 @@ export default function Mission() {
 
             <div className="absolute inset-0 flex items-end z-0 px-3 md:px-4 lg:px-5 text-soft-black-dark text-[4vw] md:text-[2.9vw] leading-none md:leading-none overflow-hidden" ref={charts}>
               <div
-                className={`w-1/4 bg-off-white-dark p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ isInView ? 'h-[20%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-off-white-dark p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? 'h-[20%]' : 'h-[0]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2022</span>
+                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2022</span>
                 </span>
                 <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
+                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
                 </span>
 
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
               <div
-                className={`w-1/4 bg-blue p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[200ms] relative ${ isInView ? 'h-[35%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-blue p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[200ms] relative ${ chartIsInView ? 'h-[35%]' : 'h-[0]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2023</span>
+                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2023</span>
                 </span>
                 <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
+                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
                 </span>
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
               <div
-                className={`w-1/4 bg-orange p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[150ms] relative ${ isInView ? 'h-[65%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-orange p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[150ms] relative ${ chartIsInView ? 'h-[65%]' : 'h-[0]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2024</span>
+                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2024</span>
                 </span>
                 <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
+                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
                 </span>
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
               <div
-                className={`w-1/4 bg-yellow p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[100ms] relative ${ isInView ? 'h-[97%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-yellow p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[100ms] relative ${ chartIsInView ? 'h-[97%]' : 'h-[0]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2030</span>
+                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2030</span>
                 </span>
                 <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ isInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
+                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
                 </span>
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
@@ -125,9 +131,61 @@ export default function Mission() {
 
         <div className="bg-white">
           <Container>
-            <div className="text-center py-[13.5vw]">
+            <div className="text-center py-[13.5vw]" ref={countUp}>
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[1.5vw]">The Impact</span>
-              <span className="block text-[15.5vw] md:text-[14vw] uppercase italic leading-none md:leading-none mb-[2vw]">62,982,700</span>
+              <span className="block text-[15.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[2vw]">
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%]' : 'translate-y-full' }`}>
+                    6
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[50ms]' : 'translate-y-full' }`}>
+                    2
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[100ms]' : 'translate-y-full' }`}>
+                    ,
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[150ms]' : 'translate-y-full' }`}>
+                    9
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[200ms]' : 'translate-y-full' }`}>
+                    8
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[250ms]' : 'translate-y-full' }`}>
+                    2
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[300ms]' : 'translate-y-full' }`}>
+                    ,
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[350ms]' : 'translate-y-full' }`}>
+                    7
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[400ms]' : 'translate-y-full' }`}>
+                    0
+                  </span>
+                </span>
+                <span className="relative inline-block overflow-hidden">
+                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[450ms]' : 'translate-y-full' }`}>
+                    0
+                  </span>
+                </span>
+              </span>
+
               <h2 className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight w-full md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto">Our 11GWh project pipeline aims to save this many tonnes of CO2eq from entering the atmosphere over the projects' operational period of 20 years.</h2>
             </div>
           </Container>
