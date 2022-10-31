@@ -15,8 +15,8 @@ export default function Footer() {
             {/* Grain overlay */}
             <div className="grain absolute inset-0 w-full h-full z-10"></div>
             
-            <ScrollParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={1} strength={-0.18} zIndex={10}>
-              <div className="absolute inset-0 whitespace-nowrap translate-y-[-45%] translate-x-[-2.4%]">
+            <ScrollParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={1} strength={-0.045} zIndex={10}>
+              <div className="absolute inset-0 whitespace-nowrap translate-y-[-12%] translate-x-[-2.4%]">
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
