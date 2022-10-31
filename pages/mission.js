@@ -133,54 +133,54 @@ export default function Mission() {
           <Container>
             <div className="text-center py-[13.5vw]" ref={countUp}>
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
-              <span className="block text-[15.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[2vw]">
+              <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[2vw]">
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%]' : 'translate-y-full' }`}>
                     6
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[50ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[50ms]' : 'translate-y-full' }`}>
                     2
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[100ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[0px] md:pr-[0px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[100ms]' : 'translate-y-full' }`}>
                     ,
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[150ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[150ms]' : 'translate-y-full' }`}>
                     9
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[200ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[200ms]' : 'translate-y-full' }`}>
                     8
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[250ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[250ms]' : 'translate-y-full' }`}>
                     2
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[300ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[0px] md:pr-[0px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[300ms]' : 'translate-y-full' }`}>
                     ,
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[350ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[350ms]' : 'translate-y-full' }`}>
                     7
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[400ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[400ms]' : 'translate-y-full' }`}>
                     0
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%] delay-[450ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[450ms]' : 'translate-y-full' }`}>
                     0
                   </span>
                 </span>
