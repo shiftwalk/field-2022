@@ -21,6 +21,10 @@ body {
   @apply font-sans antialiased text-black bg-off-white selection:bg-black selection:text-off-white;
 }
 
+.bg-purple {
+  @apply selection:text-purple;
+}
+
 .cover-image {
   img {
     @apply object-cover object-center;

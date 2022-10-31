@@ -30,6 +30,7 @@ export default function Header({ path }) {
               a11yText="Navigate to the mission page"
               label="Mission"
               className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/mission'}
             />
 
             <FancyLink
@@ -45,6 +46,7 @@ export default function Header({ path }) {
               a11yText="Navigate to the team page"
               label="Team"
               className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/team'}
             />
 
             <FancyLink
@@ -52,6 +54,7 @@ export default function Header({ path }) {
               a11yText="Navigate to the careers page"
               label="Careers"
               className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/careers'}
             />
 
             <FancyLink
@@ -59,6 +62,7 @@ export default function Header({ path }) {
               a11yText="Navigate to the views page"
               label="Views"
               className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/views'}
             />
           </nav>
         </div>

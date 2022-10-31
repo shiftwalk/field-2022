@@ -23,7 +23,7 @@ export default function Mission() {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
           <Container>
             <article>
-              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[10vw]">Accelera&shy;ting the build out of renew&shy;able infra&shy;structure</h1>
+              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">Accelera&shy;ting the build out of renew&shy;able infra&shy;structure</h1>
 
               <button className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white "><span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">→</span></button>
             </article>
@@ -34,17 +34,17 @@ export default function Mission() {
 
         <Container>
           <div className="max-w-[96%] pt-5">
-            <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[8vw]">The Challenge</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[8vw]">To reach net zero, we need the biggest global transition of energy infrastructure ever seen, in the shortest amount of time. To do this, we have to solve big challenges; storing energy, reducing grid intermittency, and decarbonising our heating supply.</h2>
+            <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">The Challenge</span>
+            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">To reach net zero, we need the biggest global transition of energy infrastructure ever seen, in the shortest amount of time. To do this, we have to solve big challenges; storing energy, reducing grid intermittency, and decarbonising our heating supply.</h2>
           </div>
         </Container>
 
         <div className="border-y border-y-black">
           <Container noPad>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-1/2 aspect-square">
-                <div className="relative overflow-hidden aspect-square">
-                  <LocalImage src="/images/mission-test-2.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-square" />
+              <div className="w-full md:w-1/2 aspect-[10/11]">
+                <div className="relative overflow-hidden aspect-[10/11]">
+                  <LocalImage src="/images/mission-test-2.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]" />
                 </div>
               </div>
               <div className="w-full md:w-1/2 bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
@@ -56,8 +56,8 @@ export default function Mission() {
 
         <Container>
           <div className="max-w-[96%] pt-5">
-            <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[8vw]">Our Plan</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[8vw]">We're building a vertically integrated infrastructure business that can help tackle the urgent climate crisis. We're starting by developing, building and operating battery storage sites — first in the UK, then abroad. And we're creating our own technology platform to optimise our assets - allowing us to move faster and maximise returns.</h2>
+            <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">Our Plan</span>
+            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">We're building a vertically integrated infrastructure business that can help tackle the urgent climate crisis. We're starting by developing, building and operating battery storage sites — first in the UK, then abroad. And we're creating our own technology platform to optimise our assets - allowing us to move faster and maximise returns.</h2>
           </div>
         </Container>
       
@@ -125,7 +125,7 @@ export default function Mission() {
 
         <div className="bg-white">
           <Container>
-            <div className="text-center py-[12vw]">
+            <div className="text-center py-[13.5vw]">
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[1.5vw]">The Impact</span>
               <span className="block text-[15.5vw] md:text-[14vw] uppercase italic leading-none md:leading-none mb-[2vw]">62,982,700</span>
               <h2 className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight w-full md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto">Our 11GWh project pipeline aims to save this many tonnes of CO2eq from entering the atmosphere over the projects' operational period of 20 years.</h2>
