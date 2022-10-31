@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  @apply font-sans antialiased text-black bg-white selection:bg-black selection:text-off-white;
+  @apply font-sans antialiased text-black bg-off-white selection:bg-black selection:text-off-white;
 }
 
 .cover-image {
@@ -102,4 +102,24 @@ a, button {
   -ms-animation: rotating 5s linear infinite;
   -o-animation: rotating 5s linear infinite;
   animation: rotating 5s linear infinite;
+}
+
+.break-hyphens {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+-webkit-hyphens: auto;
+  -moz-hyphens: auto;
+        hyphens: auto;
+}
+
+@screen md {
+  .break-hyphens {
+    word-wrap: normal;
+    overflow-wrap: normal;
+
+  -webkit-hyphens: none;
+    -moz-hyphens: none;
+          hyphens: none;
+ }
 }

@@ -3,6 +3,8 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
+import Div100vh from 'react-div-100vh'
+import Button from '@/components/button'
 
 export default function Home() {
   return (
@@ -10,7 +12,7 @@ export default function Home() {
       <NextSeo title="Home" />
   
       <main>
-        <div className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative">
+        <Div100vh className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative">
 
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
@@ -47,15 +49,16 @@ export default function Home() {
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
               
-              <h1 className="text-[10.2vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto">Energy Infrastructure For Net Zero</h1>
-              <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+              <h1 className="text-[17vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Energy Infrast&shy;ructure For Net Zero</h1>
+              <div className="w-full lg:w-[50%] max-w-[880px]">
+                <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">We’re Field. We're accelerating the build out of renewable infrastructure needed to reach net zero. We're starting with battery storage, to store energy for when it's needed, creating a more reliable, flexible and greener grid.</p>
 
-                <a href="#" className="bg-black inline-block text-white rounded-full px-10 py-4 text-lg lg:text-xl xl:text-2xl">The Mission</a>
+                <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Our&nbsp;Mission" a11yText={"Navigate to the mission page" } />
               </div>
             </article>
           </Container>
-        </div>
+        </Div100vh>
+
         <div className="relative z-10 border-t border-black">
           <Container>
             <div className="md:max-w-[65%] content">

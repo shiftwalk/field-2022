@@ -10,7 +10,7 @@ export default function Projects() {
       <NextSeo title="Projects" />
       
       <main>
-        <div className="h-[70vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden">
 
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
@@ -43,9 +43,9 @@ export default function Projects() {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[10.2vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto">Lorem Ipsum Dolor Sit</h1>
+              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Lorem Ipsum Dolor Sit</h1>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
               </div>
             </article>
           </Container>

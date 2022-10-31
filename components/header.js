@@ -6,12 +6,12 @@ import Link from 'next/link'
 
 export default function Header({ path }) {
   return (
-    <header className="absolute top-0 left-0 right-0 w-full z-[1000]">
-      <Container className="border-b border-black">
+    <header className="absolute top-0 left-0 right-0 w-full z-[1000] border-b border-black">
+      <Container>
         <div className="flex flex-wrap">
 
           <Link href="/">
-            <a aria-label="Navigate to the home page" className={`w-40 lg:w-48 px-1 lg:px-3 py-1 lg:pt-3 lg:pb-2 block -translate-x-1 lg:-translate-x-3 ${path == '/' && 'pointer-events-none'}`} aria-disabled={path == '/'}>
+            <a aria-label="Navigate to the home page" className={`w-36 md:w-40 lg:w-48 px-1 lg:px-3 py-1 lg:pt-3 lg:pb-2 block -translate-x-1 lg:-translate-x-3 ${path == '/' && 'pointer-events-none'}`} aria-disabled={path == '/'}>
               <LogoIcon className="w-full" />
             </a>
           </Link>
