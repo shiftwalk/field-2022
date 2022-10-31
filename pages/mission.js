@@ -132,7 +132,7 @@ export default function Mission() {
         <div className="bg-white">
           <Container>
             <div className="text-center py-[13.5vw]" ref={countUp}>
-              <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[1.5vw]">The Impact</span>
+              <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
               <span className="block text-[15.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[2vw]">
                 <span className="relative inline-block overflow-hidden">
                   <span className={`block transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-9%]' : 'translate-y-full' }`}>
