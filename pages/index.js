@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
 import Div100vh from 'react-div-100vh'
 import Button from '@/components/button'
+import LocalImage from '@/components/local-image'
 
 export default function Home() {
   return (
@@ -60,31 +61,43 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 border-t border-black">
-          <Container>
-            <div className="md:max-w-[65%] content">
-              <h2>Some Text</h2>
+          <Container className="py-[11vw]">
+            <div className="flex flex-wrap md:-mx-5">
+              <div className="w-full md:w-1/3 md:px-5">
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5">Energy Storage</span>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h2 className="text-[2.2vw] leading-none mb-8 pb-0 w-[78%]">We're developing, building and optimising a network of big batteries supplying the grid.</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <Button outline href="/projects" label="Our&nbsp;Projects" a11yText={"Navigate to the projects page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mb-10" />
 
-              <h2>Some Text</h2>
+                <div className="relative overflow-hidden">
+                  <LocalImage src="/images/energy-storage.jpg" className="w-full" alt="" width={960 } height={708} />
+                </div>
+              </div>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <div className="w-full md:w-1/3 md:px-5">
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5">Partner With Us</span>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <h2 className="text-[2.2vw] leading-none mb-8 pb-0 w-[85%]">We work with landowners and developers on new renewable energy sites across the UK & Europe.</h2>
 
-              <h2>Some Text</h2>
+                <Button outline href="/projects" label="Site&nbsp;Development" a11yText={"Navigate to the projects page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mb-10" />
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div className="relative overflow-hidden">
+                  <LocalImage src="/images/partner.jpg" className="w-full" alt="" width={960 } height={708} />
+                </div>
+              </div>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <div className="w-full md:w-1/3 md:px-5">
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5">Join Our Team</span>
 
-              <h2>Some Text</h2>
+                <h2 className="text-[2.2vw] leading-none mb-8 pb-0 w-[80%]">We're on the lookout for great people determined to make the renewable transition happen.</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <Button outline href="/careers" label="Careers&nbsp;At&nbsp;Field" a11yText={"Navigate to the projects page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mb-10" />
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <div className="relative overflow-hidden">
+                  <LocalImage src="/images/team.jpg" className="w-full" alt="" width={960 } height={708} />
+                </div>
+              </div>
             </div>
           </Container>
         </div>

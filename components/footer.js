@@ -1,7 +1,7 @@
 import Container from '@/components/container'
 import LogoMarkIcon from '@/icons/logomark.svg'
-import { MouseParallax, ScrollParallax } from 'react-just-parallax'
 import Button from './button'
+import FancyLink from './fancyLink'
 
 export default function Footer() {
   return (
@@ -83,12 +83,60 @@ export default function Footer() {
           <div className="w-full lg:w-1/3 lg:border-l border-black mb-8 lg:mb-0 flex flex-wrap items-center justify-center">
             <nav className="block w-full lg:w-[75%] 2xl:w-[60%] 3xl:w-[50%]">
               <ul>
-                <li className="block text-xl lg:text-2xl leading-snug lg:leading-snug">Home</li>
-                <li className="block text-xl lg:text-2xl leading-snug lg:leading-snug">Mission</li>
-                <li className="block text-xl lg:text-2xl leading-snug lg:leading-snug">Projects</li>
-                <li className="block text-xl lg:text-2xl leading-snug lg:leading-snug">Team</li>
-                <li className="block text-xl lg:text-2xl leading-snug lg:leading-snug">Careers</li>
-                <li className="block text-xl lg:text-2xl leading-snug lg:leading-snug">Views</li>
+                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                  <FancyLink
+                    destination="/"
+                    a11yText="Navigate to the home page"
+                    label="Home"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
+                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                  <FancyLink
+                    destination="/mission"
+                    a11yText="Navigate to the mission page"
+                    label="Mission"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
+                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                  <FancyLink
+                    destination="/projects"
+                    a11yText="Navigate to the projects page"
+                    label="Projects"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
+                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                  <FancyLink
+                    destination="/team"
+                    a11yText="Navigate to the team page"
+                    label="Team"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
+                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                  <FancyLink
+                    destination="/careers"
+                    a11yText="Navigate to the careers page"
+                    label="Careers"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
+                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                  <FancyLink
+                    destination="/views"
+                    a11yText="Navigate to the views page"
+                    label="Views"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
                 <li className="block">
                   <Button outline href="/contact" label="Contact&nbsp;Us" a11yText={"Navigate to the contact page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mt-8" />
                 </li>
@@ -105,8 +153,24 @@ export default function Footer() {
               <span className="block text-base leading-tight">Copyright 2022, Virmati Energy Ltd T/A Field (CN: 13095982)</span>
             </div>
             <div className="w-full md:flex-1 md:ml-auto flex md:justify-end items-center space-x-6">
-              <span className="block text-base leading-tight">Terms &amp; Conditions</span>
-              <span className="block text-base leading-tight">Privacy Policy</span>
+              <span className="block text-base leading-tight">
+                <FancyLink
+                  destination="/terms-and-conditions"
+                  a11yText="Navigate to the terms &amp; conditions page"
+                  label="Terms&nbsp;&amp;&nbsp;Conditions"
+                  className="block pb-0 mb-0"
+                  noDot
+                />
+              </span>
+              <span className="block text-base leading-tight">
+                <FancyLink
+                  destination="/privacy"
+                  a11yText="Navigate to the privacy policy page"
+                  label="Privacy&nbsp;Policy"
+                  className="block pb-0 mb-0"
+                  noDot
+                />
+              </span>
             </div>
           </div>
         </Container>

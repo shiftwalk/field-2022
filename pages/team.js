@@ -3,46 +3,26 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
-import LocalImage from '@/components/local-image'
 import MetaText from '@/components/meta-text'
 import Button from '@/components/button'
+import TeamMember from '@/components/team-member'
 
-const projectsData = [
-  {
-    location: 'Oldham',
-    country: 'UK',
-    power: '20 MWh'
-  },
-  {
-    location: 'Dundee',
-    country: 'UK',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Cefalù',
-    country: 'Italy',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Nottingham',
-    country: 'UK',
-    power: '20 MWh'
-  },
-  {
-    location: 'Cologne',
-    country: 'Germany',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Padua',
-    country: 'Italy',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Wrexham',
-    country: 'Uk',
-    power: 'XX MWh'
-  },
+const teamData = [
+  'Katie Marsh',
+  'Adam Boyle',
+  'Jasmin Shah',
+  'Amit Gudka',
+  'Simon Williamson',
+  'Stephen White',
+  'Jamey Rhind-Tutt',
+  'Luke Gibson',
+  'Nsikan Essien',
+  'Clare Cooke',
+  'Bex Sherwood',
+  'Ben Saward',
+  'Elspeth Vincent',
+  'Chirag Rao',
+  'Chris Wickens'
 ]
 
 export default function Projects() {
@@ -84,14 +64,14 @@ export default function Projects() {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Our Projects</h1>
+              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Our Team</h1>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We believe systemic changes can be made, and we're determined to make them happen fast.</p>
               </div>
             </article>
           </Container>
         </div>
-
+        
         <div className="border-y border-black">
           <Container noPad>
             <div className="flex flex-wrap">
@@ -108,43 +88,28 @@ export default function Projects() {
 
         <div className="border-b border-black">
           <Container className="pt-[6vw] pb-[12vw]">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
-              {projectsData.map((e, i) => {
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-5 md:gap-x-8 xl:gap-x-10 2xl:gap-x-12 gap-y-[6vw]">
+              {teamData.map((e, i) => {
                 return ( 
                   <div className="col-span-1" key={i}>
-                    <div className="w-full aspect-square border-black border flex flex-col">
-                      <div className="flex space-x-2 px-3 py-2 border-b border-black w-full mb-auto">
-                        <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text="Battery" className="text-white" /></span>
-                        <span className="px-3 py-2 bg-orange text-white rounded-full"><MetaText text="Operational" className="text-white" /></span>
-                      </div>
-
-                      <span className="px-3 block text-[7vw] md:text-[5vw] xl:text-[3.5vw] leading-none">{e.location}<span className="block text-black text-opacity-10 mb-auto w-full">{e.country}</span></span>
-                      
-                      <div className="px-3 py-2 w-full mt-auto">
-                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none">{e.power}</span>
-                      </div>
-                    </div>
+                    <TeamMember name={e} />
                   </div>
                 )
               })}
-
-              <div className="col-span-1">
-                <div className="w-full aspect-square border-black border flex flex-col">
-                  <div className="flex space-x-2 px-3 py-2 border-b border-black w-full mb-auto">
-                    <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text="Pipeline" className="text-white" /></span>
-                  </div>
-
-                  <span className="px-3 block text-[4vw] md:text-[3vw] xl:text-[2.2vw] leading-none max-w-[80%]">We have another XX MWh of battery storage acquired</span>
-                  
-                  <div className="px-3 py-2 w-full mt-auto">
-                  </div>
-                </div>
-              </div>
             </div>
           </Container>
         </div>
 
-        <LocalImage src="/images/projects.jpg" alt="Mission Image" layout="responsive" width={2000 } height={773} bordered />
+        <div className="bg-white">
+          <Container>
+            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5">
+              <MetaText text="Join the Team" className="mb-[13vw]" />
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">We're always up for speaking to great people who are determined to make the renewable transition happen.</h2>
+
+              <Button href="/careers" label="Careers&nbsp;At&nbsp;Field" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[13.5vw]" a11yText="Navigate to the careers page" />
+            </div>
+          </Container>
+        </div>
       </main>
     
       <Footer />
