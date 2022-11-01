@@ -12,7 +12,7 @@ export default function Mission() {
   const charts = useRef(null)
   const chartIsInView = useInView(charts, { 
     once: true,
-    margin: "0px 75% -75% 0px"
+    margin: "0px 60% -60% 0px"
   })
 
   const countUp = useRef(null)
@@ -81,7 +81,7 @@ export default function Mission() {
 
             <div className="absolute inset-0 flex items-end z-0 px-3 md:px-4 lg:px-5 text-soft-black-dark text-[4vw] md:text-[2.9vw] leading-none md:leading-none overflow-hidden" ref={charts}>
               <div
-                className={`w-1/4 bg-off-white-dark p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? 'h-[20%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-off-white-dark p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? 'h-[20%]' : 'h-[15%]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
                   <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2022</span>
@@ -93,7 +93,7 @@ export default function Mission() {
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
               <div
-                className={`w-1/4 bg-blue p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[200ms] relative ${ chartIsInView ? 'h-[35%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-blue p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[200ms] relative ${ chartIsInView ? 'h-[35%]' : 'h-[20%]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
                   <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2023</span>
@@ -104,7 +104,7 @@ export default function Mission() {
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
               <div
-                className={`w-1/4 bg-orange p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[150ms] relative ${ chartIsInView ? 'h-[65%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-orange p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[150ms] relative ${ chartIsInView ? 'h-[65%]' : 'h-[30%]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
                   <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2024</span>
@@ -115,7 +115,7 @@ export default function Mission() {
                 <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
               </div>
               <div
-                className={`w-1/4 bg-yellow p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[100ms] relative ${ chartIsInView ? 'h-[97%]' : 'h-[0]' }`}
+                className={`w-1/4 bg-yellow p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[100ms] relative ${ chartIsInView ? 'h-[97%]' : 'h-[40%]' }`}
               >
                 <span className="block mb-1 relative overflow-hidden">
                   <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2030</span>
@@ -140,7 +140,7 @@ export default function Mission() {
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[50ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[6px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[50ms]' : 'translate-y-full' }`}>
                     2
                   </span>
                 </span>
@@ -170,7 +170,7 @@ export default function Mission() {
                   </span>
                 </span>
                 <span className="relative inline-block overflow-hidden">
-                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[350ms]' : 'translate-y-full' }`}>
+                  <span className={`block pr-[2px] md:pr-[10px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%] delay-[350ms]' : 'translate-y-full' }`}>
                     7
                   </span>
                 </span>
