@@ -12,7 +12,7 @@ export default function Home() {
       <NextSeo title="Home" />
   
       <main>
-        <Div100vh className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative">
+        <div className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative">
 
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
@@ -57,7 +57,7 @@ export default function Home() {
               </div>
             </article>
           </Container>
-        </Div100vh>
+        </div>
 
         <div className="relative z-10 border-t border-black">
           <Container>
