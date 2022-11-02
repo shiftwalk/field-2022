@@ -85,7 +85,7 @@ export default function Projects() {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Our Projects</h1>
+              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">Our Projects</h1>
               <div className="w-full lg:max-w-[55%]">
                 <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
               </div>
@@ -138,7 +138,7 @@ export default function Projects() {
 
               <div className="col-span-1">
                 <div className="w-full aspect-square border-black border flex flex-col bg-yellow">
-                  <div className="px-3 py-2 w-full mb-auto">
+                  <div className="px-3 py-3 w-full mb-auto">
                     <span className="py-2 "><MetaText text="Pipeline" /></span>
                   </div>
 

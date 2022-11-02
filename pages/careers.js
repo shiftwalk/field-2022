@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import LocalImage from '@/components/local-image'
 import Button from '@/components/button'
 import MetaText from '@/components/meta-text'
+import { CarouselQuotes } from '@/components/carousel-quotes'
 
 const valuesData = [
   {
@@ -25,6 +26,33 @@ const valuesData = [
   }
 ]
 
+const benefitsData = [
+  {
+    heading: "Flexible & Remote Working",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  },
+  {
+    heading: "Learning & Development",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  },
+  {
+    heading: "Meaningful Equity",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  },
+  {
+    heading: "Green Leave",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  },
+  {
+    heading: "Regular Socials",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  },
+  {
+    heading: "Celebrations",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  },
+]
+
 export default function Careers() {
   return (
     <Layout>
@@ -34,7 +62,7 @@ export default function Careers() {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
           <Container>
             <article>
-              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[75%] break-hyphens mb-[12vw]">Careers At Field</h1>
+              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[75%] break-hyphens mb-[20vw] md:mb-[16vw] lg:mb-[12vw]">Careers At Field</h1>
 
               <div className="w-full lg:w-[50%] max-w-[880px]">
                 <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">Want to be part of a team determined to make the renewable transition happen? Read on to find out what it’s like working at Field and see our current job openings.</p>
@@ -99,9 +127,20 @@ export default function Careers() {
 
         <div className="bg-white border-t border-black">
           <Container>
-            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5 pb-[10vw]">
+            <div className="pt-5 pb-[12vw]">
               <MetaText text="Company Benefits" className="mb-[13vw]" />
-              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none">We're always up for speaking to great people who are determined to make the renewable transition happen.</h2>
+              
+              <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 xl:gap-x-6 2xl:gap-x-8 gap-y-[10vw]">
+                {benefitsData.map((e, i) => {
+                  return ( 
+                    <li className="col-span-1" key={i}>
+                      <MetaText text={`#${i + 1}`} className="mb-3 md:mb-5" />
+                      <h2 className="text-[6vw] md:text-[3.9vw] lg:text-[2.7vw] leading-none md:leading-none lg:leading-none max-w-[70%] 2xl:max-w-[68%]">{e.heading}</h2>
+                      <p className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight max-w-[90%] md:max-w-[85%] 2xl:max-w-[80%] mb-0 pb-0">{e.text}</p>
+                    </li>
+                  )
+                })}
+              </ul>
             </div>
           </Container>
         </div>
@@ -115,9 +154,15 @@ export default function Careers() {
             <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
           </div>
         </Container>
+        
+        <div className="border-t border-black">
+          <Container noPad>
+            <CarouselQuotes />
+          </Container>
+        </div>
       </main>
     
-      <Footer />
+      <Footer noCta />
     </Layout>
   )
 }
