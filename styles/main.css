@@ -125,13 +125,6 @@ a, button {
  }
 }
 
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  flex: 0 0 85%;
-
-  @screen lg {
-    flex: 0 0 75%;
-  }
+.marquee {
+  @apply items-start !important;
 }
