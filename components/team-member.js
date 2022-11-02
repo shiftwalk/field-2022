@@ -7,7 +7,7 @@ export default function TeamMember({ name }) {
     <button className="block border-none p-0 m-0 outline-none text-left w-full group relative" aria-label={`View ${name}'s Biography`}>
       <div className="aspect-[10/13.5] bg-blue/50 mb-3 md:mb-5 flex items-center justify-center relative">
 
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-orange via-orange to-yellow z-10 mix-blend-multiply">
+        <div className="absolute inset-0 opacity-0 md:group-hover:opacity-100 bg-gradient-to-tr from-orange via-orange to-yellow z-10 mix-blend-multiply">
 
         </div>
 
