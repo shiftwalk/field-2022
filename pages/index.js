@@ -22,7 +22,7 @@ export default function Home() {
             <div className="grain absolute inset-0 w-full h-full z-10"></div>
 
               {/* Right blob */}
-            <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={0.1}>
+            {/* <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={0.1}> */}
               <div className="absolute inset-0 origin-right">
                 <div className="absolute top-0 right-0 w-[120vw] h-[140%] rounded-full bg-gradient-to-tr from-orange via-yellow  to-yellow translate-x-[48vw] translate-y-[-32%] blur-xl overflow-x-hidden flex items-start justify-start scale-[1.15]">
                   <div className="w-[45%] h-[46%] rounded-full radial mt-[7%] ml-[0%]"></div>
@@ -34,17 +34,17 @@ export default function Home() {
                   <div className="absolute bottom-[-25%] left-[-10%] right-0 w-[70%] h-[45%] bg-gradient-to-t from-purple rotate-[25deg] z-1"></div>
                 </div>
               </div>
-            </MouseParallax>
+            {/* </MouseParallax> */}
 
             {/* Left blob */}
-            <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={-0.1}>
+            {/* <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={-0.1}> */}
               <div className="absolute inset-0 origin-left">
                 <div className="absolute top-0 left-0 w-[70vw] h-[130%] rounded-full bg-gradient-to-t from-orange via-yellow to-yellow translate-x-[-50vw] translate-y-[-15%] blur-xl flex items-center justify-center overflow-y-hidden origin-center">
                   <div className="w-[80%] h-[50%] rounded-full radial mt-[-20%] mr-[-20%]"></div>
                   <div className="absolute bottom-0 left-0 right-0 w-[100%] h-[45%] rounded-full bg-gradient-to-t from-purple via-purple/70 rotate-[20deg]"></div>
                 </div>
               </div>
-            </MouseParallax>
+            {/* </MouseParallax> */}
           </div>
 
           <Container className="h-full flex flex-col relative z-10">
