@@ -6,6 +6,7 @@ import { MouseParallax } from 'react-just-parallax'
 import LocalImage from '@/components/local-image'
 import MetaText from '@/components/meta-text'
 import Button from '@/components/button'
+import BatteryIcon from '@/icons/battery.svg'
 
 const projectsData = [
   {
@@ -106,37 +107,47 @@ export default function Projects() {
           </Container>
         </div>
 
-        <div className="border-b border-black">
+        <div className="">
           <Container className="pt-[6vw] pb-[12vw]">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
               {projectsData.map((e, i) => {
                 return ( 
-                  <div className="col-span-1" key={i}>
-                    <div className="w-full aspect-square border-black border flex flex-col">
-                      <div className="flex space-x-2 px-3 py-2 border-b border-black w-full mb-auto">
-                        <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text="Battery" className="text-white" /></span>
-                        <span className="px-3 py-2 bg-orange text-white rounded-full"><MetaText text="Operational" className="text-white" /></span>
+                  <a href="#" className="col-span-1 group" key={i}>
+                    <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-white">
+                      <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
+                        <span className="flex space-x-2 py-2">
+                          <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text="Battery" className="text-white" /></span>
+                          <span className="px-3 py-2 bg-orange text-white rounded-full"><MetaText text="Operational" className="text-white" /></span>
+                        </span>
+
+                        <span className="border-l border-black ml-auto flex items-center justify-center py-2 pl-3">
+                          <BatteryIcon className="w-[35px]" />
+                        </span>
                       </div>
 
                       <span className="px-3 block text-[7vw] md:text-[5vw] xl:text-[3.5vw] leading-none">{e.location}<span className="block text-black text-opacity-10 mb-auto w-full">{e.country}</span></span>
                       
-                      <div className="px-3 py-2 w-full mt-auto">
-                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none">{e.power}</span>
+                      <div className="px-3 py-2 w-full mt-auto flex items-end">
+                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.power}</span>
+                        <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 )
               })}
 
               <div className="col-span-1">
-                <div className="w-full aspect-square border-black border flex flex-col">
-                  <div className="flex space-x-2 px-3 py-2 border-b border-black w-full mb-auto">
-                    <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text="Pipeline" className="text-white" /></span>
+                <div className="w-full aspect-square border-black border flex flex-col bg-yellow">
+                  <div className="px-3 py-2 w-full mb-auto">
+                    <span className="py-2 "><MetaText text="Pipeline" /></span>
                   </div>
 
-                  <span className="px-3 block text-[4vw] md:text-[3vw] xl:text-[2.2vw] leading-none max-w-[80%]">We have another XX MWh of battery storage acquired</span>
+                  <div className="w-full">
+                    <span className="px-3 block text-[6vw] md:text-[3vw] xl:text-[2.5vw] leading-none max-w-[80%]">We have another XX MWh of battery storage acquired</span>
+                  </div>
                   
-                  <div className="px-3 py-2 w-full mt-auto">
+                  <div className="px-3 py-2 w-full mt-auto self-end">
+                    <Button href="/contact" label="Get&nbsp;Involved" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" />
                   </div>
                 </div>
               </div>
@@ -145,6 +156,17 @@ export default function Projects() {
         </div>
 
         <LocalImage src="/images/projects.jpg" alt="Mission Image" layout="responsive" width={2000 } height={773} bordered />
+
+        <div className="bg-white">
+          <Container>
+            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5">
+              <MetaText text="Development" className="mb-[13vw]" />
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">We're always up for speaking to great people who are determined to make the renewable transition happen.</h2>
+
+              <Button href="/development" label="Development" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[13.5vw]" a11yText="Navigate to the development page" />
+            </div>
+          </Container>
+        </div>
       </main>
     
       <Footer />

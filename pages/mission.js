@@ -6,7 +6,6 @@ import { NextSeo } from 'next-seo'
 import LocalImage from '@/components/local-image'
 import BatteryIcon from '@/icons/battery.svg'
 import { useRef } from 'react'
-import { SplitText } from '@cyriacbr/react-split-text'
 
 export default function Mission() {
   const charts = useRef(null)

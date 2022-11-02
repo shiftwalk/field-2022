@@ -92,7 +92,7 @@ export default function Home() {
               </div>
 
               <div className="w-full lg:w-1/3 md:px-5 flex flex-col">
-                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5" w-full>Join Our Team</span>
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5 w-full">Join Our Team</span>
 
                 <h2 className="text-[6vw] md:text-[4.75vw] lg:text-[2.5vw] xl:text-[2.25vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-6 lg:mb-8 pb-0 w-[90%] xl:w-[85%]">We're on the lookout for great people determined to make the renewable transition happen.</h2>
 
