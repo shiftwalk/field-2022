@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 
 export const CarouselQuotes = () => {
   return (
-    <Marquee gradient={false} speed={150} className="overflow-hidden w-full whitespace-normal">
+    <Marquee gradient={false} speed={90} className="overflow-hidden w-full whitespace-normal">
           <div className="embla__slide w-[75vw] whitespace-normal border-r border-black bg-blue">
             <div className="flex flex-wrap">
               <div className="w-full lg:w-[55%] p-4 md:p-5 lg:p-6 flex flex-col">
@@ -18,7 +18,7 @@ export const CarouselQuotes = () => {
                 </div>
               </div>
               <div className="w-full lg:flex-1 border-t lg:border-t-0 lg:border-l border-black aspect-square lg:aspect-[10/15] relative overflow-hidden">
-                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full will-change-transform" />
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@ export const CarouselQuotes = () => {
                 </div>
               </div>
               <div className="w-full lg:flex-1 border-t lg:border-t-0 lg:border-l border-black aspect-square lg:aspect-[10/15] relative overflow-hidden">
-                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full will-change-transform" />
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ export const CarouselQuotes = () => {
                 </div>
               </div>
               <div className="w-full lg:flex-1 border-t lg:border-t-0 lg:border-l border-black aspect-square lg:aspect-[10/15] relative overflow-hidden">
-                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full will-change-transform" />
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@ export const CarouselQuotes = () => {
                 </div>
               </div>
               <div className="w-full lg:flex-1 border-t lg:border-t-0 lg:border-l border-black aspect-square lg:aspect-[10/15] relative overflow-hidden">
-                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                <LocalImage src="/images/quote.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full will-change-transform" />
               </div>
             </div>
           </div>
