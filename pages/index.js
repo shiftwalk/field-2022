@@ -61,40 +61,46 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 border-t border-black">
-          <Container className="py-[11vw]">
-            <div className="flex flex-wrap md:-mx-5">
-              <div className="w-full md:w-1/3 md:px-5">
-                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5">Energy Storage</span>
+          <Container>
+            <div className="flex flex-wrap md:-mx-5 py-[11vw]">
+              <div className="w-full lg:w-1/3 md:px-5 flex flex-col mb-12 lg:mb-0">
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5 w-full">Energy Storage</span>
 
-                <h2 className="text-[2.2vw] leading-none mb-8 pb-0 w-[78%]">We're developing, building and optimising a network of big batteries supplying the grid.</h2>
+                <h2 className="text-[6vw] md:text-[4.75vw] lg:text-[2.5vw] xl:text-[2.25vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-6 lg:mb-8 pb-0 w-[90%] xl:w-[85%]">We're developing, building and optimising a network of big batteries supplying the grid.</h2>
 
-                <Button outline href="/projects" label="Our&nbsp;Projects" a11yText={"Navigate to the projects page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mb-10" />
+                <div className="relative overflow-hidden w-full mt-auto">
+                  <div className="w-full mt-auto">
+                    <Button outline href="/projects" label="Our&nbsp;Projects" a11yText={"Navigate to the projects page"} className="inline-block text-xl xl:text-2xl leading-none xl:leading-none mb-6 lg:mb-10 xl:mb-12" />
+                  </div>
 
-                <div className="relative overflow-hidden">
                   <LocalImage src="/images/energy-storage.jpg" className="w-full" alt="" width={960 } height={708} />
                 </div>
               </div>
 
-              <div className="w-full md:w-1/3 md:px-5">
-                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5">Partner With Us</span>
+              <div className="w-full lg:w-1/3 md:px-5 flex flex-col mb-12 lg:mb-0">
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5 w-full">Partner With Us</span>
 
-                <h2 className="text-[2.2vw] leading-none mb-8 pb-0 w-[85%]">We work with landowners and developers on new renewable energy sites across the UK & Europe.</h2>
+                <h2 className="text-[6vw] md:text-[4.75vw] lg:text-[2.5vw] xl:text-[2.25vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-6 lg:mb-8 pb-0 w-[90%] xl:w-[85%]">We work with landowners and developers on new renewable energy sites across the UK & Europe.</h2>
 
-                <Button outline href="/projects" label="Site&nbsp;Development" a11yText={"Navigate to the projects page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mb-10" />
+                <div className="relative overflow-hidden w-full mt-auto">
+                  <div className="w-full mt-auto">
+                    <Button outline href="/projects" label="Site&nbsp;Development" a11yText={"Navigate to the projects page"} className="inline-block text-xl xl:text-2xl leading-none xl:leading-none mb-6 lg:mb-10 xl:mb-12" />
+                  </div>
 
-                <div className="relative overflow-hidden">
                   <LocalImage src="/images/partner.jpg" className="w-full" alt="" width={960 } height={708} />
                 </div>
               </div>
 
-              <div className="w-full md:w-1/3 md:px-5">
-                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5">Join Our Team</span>
+              <div className="w-full lg:w-1/3 md:px-5 flex flex-col">
+                <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5" w-full>Join Our Team</span>
 
-                <h2 className="text-[2.2vw] leading-none mb-8 pb-0 w-[80%]">We're on the lookout for great people determined to make the renewable transition happen.</h2>
+                <h2 className="text-[6vw] md:text-[4.75vw] lg:text-[2.5vw] xl:text-[2.25vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-6 lg:mb-8 pb-0 w-[90%] xl:w-[85%]">We're on the lookout for great people determined to make the renewable transition happen.</h2>
 
-                <Button outline href="/careers" label="Careers&nbsp;At&nbsp;Field" a11yText={"Navigate to the projects page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mb-10" />
+                <div className="relative overflow-hidden w-full mt-auto">
+                  <div className="w-full mt-auto">
+                    <Button outline href="/careers" label="Careers&nbsp;At&nbsp;Field" a11yText={"Navigate to the projects page"} className="inline-block text-xl xl:text-2xl leading-none xl:leading-none mb-6 lg:mb-10 xl:mb-12" />
+                  </div>
 
-                <div className="relative overflow-hidden">
                   <LocalImage src="/images/team.jpg" className="w-full" alt="" width={960 } height={708} />
                 </div>
               </div>
