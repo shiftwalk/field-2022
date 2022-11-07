@@ -198,7 +198,7 @@ export default function Mission() {
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">How We Do It</span>
           </div>
 
-          <div className="mb-[13.5vw] pl-5 md:pl-6 lg:pl-8 cursor-grab">
+          <div className="mb-[13.5vw] pl-5 md:pl-6 lg:pl-8 cursor-grab"> 
             <CarouselCards />
           </div>
         </Container>
