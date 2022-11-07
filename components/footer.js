@@ -11,7 +11,7 @@ export default function Footer({ noCta }) {
 
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center z-20">
 
-            <div className="absolute inset-x-5 inset-y-0 z-[50] overflow-hidden border-x border-black">
+            <div className="absolute inset-x-3 md:inset-x-4 lg:inset-x-5 inset-y-0 z-[50] overflow-hidden border-x border-black">
               {/* Grain overlay */}
               <div className="grain absolute inset-0 w-full h-full z-10"></div>
               

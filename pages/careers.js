@@ -56,7 +56,7 @@ const benefitsData = [
 export default function Careers() {
   return (
     <Layout>
-      <NextSeo title="Mission" />
+      <NextSeo title="Careers" />
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">

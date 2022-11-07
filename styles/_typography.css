@@ -1,11 +1,24 @@
 /* Content Stylings */
 .content {
   & > p {
-    @apply mb-5 last-of-type:mb-0;
+    @apply mb-5 md:mb-8 last-of-type:mb-0 leading-snug md:leading-snug;
   }
 
   & > p > a {
     @apply underline hover:text-opacity-25 focus:text-opacity-25;
+  }
+
+  & > ul {
+    @apply mt-6 md:mt-8 xl:mt-12 leading-snug md:leading-snug;
+
+    & li {
+      @apply block pl-5 md:pl-6 relative;
+
+      &:before {
+        content: ' ';
+        @apply w-2 h-2 rounded-full bg-current absolute top-[8px] md:top-[10px] xl:top-[13px] left-0;
+      }
+    }
   }
 
   & > h1, & > .h1 {
