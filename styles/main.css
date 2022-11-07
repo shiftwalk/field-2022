@@ -151,4 +151,10 @@ a, button {
   }
 
   @apply mr-5 md:mr-6;
+
+  &.is-selected {
+    .embla__slide--inner {
+      @apply bg-yellow;
+    }
+  }
 }
