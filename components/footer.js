@@ -154,7 +154,7 @@ export default function Footer({ noCta }) {
               <span className="block text-base leading-tight">Copyright 2022, Virmati Energy Ltd T/A Field (CN: 13095982)</span>
             </div>
             <div className="w-full md:flex-1 md:ml-auto flex md:justify-end items-center space-x-6">
-              <span className="block text-base leading-tight">
+              {/* <span className="block text-base leading-tight">
                 <FancyLink
                   destination="/terms-and-conditions"
                   a11yText="Navigate to the terms &amp; conditions page"
@@ -162,10 +162,10 @@ export default function Footer({ noCta }) {
                   className="block pb-0 mb-0"
                   noDot
                 />
-              </span>
+              </span> */}
               <span className="block text-base leading-tight">
                 <FancyLink
-                  destination="/privacy"
+                  destination="/privacy-policy"
                   a11yText="Navigate to the privacy policy page"
                   label="Privacy&nbsp;Policy"
                   className="block pb-0 mb-0"

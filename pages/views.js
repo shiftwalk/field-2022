@@ -76,8 +76,8 @@ export default function Views() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
               {viewsData.slice(0,3).map((e, i) => {
                 return ( 
-                  <Link href="/views-slug">
-                    <a className="col-span-1 group" key={i}>
+                  <Link href="/views-slug" key={i}>
+                    <a className="col-span-1 group">
                       <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-yellow">
                         <div className="flex flex-wrap px-3w-full mb-auto">
                           <span className="flex space-x-2 py-2">

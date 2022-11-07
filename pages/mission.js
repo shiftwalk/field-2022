@@ -6,6 +6,9 @@ import { NextSeo } from 'next-seo'
 import LocalImage from '@/components/local-image'
 import BatteryIcon from '@/icons/battery.svg'
 import { useRef } from 'react'
+import MetaText from '@/components/meta-text'
+import Button from '@/components/button'
+import { CarouselCards } from '@/components/carousel-cards'
 
 export default function Mission() {
   const charts = useRef(null)
@@ -128,7 +131,7 @@ export default function Mission() {
           </div>
         </div>
 
-        <div className="bg-white">
+        <div className="bg-white border-b border-black">
           <Container>
             <div className="text-center py-[13.5vw]" ref={countUp}>
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
@@ -189,6 +192,16 @@ export default function Mission() {
             </div>
           </Container>
         </div>
+
+        <Container noPad className="py-5">
+          <div className="pt-5 px-5 md:px-6 lg:px-8">
+            <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">How We Do It</span>
+          </div>
+
+          <div className="mb-[13.5vw] pl-5 md:pl-6 lg:pl-8 cursor-grab">
+            <CarouselCards />
+          </div>
+        </Container>
       </main>
     
       <Footer />

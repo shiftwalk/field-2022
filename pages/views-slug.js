@@ -13,12 +13,6 @@ const relatedData = [{
   heading: "Lorem ipsum dolor sit amet, consectetur",
 },{
   heading: "Lorem ipsum dolor sit amet, consectetur",
-},{
-  heading: "Lorem ipsum dolor sit amet, consectetur",
-},{
-  heading: "Lorem ipsum dolor sit amet, consectetur",
-},{
-  heading: "Lorem ipsum dolor sit amet, consectetur",
 }]
 
 export default function ViewsSlug() {
@@ -64,8 +58,8 @@ export default function ViewsSlug() {
 
         <div className="bg-white">
           <Container className="pb-[8vw]">
-            <div className="px-[5vw]">
-              <blockquote className="text-[8vw] md:text-[6.5vw] lg:text-[5vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10 lg:mb-12 w-[90%] lg:w-[90%]">“The energy in the room is always charged (pun intended) with fantastic ideas and a genuine enthusiasm to do great things together.”</blockquote>
+            <div className="md:px-[5vw]">
+              <blockquote className="text-[8vw] md:text-[5.9vw] lg:text-[4.8vw] xl:text-[4.3vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-8 md:mb-10 lg:mb-12 w-[95%] lg:w-[90%]">“The energy in the room is always charged (pun intended) with fantastic ideas and a genuine enthusiasm to do great things together.”</blockquote>
               
               <MetaText text="Hana - Finance Manager" />
             </div>
@@ -100,7 +94,7 @@ export default function ViewsSlug() {
         <LocalImage src="/images/careers-in-page.jpg" alt="Careers Image" layout="responsive" width={2000} height={1222} bordered />
 
         <div className="bg-white">
-          <Container className="pb-[8vw]">
+          <Container className="pb-[3vw] pt-[15vw] md:pt-[13vw] lg:pt-[10vw]">
             <span className="block text-[8vw] md:text-[5vw] lg:text-[4vw] xl:text-[3vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-5 md:mb-8 lg:mb-10">Related Articles</span>
           </Container>
 
@@ -119,7 +113,7 @@ export default function ViewsSlug() {
                       </div>
 
                       <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">
-                        <Button href="/contact" label="Read&nbsp;Article" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" outline />
+                        <Button href="/views-slug" label="Read&nbsp;Article" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" outline />
                       </div>
                       
                       <div className="w-full md:w-auto md:ml-auto block md:hidden">
@@ -131,6 +125,10 @@ export default function ViewsSlug() {
               )
             })}
           </div>
+
+          <Container className="pt-10 pb-[10vw]">
+            <Button href="/views" label="Back&nbsp;To&nbsp;Views" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the Views page"  />
+          </Container>
         </div>
   
       </main>

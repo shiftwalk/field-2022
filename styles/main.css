@@ -128,3 +128,27 @@ a, button {
 .marquee {
   @apply items-start !important;
 }
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 80%;
+
+  @screen md {
+    flex: 0 0 60%;
+  }
+
+  @screen lg {
+    flex: 0 0 55%;
+  }
+
+  @screen xl {
+    flex: 0 0 40%;
+  }
+
+  @apply mr-5 md:mr-6;
+}
