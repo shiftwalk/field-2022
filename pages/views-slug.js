@@ -94,7 +94,7 @@ export default function ViewsSlug() {
         <LocalImage src="/images/careers-in-page.jpg" alt="Careers Image" layout="responsive" width={2000} height={1222} bordered />
 
         <div className="bg-white">
-          <Container className="pb-[3vw] pt-[15vw] md:pt-[13vw] lg:pt-[10vw]">
+          <Container className="pb-[3.2vw] pt-[15.2vw] md:pt-[13.2vw] lg:pt-[10.2vw]">
             <span className="block text-[8vw] md:text-[5vw] lg:text-[4vw] xl:text-[3vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-5 md:mb-8 lg:mb-10">Related Articles</span>
           </Container>
 
@@ -126,7 +126,7 @@ export default function ViewsSlug() {
             })}
           </div>
 
-          <Container className="pt-10 pb-[10vw]">
+          <Container className="pt-12 pb-[10.5vw]">
             <Button href="/views" label="Back&nbsp;To&nbsp;Views" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the Views page"  />
           </Container>
         </div>
