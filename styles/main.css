@@ -187,3 +187,43 @@ a, button {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.react-select__control {
+  @apply bg-black rounded-full text-white pl-5 pr-3 py-2 border-none outline-none focus:border-none focus:outline-none focus-visible:border-0 focus-visible:outline-none focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-black !important;
+}
+
+.react-select__single-value, .react-select__input-container, .react-select__value-container, .react-select__placeholder {
+  @apply text-white opacity-100 !important;
+}
+
+.react-select__indicator {
+  @apply opacity-100 hover:opacity-100 focus:opacity-100 text-white ml-0 pl-0 !important;
+}
+
+.react-select__indicator-separator {
+  @apply hidden !important;
+}
+
+.react-select__menu {
+  @apply bg-white border-black border rounded-3xl py-0 overflow-hidden mt-7 min-w-[220px] !important;
+}
+
+.react-select__menu-list {
+  @apply py-0 my-0 !important;
+}
+
+.react-select__option {
+  @apply border-b border-black bg-white py-4 px-5 !important;
+
+  &:last-child {
+    @apply border-b-0 !important;
+  }
+}
+
+.react-select__option--is-focused {
+  @apply bg-off-white text-black !important;
+}
+
+.react-select__option--is-selected {
+  @apply bg-black text-white !important;
+}

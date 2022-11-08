@@ -6,13 +6,22 @@ import { MouseParallax } from 'react-just-parallax'
 import MetaText from '@/components/meta-text'
 import Button from '@/components/button'
 import TeamMember from '@/components/team-member'
+import Select from 'react-select'
 import SanityPageService from '@/services/sanityPageService'
+import { useState } from 'react'
+var slugify = require('slugify')
 
 const query = `{
   "team": *[_type == "team"] | order(order asc) {
     name,
     order,
     jobTitle,
+    department->{
+      name,
+    },
+    location->{
+      name,
+    },
     avatar {
       asset -> {
         ...
@@ -20,13 +29,44 @@ const query = `{
       ...
     },
     bio
-  }
+  },
+  "departments": *[_type == "departments"] | order(order asc) { name },
+  "locations": *[_type == "locations"] | order(order asc) { name }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Team(initialData) {
-  const { data: { team }  } = pageService.getPreviewHook(initialData)()
+  const { data: { team, departments, locations }  } = pageService.getPreviewHook(initialData)()
+  const [currentLocation, setCurrentLocation] = useState('All')
+  const [currentDeparment, setCurrentDepartment] = useState('All')
+
+  const locationsDropdown = [{
+    value: 'All', label: 'All Locations',
+  }]
+  const departmentsDropdown = [{
+    value: 'All', label: 'All Departments',
+  }]
+
+  locations.forEach(location => {
+    locationsDropdown.push(
+      { value: location.name, label: location.name },
+    );
+  });
+
+  departments.forEach(department => {
+    departmentsDropdown.push(
+      { value: slugify(department.name), label: department.name },
+    );
+  });
+
+  const departmentSelectBlur = (selectedValue) => {
+    setCurrentDepartment(selectedValue.value)
+  }
+
+  const locationsSelectBlur = (selectedValue) => {
+    setCurrentLocation(selectedValue.value)
+  }
 
   return (
     <Layout>
@@ -81,8 +121,27 @@ export default function Team(initialData) {
                 <MetaText text="Filter By" className="px-5 md:px-4" />
               </div>
               <div className="w-full md:flex-1 px-5 md:px-3 lg:px-3 pb-6 pt-3 md:py-3">
-                <Button href="/" label="Department" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug mb-[-8px] pb-0 mr-3" />
-                <Button href="/" label="Location" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug mb-[-8px] pb-0" />
+                <Select
+                  onChange={departmentSelectBlur}
+                  isClearable={false}
+                  isSearchable={false}
+                  backspaceRemovesValue={false}
+                  placeholder="All Departments"
+                  options={departmentsDropdown}
+                  className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  classNamePrefix="react-select"
+                />
+
+                <Select
+                  onChange={locationsSelectBlur}
+                  isClearable={false}
+                  isSearchable={false}
+                  backspaceRemovesValue={false}
+                  placeholder="All Locations"
+                  options={locationsDropdown}
+                  className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  classNamePrefix="react-select"
+                />
               </div>
             </div>
           </Container>
@@ -92,11 +151,15 @@ export default function Team(initialData) {
           <Container className="pt-[6vw] pb-[12vw]">
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-5 md:gap-x-8 xl:gap-x-10 2xl:gap-x-12 gap-y-[6vw]">
               {team.map((e, i) => {
-                return ( 
+                let location = slugify(e.location.name)
+                let department = slugify(e.department.name)
+                return (
+                  (location == currentLocation && department == currentDeparment) || (currentLocation == 'All' && department == currentDeparment) || (location == currentLocation && currentDeparment == 'All') || (currentDeparment == 'All' && currentLocation == 'All')
+                ) && ( 
                   <div className="col-span-1" key={i}>
                     <TeamMember
                       name={e.name}
-                      jobTitle={e.jobTitle}
+                      jobTitle={`${e.jobTitle}`}
                       image={e.avatar}
                       bio={e.bio}
                     />
