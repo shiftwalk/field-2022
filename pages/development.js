@@ -5,55 +5,15 @@ import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
 import MetaText from '@/components/meta-text'
 import Button from '@/components/button'
-import TeamMember from '@/components/team-member'
-import SanityPageService from '@/services/sanityPageService'
+import LocalImage from '@/components/local-image'
 
-const query = `{
-  "teamLanding": *[_type == "teamLanding"][0]{
-    title,
-    chapter1Title,
-    chapter1Text,
-    chapter2Title,
-    chapter2Heading,
-    chapter2Text,
-    seo {
-      ...,
-      shareGraphic {
-        asset->
-      }
-    }
-  },
-  "careers": *[_type == "careers"]{
-    title,
-    slug {
-      current
-    }
-  },
-  "team": *[_type == "team"] | order(order asc) {
-    name,
-    order,
-    jobTitle,
-    avatar {
-      asset -> {
-        ...
-      },
-      ...
-    },
-    bio
-  }
-}`
-
-const pageService = new SanityPageService(query)
-
-export default function Projects(initialData) {
-  const { data: { teamLanding, careers, team }  } = pageService.getPreviewHook(initialData)()
-
+export default function Development() {
   return (
     <Layout>
-      <NextSeo title="Projects" />
+      <NextSeo title="Development" />
       
       <main>
-        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
 
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
@@ -86,15 +46,27 @@ export default function Projects(initialData) {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">The Field Team</h1>
+              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Develop&shy;ment</h1>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We believe systemic changes can be made, and we're determined to make them happen fast.</p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We're Field. We're accelerating the build out of renewable infrastructure needed to reach net zero. We're starting with battery storage, to store energy for when it's needed, creating a more reliable, flexible and greener grid.</p>
               </div>
             </article>
           </Container>
         </div>
-        
-        <div className="border-y border-black">
+    
+        <div className="bg-white">
+          <Container>
+            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-[13vw]">
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</h2>
+
+              <Button href="/careers" label="Email&nbsp;Us" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[13.5vw]" a11yText="Navigate to the careers page" />
+            </div>
+          </Container>
+        </div>
+
+        <LocalImage src="/images/projects.jpg" alt="Mission Image" layout="responsive" width={2000 } height={773} bordered />
+
+        <div className="bg-white border-b border-black">
           <Container noPad>
             <div className="flex flex-wrap">
               <div className="w-full md:w-auto md:flex md:items-center md:justify-center md:border-r md:border-black pt-6 pb-2 md:py-0">
@@ -108,32 +80,10 @@ export default function Projects(initialData) {
           </Container>
         </div>
 
-        <div className="border-b border-black">
-          <Container className="pt-[6vw] pb-[12vw]">
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-5 md:gap-x-8 xl:gap-x-10 2xl:gap-x-12 gap-y-[6vw]">
-              {team.map((e, i) => {
-                return ( 
-                  <div className="col-span-1" key={i}>
-                    <TeamMember
-                      name={e.name}
-                      jobTitle={e.jobTitle}
-                      image={e.avatar}
-                      bio={e.bio}
-                    />
-                  </div>
-                )
-              })}
-            </div>
-          </Container>
-        </div>
-
         <div className="bg-white">
           <Container>
-            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5">
-              <MetaText text="Join the Team" className="mb-[13vw]" />
-              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">We're always up for speaking to great people who are determined to make the renewable transition happen.</h2>
-
-              <Button href="/careers" label="Careers&nbsp;At&nbsp;Field" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[13.5vw]" a11yText="Navigate to the careers page" />
+            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-[13vw]">
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-[13.5vw]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</h2>
             </div>
           </Container>
         </div>
@@ -142,11 +92,4 @@ export default function Projects(initialData) {
       <Footer />
     </Layout>
   )
-}
-
-export async function getStaticProps(context) {
-  const props = await pageService.fetchQuery(context)
-  return { 
-    props: props
-  };
 }

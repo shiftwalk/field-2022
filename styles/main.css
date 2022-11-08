@@ -28,6 +28,16 @@ body {
   }
 }
 
+.cover-image--top-mobile {
+  img {
+    object-position: 0 25%;
+
+    @screen md {
+      @apply object-center;
+    }
+  }
+}
+
 a, button {
   @apply focus-visible:border-0 focus-visible:outline-none focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-black;
 }
@@ -157,4 +167,21 @@ a, button {
       @apply bg-yellow;
     }
   }
+}
+
+.ReactModal__Overlay {
+  @apply z-[10000] bg-black bg-opacity-[0.85] !important;
+}
+
+.ReactModal__Content {
+  @apply inset-y-[1vw] md:inset-y-[2.5vw] lg:inset-y-[5vw] inset-x-[5vw] md:inset-x-[10vw] lg:inset-x-[15vw] p-0 border-0 rounded-none max-h-[75vh] md:max-h-[780px] md:max-w-[1300px] m-auto overflow-hidden !important;
+}
+
+.modal--inner::-webkit-scrollbar {
+    display: none;
+}
+
+.modal--inner {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

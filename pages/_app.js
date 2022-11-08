@@ -11,7 +11,9 @@ export default function App({ Component, pageProps }) {
       
       { pageProps.preview && <PreviewAlert/>}
 
-      <Component {...pageProps} />
+      <div id="app">
+        <Component {...pageProps} />
+      </div>
     </>
   )
 }

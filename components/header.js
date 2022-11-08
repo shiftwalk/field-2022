@@ -50,6 +50,14 @@ export default function Header({ path }) {
             />
 
             <FancyLink
+              destination="/development"
+              a11yText="Navigate to the development page"
+              label="Development"
+              className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+              active={path == '/development'}
+            />
+
+            <FancyLink
               destination="/careers"
               a11yText="Navigate to the careers page"
               label="Careers"

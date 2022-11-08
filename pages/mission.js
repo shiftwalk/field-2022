@@ -65,7 +65,8 @@ export default function Mission() {
         <Container>
           <div className="max-w-[96%] pt-5">
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">Our Plan</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">We're building a vertically integrated infrastructure business that can help tackle the urgent climate crisis. We're starting by developing, building and operating battery storage sites — first in the UK, then abroad. And we're creating our own technology platform to optimise our assets - allowing us to move faster and maximise returns.</h2>
+            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-12">We're building a vertically integrated infrastructure business that can help tackle the urgent climate crisis. We're starting by developing, building and operating battery storage sites — first in the UK, then abroad. And we're creating our own technology platform to optimise our assets - allowing us to move faster and maximise returns.</h2>
+            <Button href="/projects" label="See&nbsp;Our&nbsp;Projects" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[12vw]" a11yText="Navigate to the Projects Page" />
           </div>
         </Container>
       

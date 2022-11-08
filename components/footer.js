@@ -2,6 +2,9 @@ import Container from '@/components/container'
 import LogoMarkIcon from '@/icons/logomark.svg'
 import Button from './button'
 import FancyLink from './fancyLink'
+import FacebookIcon from '@/icons/facebook.svg'
+import LinkedinIcon from '@/icons/linkedin.svg'
+import TwitterIcon from '@/icons/twitter.svg'
 
 export default function Footer({ noCta }) {
   return (
@@ -76,15 +79,22 @@ export default function Footer({ noCta }) {
             <span className="text-[clamp(36px,_3.6vw,_50px)] leading-[0.9] block max-w-[85%] md:max-w-[50%] lg:max-w-[55%] xl:max-w-[450px] mb-8">Renewable energy infrastructure to get to net zero</span>
 
             <div className="flex items-center space-x-3">
-              <span className="block w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow"></span>
-              <span className="block w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow"></span>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
+                <FacebookIcon className="block w-[45%]" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
+                <LinkedinIcon className="block w-[45%]" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
+                <TwitterIcon className="block w-[45%]" />
+              </a>
             </div>
           </div>
 
           <div className="w-full lg:w-1/3 lg:border-l border-black mb-8 lg:mb-0 flex flex-wrap items-center justify-center">
             <nav className="block w-full lg:w-[75%] 2xl:w-[60%] 3xl:w-[50%]">
               <ul>
-                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
                   <FancyLink
                     destination="/"
                     a11yText="Navigate to the home page"
@@ -93,7 +103,7 @@ export default function Footer({ noCta }) {
                     noDot
                   />
                 </li>
-                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
                   <FancyLink
                     destination="/mission"
                     a11yText="Navigate to the mission page"
@@ -102,7 +112,7 @@ export default function Footer({ noCta }) {
                     noDot
                   />
                 </li>
-                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
                   <FancyLink
                     destination="/projects"
                     a11yText="Navigate to the projects page"
@@ -111,7 +121,7 @@ export default function Footer({ noCta }) {
                     noDot
                   />
                 </li>
-                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
                   <FancyLink
                     destination="/team"
                     a11yText="Navigate to the team page"
@@ -120,7 +130,16 @@ export default function Footer({ noCta }) {
                     noDot
                   />
                 </li>
-                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
+                  <FancyLink
+                    destination="/development"
+                    a11yText="Navigate to the development page"
+                    label="Development"
+                    className="block pb-0 mb-0"
+                    noDot
+                  />
+                </li>
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
                   <FancyLink
                     destination="/careers"
                     a11yText="Navigate to the careers page"
@@ -129,7 +148,7 @@ export default function Footer({ noCta }) {
                     noDot
                   />
                 </li>
-                <li className="block text-xl lg:text-2xl leading-[1.18] lg:leading-[1.18]">
+                <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
                   <FancyLink
                     destination="/views"
                     a11yText="Navigate to the views page"
@@ -139,7 +158,7 @@ export default function Footer({ noCta }) {
                   />
                 </li>
                 <li className="block">
-                  <Button outline href="/contact" label="Contact&nbsp;Us" a11yText={"Navigate to the contact page"} className="inline-block text-xl lg:text-2xl leading-none lg:leading-none mt-8" />
+                  <Button outline href="/contact" label="Contact&nbsp;Us" a11yText={"Navigate to the contact page"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8" />
                 </li>
               </ul>
             </nav>
