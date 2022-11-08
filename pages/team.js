@@ -9,26 +9,6 @@ import TeamMember from '@/components/team-member'
 import SanityPageService from '@/services/sanityPageService'
 
 const query = `{
-  "teamLanding": *[_type == "teamLanding"][0]{
-    title,
-    chapter1Title,
-    chapter1Text,
-    chapter2Title,
-    chapter2Heading,
-    chapter2Text,
-    seo {
-      ...,
-      shareGraphic {
-        asset->
-      }
-    }
-  },
-  "careers": *[_type == "careers"]{
-    title,
-    slug {
-      current
-    }
-  },
   "team": *[_type == "team"] | order(order asc) {
     name,
     order,
@@ -45,12 +25,12 @@ const query = `{
 
 const pageService = new SanityPageService(query)
 
-export default function Projects(initialData) {
-  const { data: { teamLanding, careers, team }  } = pageService.getPreviewHook(initialData)()
+export default function Team(initialData) {
+  const { data: { team }  } = pageService.getPreviewHook(initialData)()
 
   return (
     <Layout>
-      <NextSeo title="Projects" />
+      <NextSeo title="Team" />
       
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden">
