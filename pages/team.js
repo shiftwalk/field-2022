@@ -8,7 +8,7 @@ import Button from '@/components/button'
 import TeamMember from '@/components/team-member'
 import Select from 'react-select'
 import SanityPageService from '@/services/sanityPageService'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 var slugify = require('slugify')
 
 const query = `{
@@ -39,26 +39,27 @@ const pageService = new SanityPageService(query)
 export default function Team(initialData) {
   const { data: { team, departments, locations }  } = pageService.getPreviewHook(initialData)()
   const [currentLocation, setCurrentLocation] = useState('All')
-  const [currentDeparment, setCurrentDepartment] = useState('All')
+  const [currentDepartment, setCurrentDepartment] = useState('All')
 
   const locationsDropdown = [{
-    value: 'All', label: 'All Locations',
+    label: `All Locations`, value: 'All',
   }]
+
   const departmentsDropdown = [{
-    value: 'All', label: 'All Departments',
+    label: `All Departments`, value: 'All',
   }]
 
   locations.forEach(location => {
     locationsDropdown.push(
-      { value: location.name, label: location.name },
+      { label: `${ location.name }`, value: location.name, },
     );
-  });
+  })
 
   departments.forEach(department => {
     departmentsDropdown.push(
-      { value: slugify(department.name), label: department.name },
+      { label: `${department.name}`, value: slugify(department.name), },
     );
-  });
+  })
 
   const departmentSelectBlur = (selectedValue) => {
     setCurrentDepartment(selectedValue.value)
@@ -122,24 +123,28 @@ export default function Team(initialData) {
               </div>
               <div className="w-full md:flex-1 px-5 md:px-3 lg:px-3 pb-6 pt-3 md:py-3">
                 <Select
+                  instanceId="departmentDropdown"
                   onChange={departmentSelectBlur}
                   isClearable={false}
                   isSearchable={false}
                   backspaceRemovesValue={false}
+                  blurInputOnSelect
                   placeholder="All Departments"
                   options={departmentsDropdown}
-                  className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 md:mb-0"
                   classNamePrefix="react-select"
                 />
 
                 <Select
+                  instanceId="locationDropdown"
                   onChange={locationsSelectBlur}
                   isClearable={false}
                   isSearchable={false}
                   backspaceRemovesValue={false}
+                  blurInputOnSelect
                   placeholder="All Locations"
                   options={locationsDropdown}
-                  className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
                   classNamePrefix="react-select"
                 />
               </div>
@@ -154,7 +159,7 @@ export default function Team(initialData) {
                 let location = slugify(e.location.name)
                 let department = slugify(e.department.name)
                 return (
-                  (location == currentLocation && department == currentDeparment) || (currentLocation == 'All' && department == currentDeparment) || (location == currentLocation && currentDeparment == 'All') || (currentDeparment == 'All' && currentLocation == 'All')
+                  (location == currentLocation && department == currentDepartment) || (currentLocation == 'All' && department == currentDepartment) || (location == currentLocation && currentDepartment == 'All') || (currentDepartment == 'All' && currentLocation == 'All')
                 ) && ( 
                   <div className="col-span-1" key={i}>
                     <TeamMember

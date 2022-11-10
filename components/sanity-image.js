@@ -10,7 +10,9 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
   // Pass in custom URL builder props
   const myCustomImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder
-      .width((widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 800))
+      .width(
+        (widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 800)
+      )
       .quality(90)
       .fit('clip')
   };
@@ -46,6 +48,8 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
         <Img
           {...imageProps}
           {...attributes}
+          width={null}
+          height={null}
           unoptimized={true}
           onLoad={event => {
             const target = event.target;
