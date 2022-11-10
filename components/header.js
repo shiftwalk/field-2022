@@ -14,20 +14,7 @@ import { useEffect, useState } from 'react'
 export default function Header({ path }) {
   const { scrollY } = useScroll()
   const scrollDirection = useScrollDirection();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrollAmount, setScrollAmount] = useState(0)
-
-  const menuToggle = () => {
-    if (mobileMenuOpen) {
-      setMobileMenuOpen(false)
-    } else {
-      setMobileMenuOpen(true)
-    }
-  }
-
-  const menuClose = () => {
-    setMobileMenuOpen(false)
-  }
 
   useEffect(() => {
     return scrollY.onChange((latest) => {
@@ -36,12 +23,12 @@ export default function Header({ path }) {
   }, [scrollAmount])
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[1000]">
-      <div className="absolute inset-0 w-full bg-none z-[0] h-[200px] lg:h-[250px] mx-3 md:mx-4 lg:mx-5 border-x border-black pointer-events-none"></div>
+    <div className="absolute lg:fixed top-0 left-0 right-0 z-[1000]">
+      <div className="absolute inset-0 w-full bg-none z-[0] h-[200px] lg:h-[250px] mx-3 md:mx-4 lg:mx-5 border-x border-black pointer-events-none hidden lg:block"></div>
       
-      <header className={`fixed top-0 left-0 right-0 w-full z-[1000] border-b border-black transition-all ease-in-out duration-[420ms] ${scrollDirection == 'down' ? 'translate-y-[-100px]' : 'translate-y-[0]'} ${scrollAmount < 100 ? '' : 'bg-white' }`}>
+      <header className={`absolute lg:fixed top-0 left-0 right-0 w-full z-[1000] border-b border-black transition-all ease-in-out duration-[420ms] ${scrollDirection == 'down' ? 'lg:translate-y-[-100px]' : 'lg:translate-y-[0]'} ${scrollAmount < 100 ? '' : 'lg:bg-white' }`}>
         <Container className="py-[18px] lg:py-5">
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap items-center">
 
             <Link href="/">
               <a aria-label="Navigate to the home page" className={`w-[65px] md:w-[65px] lg:w-48 px-1 lg:px-3 py-0 lg:pt-3 lg:pb-2 block -translate-x-1 lg:-translate-x-3 ${path == '/' && 'pointer-events-none'}`} aria-disabled={path == '/'}>
@@ -109,19 +96,15 @@ export default function Header({ path }) {
             </nav>
 
             <div className="ml-auto lg:space-x-6 xl:space-x-8 flex w-auto lg:hidden">
-              <button onClick={menuToggle} className="block w-[43px] outline-none border-none">
-                <MenuIcon className="w-full" />
-              </button>
+              <Link href="/menu">
+                <a className="block w-[43px] outline-none border-none">
+                  <MenuIcon className="w-full" />
+                </a>
+              </Link>
             </div>
           </div>
         </Container>
       </header>
-
-      {mobileMenuOpen && (
-        <MobileMenu
-          menuClose={menuClose}
-        />
-      )}
     </div>
   )
 }
