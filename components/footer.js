@@ -166,7 +166,7 @@ export default function Footer({ noCta }) {
         </div>
       </Container>
       
-        <div className="border-t border-black">
+      <div className="border-t border-black">
         <Container>
           <div className="flex flex-wrap">
             <div className="w-full md:flex-1 mb-6 md:mb-0">

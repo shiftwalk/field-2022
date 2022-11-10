@@ -152,6 +152,15 @@ a, button {
   scrollbar-width: none;
 }
 
+.mobile-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-menu {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+
 .react-select__control {
   @apply border-0 bg-black rounded-full text-white pl-5 pr-3 py-3 cursor-pointer hover:bg-yellow !important;
   box-shadow: none !important;
