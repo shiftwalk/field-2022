@@ -2,17 +2,20 @@ import FancyLink from '@/components/fancyLink'
 import Container from '@/components/container'
 import MobileMenu from "@/components/mobile-menu"
 import useScrollDirection from '@/helpers/scroll-direction'
+import { useScroll } from 'framer-motion'
 
 import LogoIcon from '@/icons/logo.svg'
 import LogoMarkIcon from '@/icons/logomark.svg'
 import MenuIcon from '@/icons/menu.svg'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Header({ path }) {
+  const { scrollY } = useScroll()
   const scrollDirection = useScrollDirection();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrollAmount, setScrollAmount] = useState(0)
 
   const menuToggle = () => {
     if (mobileMenuOpen) {
@@ -26,9 +29,15 @@ export default function Header({ path }) {
     setMobileMenuOpen(false)
   }
 
+  useEffect(() => {
+    return scrollY.onChange((latest) => {
+      setScrollAmount(latest)
+    })
+  }, [scrollAmount])
+
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 w-full z-[1000] border-b border-black">
+      <header className={`fixed top-0 left-0 right-0 w-full z-[1000] border-b border-black transition-translate ease-in-out duration-[350ms] ${scrollDirection == 'down' ? 'translate-y-[-100px]' : 'translate-y-[0]'} ${scrollAmount < 100 ? '' : 'bg-white' }`}>
         <Container className="py-[18px] lg:py-5">
           <div className="flex flex-wrap">
 
