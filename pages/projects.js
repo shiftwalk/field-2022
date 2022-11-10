@@ -52,10 +52,10 @@ export default function Projects() {
       <NextSeo title="Projects" />
       
       <main>
-        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-orange lg:bg-none">
 
           {/* Background gradient */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center">
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
 
             {/* Grain overlay */}
             <div className="grain absolute inset-0 w-full h-full z-10 hidden lg:block"></div>
