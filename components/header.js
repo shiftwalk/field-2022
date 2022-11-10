@@ -37,7 +37,7 @@ export default function Header({ path }) {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 w-full z-[1000] border-b border-black transition-translate ease-in-out duration-[350ms] ${scrollDirection == 'down' ? 'translate-y-[-100px]' : 'translate-y-[0]'} ${scrollAmount < 100 ? '' : 'bg-white' }`}>
+      <header className={`fixed top-0 left-0 right-0 w-full z-[1000] border-b border-black transition-translate ease-in-out duration-[350ms] ${scrollDirection == 'down' ? 'translate-y-[-100px]' : 'translate-y-[0]'} ${scrollAmount < 10 ? '' : 'bg-white' }`}>
         <Container className="py-[18px] lg:py-5">
           <div className="flex flex-wrap">
 
