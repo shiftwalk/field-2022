@@ -80,6 +80,11 @@ export default function Projects(initialData) {
     setCurrentStatus(selectedValue.value)
   }
 
+  let filteredProjects = projects
+  filteredProjects = (currentCountry !== 'All') ? filteredProjects.filter(d => d.country.name == currentCountry) : filteredProjects
+  filteredProjects = (currentStorage !== 'All') ? filteredProjects.filter(d => d.storage.name == currentStorage) : filteredProjects
+  filteredProjects = (currentStatus !== 'All') ? filteredProjects.filter(d => d.status.name == currentStatus) : filteredProjects
+
   return (
     <Layout>
       <NextSeo title="Projects" />
@@ -181,20 +186,9 @@ export default function Projects(initialData) {
         <div className="">
           <Container className="pt-[6vw] pb-[12vw]">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
-              {projects.map((e, i) => {
-                let country = slugify(e.country.name)
-                let storage = slugify(e.storage.name)
-                let status = slugify(e.status.name)
+              {filteredProjects.map((e, i) => {
                 return (
-                  (currentStorage == 'All' || currentStatus == 'All' || currentCountry == 'All')
-                  ||
-                  (country == currentCountry) 
-                  ||
-                  (status == currentStatus)
-                  ||
-                  (storage == currentStorage)
-                ) && ( 
-                  <a href="#" className="col-span-1 group" key={i}>                   
+                  <a href="#" className="col-span-1 group" key={i}>
                     <div className="w-full md:aspect-square border-black border flex flex-col group-hover:bg-white">
                       <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
                         <span className="flex space-x-2 py-2">
