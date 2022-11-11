@@ -8,21 +8,25 @@ import MetaText from '@/components/meta-text'
 import Select from 'react-select'
 import Button from '@/components/button'
 import BatteryIcon from '@/icons/battery.svg'
+import GridIcon from '@/icons/grid.svg'
+import ListIcon from '@/icons/list.svg'
 import SanityPageService from '@/services/sanityPageService'
-import { useEffect, useRef, useState } from 'react'
-var slugify = require('slugify')
+import { useState } from 'react'
 
 const query = `{
   "projects": *[_type == "projects"] | order(order asc) {
     name,
     status->{
-      name,
+      name
     },
     country->{
       name,
     },
     storage->{
       name,
+      tagColor {
+        hex
+      }
     },
   },
   "country": *[_type == "country"] | order(order asc) { name },
@@ -34,6 +38,7 @@ const pageService = new SanityPageService(query)
 
 export default function Projects(initialData) {
   const { data: { projects, country, storage, status }  } = pageService.getPreviewHook(initialData)()
+  const [currentView, setCurrentView] = useState('grid')
   const [currentCountry, setCurrentCountry] = useState('All')
   const [currentStorage, setCurrentStorage] = useState('All')
   const [currentStatus, setCurrentStatus] = useState('All')
@@ -136,10 +141,10 @@ export default function Projects(initialData) {
         <div className="border-y border-black">
           <Container noPad>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-auto md:flex md:items-center md:justify-center md:border-r md:border-black pt-6 pb-2 md:py-0">
-                <MetaText text="Filter By" className="px-5 md:px-4" />
+              <div className="w-full lg:w-auto lg:flex lg:items-center lg:justify-center lg:border-r lg:border-black pt-6 pb-2 lg:py-0">
+                <MetaText text="Filter By" className="px-5 lg:px-4" />
               </div>
-              <div className="w-full md:flex-1 px-5 md:px-3 lg:px-3 pb-6 pt-3 md:py-3">
+              <div className="w-full lg:flex-1 px-5 lg:px-3 pb-6 pt-3 lg:py-3">
                 <Select
                   instanceId="storageDropdown"
                   onChange={storageSelectBlur}
@@ -149,7 +154,7 @@ export default function Projects(initialData) {
                   blurInputOnSelect
                   placeholder="All Storage"
                   options={storageDropdown}
-                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 md:mb-0"
+                  className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1001] react-select-container mb-3 lg:mb-0"
                   classNamePrefix="react-select"
                 />
 
@@ -162,7 +167,7 @@ export default function Projects(initialData) {
                   blurInputOnSelect
                   placeholder="All Locations"
                   options={countryDropdown}
-                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 lg:mb-0"
                   classNamePrefix="react-select"
                 />
 
@@ -175,9 +180,17 @@ export default function Projects(initialData) {
                   blurInputOnSelect
                   placeholder="All Statuses"
                   options={statusDropdown}
-                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[999] react-select-container"
                   classNamePrefix="react-select"
                 />
+              </div>
+              <div className="w-full lg:w-auto px-5 lg:px-6 pb-6 pt-3 lg:py-3 items-center border-l border-black hidden lg:flex lg:space-x-5">
+                <button onClick={() => setCurrentView('grid')} className="block">
+                  <GridIcon className={`w-10 ${currentView == 'list' && 'opacity-20' }`} />
+                </button>
+                <button onClick={() => setCurrentView('list')} className="block">
+                  <ListIcon className={`w-10 ${currentView == 'grid' && 'opacity-20' }`} />
+                </button>
               </div>
             </div>
           </Container>
@@ -185,15 +198,15 @@ export default function Projects(initialData) {
 
         <div className="">
           <Container className="pt-[6vw] pb-[12vw]">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
+            <div className={`grid ${currentView == 'grid' ? 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8' : 'grid-cols-1 gap-5 md:gap-8' }`}>
               {filteredProjects.map((e, i) => {
                 return (
                   <a href="#" className="col-span-1 group" key={i}>
-                    <div className="w-full md:aspect-square border-black border flex flex-col group-hover:bg-white">
+                    <div className={`w-full border-black border flex flex-col group-hover:bg-white ${ currentView == 'grid' ? 'lg:aspect-square' : '' }`}>
                       <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
-                        <span className="flex space-x-2 py-2">
-                          <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text={e.storage.name} className="text-white" /></span>
-                          <span className="px-3 py-2 bg-orange text-white rounded-full"><MetaText text={e.status.name} className="text-white" /></span>
+                        <span className="flex space-x-2 py-2 items-center">
+                          <span className="px-3 py-[9px] text-white rounded-full border border-current" style={{ backgroundColor: e.storage.tagColor.hex}}><MetaText text={e.storage.name} className="text-white" /></span>
+                          <span className={`px-3 rounded-full ${e.status.name == 'Operational' ? 'bg-orange text-white border border-current py-[9px]' : 'border border-black text-black py-2'}`}><MetaText text={e.status.name} className={e.status.name == 'Operational' ? 'text-white' : 'text-black'} /></span>
                         </span>
 
                         <span className="border-l border-black ml-auto flex items-center justify-center py-2 pl-3">
@@ -201,11 +214,23 @@ export default function Projects(initialData) {
                         </span>
                       </div>
 
-                      <div className="py-[7.5vw]">
-                        <span className="px-3 block text-[7vw] md:text-[5vw] xl:text-[3.5vw] leading-none">{e.name}<span className="block text-black text-opacity-10 mb-auto w-full">{e.country.name}</span></span>
+                      <div className={`${currentView == 'grid' ? 'py-[7.5vw]' : 'pt-5 pb-2' }`}>
+                        <div className="flex flex-wrap items-center">
+                          <div className="w-full md:flex-1">
+                            <span className={`px-3 block ${ currentView == 'grid' ? 'text-[7vw] lg:text-[5vw] xl:text-[3.5vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none`}>{e.name}<span className={`${currentView == 'grid' ? 'block w-full' : 'inline-block ml-2' } text-black text-opacity-10 mb-auto`}>{e.country.name}</span></span>
+                          </div>
+
+                          <div className={`w-full md:flex-1 px-3 py-2 items-end ${currentView == 'grid' ? 'hidden' : 'flex'}`}>
+                            <div className="md:ml-auto flex items-end space-x-6">
+                              <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>200kw</span>
+                              
+                              <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       
-                      <div className="px-3 py-2 w-full mt-auto flex items-end">
+                      <div className={`px-3 py-2 w-full mt-auto items-end ${currentView == 'grid' ? 'flex' : 'hidden' }`}>
                         <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">200kw</span>
                         <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
                       </div>
@@ -215,13 +240,13 @@ export default function Projects(initialData) {
               })}
 
               <div className="col-span-1">
-                <div className="w-full aspect-square border-black border flex flex-col bg-yellow">
+                <div className={`w-full border-black border flex flex-col bg-yellow ${currentView == 'grid' ? 'aspect-square' : 'aspect-square md:aspect-auto' }`}>
                   <div className="px-3 py-3 w-full mb-auto">
                     <span className="py-2 "><MetaText text="Pipeline" /></span>
                   </div>
 
-                  <div className="w-full">
-                    <span className="px-3 block text-[6vw] md:text-[3vw] xl:text-[2.5vw] leading-none max-w-[80%]">We have another XX MWh of battery storage acquired</span>
+                  <div className="w-full py-12">
+                    <span className="px-3 block text-[6vw] lg:text-[3vw] xl:text-[2.5vw] leading-none max-w-[80%]">We have another XX MWh of battery storage acquired</span>
                   </div>
                   
                   <div className="px-3 py-2 w-full mt-auto self-end">
