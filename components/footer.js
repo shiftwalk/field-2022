@@ -10,7 +10,7 @@ export default function Footer({ noCta }) {
   return (
     <footer className="border-t border-black bg-off-white">
       { !noCta && (
-        <div className="bg-orange h-[48vw] lg:h-[50vw] 2xl:h-[48vw] border-b border-black relative overflow-hidden">
+        <div className="bg-gradient-to-tr from-orange via-yellow to-purple h-[75vw] lg:h-[50vw] 2xl:h-[48vw] border-b border-black relative overflow-hidden">
 
           <div className="absolute inset-0 w-full h-full lg:bg-gradient-to-t lg:from-[#C99C97] lg:to-[#D9D5D0] overflow-hidden origin-center z-20">
 
@@ -19,6 +19,8 @@ export default function Footer({ noCta }) {
               <div className="grain absolute inset-0 w-full h-full z-10 hidden lg:block"></div>
               
               <div className="absolute inset-0 whitespace-nowrap translate-y-[-10%] lg:translate-y-[-7.5%] 2xl:translate-y-[-10%] translate-x-[-2.4%] z-10">
+                <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
+                <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>

@@ -13,7 +13,7 @@ export default function Development() {
       <NextSeo title="Development" />
       
       <main>
-        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-orange lg:bg-none">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-gradient-to-tr from-orange via-yellow to-purple">
 
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
@@ -46,7 +46,7 @@ export default function Development() {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Develop&shy;ment</h1>
+              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Develo&shy;pment</h1>
               <div className="w-full lg:max-w-[55%]">
                 <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We're Field. We're accelerating the build out of renewable infrastructure needed to reach net zero. We're starting with battery storage, to store energy for when it's needed, creating a more reliable, flexible and greener grid.</p>
               </div>
