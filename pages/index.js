@@ -15,6 +15,8 @@ export default function Home() {
       <main>
         <div className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative bg-gradient-to-tr from-orange via-yellow to-purple lg:bg-none">
 
+          <div className="grain absolute inset-0 w-full h-full z-10 block lg:hidden"></div>
+
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full lg:bg-gradient-to-t lg:from-[#C99C97] lg:to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
 
