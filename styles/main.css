@@ -140,7 +140,7 @@ a, button {
 }
 
 .ReactModal__Content {
-  @apply inset-y-[1vw] md:inset-y-[2.5vw] lg:inset-y-[5vw] inset-x-[5vw] md:inset-x-[10vw] lg:inset-x-[15vw] p-0 border-0 rounded-none max-h-[75vh] md:max-h-[780px] md:max-w-[1300px] m-auto overflow-hidden !important;
+  @apply inset-y-[1vw] md:inset-y-[2.5vw] lg:inset-y-[5vw] inset-x-[5vw] md:inset-x-[10vw] lg:inset-x-[15vw] p-0 border-0 rounded-none max-h-[90vh] md:max-h-[780px] md:max-w-[1300px] m-auto overflow-hidden !important;
 }
 
 .modal--inner::-webkit-scrollbar {
