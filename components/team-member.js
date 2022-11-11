@@ -51,7 +51,7 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
 
         <MetaText text={jobTitle} className="mb-2" />
 
-        <span className="text-[4.7vw] md:text-[3.2vw] lg:text-[2.75vw] xl:text-[2.4vw] 2xl:text-[1.8vw] leading-none md:leading-none lg:leading-none xl:leading-none 2xl:leading-none flex flex-wrap items-center">
+        <span className="text-[5.3vw] md:text-[3.2vw] lg:text-[2.75vw] xl:text-[2.4vw] 2xl:text-[1.8vw] leading-none md:leading-none lg:leading-none xl:leading-none 2xl:leading-none flex flex-wrap items-center">
           <span className="block">
             {name}
           </span>
