@@ -5,48 +5,81 @@ import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
 import LocalImage from '@/components/local-image'
 import MetaText from '@/components/meta-text'
+import Select from 'react-select'
 import Button from '@/components/button'
 import BatteryIcon from '@/icons/battery.svg'
+import SanityPageService from '@/services/sanityPageService'
+import { useEffect, useRef, useState } from 'react'
+var slugify = require('slugify')
 
-const projectsData = [
-  {
-    location: 'Oldham',
-    country: 'UK',
-    power: '20 MWh'
+const query = `{
+  "projects": *[_type == "projects"] | order(order asc) {
+    name,
+    status->{
+      name,
+    },
+    country->{
+      name,
+    },
+    storage->{
+      name,
+    },
   },
-  {
-    location: 'Dundee',
-    country: 'UK',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Cefalù',
-    country: 'Italy',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Nottingham',
-    country: 'UK',
-    power: '20 MWh'
-  },
-  {
-    location: 'Cologne',
-    country: 'Germany',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Padua',
-    country: 'Italy',
-    power: 'XX MWh'
-  },
-  {
-    location: 'Wrexham',
-    country: 'Uk',
-    power: 'XX MWh'
-  },
-]
+  "country": *[_type == "country"] | order(order asc) { name },
+  "storage": *[_type == "storage"] | order(order asc) { name },
+  "status": *[_type == "status"] | order(order asc) { name }
+}`
 
-export default function Projects() {
+const pageService = new SanityPageService(query)
+
+export default function Projects(initialData) {
+  const { data: { projects, country, storage, status }  } = pageService.getPreviewHook(initialData)()
+  const [currentCountry, setCurrentCountry] = useState('All')
+  const [currentStorage, setCurrentStorage] = useState('All')
+  const [currentStatus, setCurrentStatus] = useState('All')
+
+  const countryDropdown = [{
+    label: `All Locations`, value: 'All',
+  }]
+
+  const storageDropdown = [{
+    label: `All Storage`, value: 'All',
+  }]
+
+  const statusDropdown = [{
+    label: `All Statuses`, value: 'All',
+  }]
+
+  country.forEach(location => {
+    countryDropdown.push(
+      { label: `${ location.name }`, value: location.name, },
+    );
+  })
+
+  storage.forEach(storage => {
+    storageDropdown.push(
+      { label: `${ storage.name }`, value: storage.name, },
+    );
+  })
+
+  status.forEach(status => {
+    statusDropdown.push(
+      { label: `${ status.name }`, value: status.name, },
+    );
+  })
+
+  const countrySelectBlur = (selectedValue) => {
+    setCurrentCountry(selectedValue.value)
+  }
+
+  const storageSelectBlur = (selectedValue) => {
+    setCurrentStorage(selectedValue.value)
+  }
+
+  const statusSelectBlur = (selectedValue) => {
+    setCurrentStatus(selectedValue.value)
+  }
+
   return (
     <Layout>
       <NextSeo title="Projects" />
@@ -102,8 +135,44 @@ export default function Projects() {
                 <MetaText text="Filter By" className="px-5 md:px-4" />
               </div>
               <div className="w-full md:flex-1 px-5 md:px-3 lg:px-3 pb-6 pt-3 md:py-3">
-                <Button href="/" label="Department" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug mb-[-8px] pb-0 mr-3" />
-                <Button href="/" label="Location" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug mb-[-8px] pb-0" />
+                <Select
+                  instanceId="storageDropdown"
+                  onChange={storageSelectBlur}
+                  isClearable={false}
+                  isSearchable={false}
+                  backspaceRemovesValue={false}
+                  blurInputOnSelect
+                  placeholder="All Storage"
+                  options={storageDropdown}
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 md:mb-0"
+                  classNamePrefix="react-select"
+                />
+
+                <Select
+                  instanceId="countryDropdown"
+                  onChange={countrySelectBlur}
+                  isClearable={false}
+                  isSearchable={false}
+                  backspaceRemovesValue={false}
+                  blurInputOnSelect
+                  placeholder="All Locations"
+                  options={countryDropdown}
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  classNamePrefix="react-select"
+                />
+
+                <Select
+                  instanceId="statusDropdown"
+                  onChange={statusSelectBlur}
+                  isClearable={false}
+                  isSearchable={false}
+                  backspaceRemovesValue={false}
+                  blurInputOnSelect
+                  placeholder="All Statuses"
+                  options={statusDropdown}
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  classNamePrefix="react-select"
+                />
               </div>
             </div>
           </Container>
@@ -112,14 +181,25 @@ export default function Projects() {
         <div className="">
           <Container className="pt-[6vw] pb-[12vw]">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
-              {projectsData.map((e, i) => {
-                return ( 
-                  <a href="#" className="col-span-1 group" key={i}>
-                    <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-white">
+              {projects.map((e, i) => {
+                let country = slugify(e.country.name)
+                let storage = slugify(e.storage.name)
+                let status = slugify(e.status.name)
+                return (
+                  (currentStorage == 'All' || currentStatus == 'All' || currentCountry == 'All')
+                  ||
+                  (country == currentCountry) 
+                  ||
+                  (status == currentStatus)
+                  ||
+                  (storage == currentStorage)
+                ) && ( 
+                  <a href="#" className="col-span-1 group" key={i}>                   
+                    <div className="w-full md:aspect-square border-black border flex flex-col group-hover:bg-white">
                       <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
                         <span className="flex space-x-2 py-2">
-                          <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text="Battery" className="text-white" /></span>
-                          <span className="px-3 py-2 bg-orange text-white rounded-full"><MetaText text="Operational" className="text-white" /></span>
+                          <span className="px-3 py-2 bg-purple text-white rounded-full"><MetaText text={e.storage.name} className="text-white" /></span>
+                          <span className="px-3 py-2 bg-orange text-white rounded-full"><MetaText text={e.status.name} className="text-white" /></span>
                         </span>
 
                         <span className="border-l border-black ml-auto flex items-center justify-center py-2 pl-3">
@@ -127,10 +207,12 @@ export default function Projects() {
                         </span>
                       </div>
 
-                      <span className="px-3 block text-[7vw] md:text-[5vw] xl:text-[3.5vw] leading-none">{e.location}<span className="block text-black text-opacity-10 mb-auto w-full">{e.country}</span></span>
+                      <div className="py-[7.5vw]">
+                        <span className="px-3 block text-[7vw] md:text-[5vw] xl:text-[3.5vw] leading-none">{e.name}<span className="block text-black text-opacity-10 mb-auto w-full">{e.country.name}</span></span>
+                      </div>
                       
                       <div className="px-3 py-2 w-full mt-auto flex items-end">
-                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.power}</span>
+                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">200kw</span>
                         <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
                       </div>
                     </div>
@@ -174,4 +256,11 @@ export default function Projects() {
       <Footer />
     </Layout>
   )
+}
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }
