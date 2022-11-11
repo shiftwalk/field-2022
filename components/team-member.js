@@ -21,8 +21,8 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
 
   return (
     <>
-      <button onClick={openModal} className="block border-none p-0 m-0 outline-none text-left w-full group relative" aria-label={`View ${name}'s Biography`}>
-        <div className="aspect-[10/13.5] bg-blue/50 mb-3 md:mb-5 flex items-center justify-center relative">
+      <button onClick={openModal} className={`block md:border-none px-5 py-4 md:py-0 md:px-0 m-0 outline-none text-left w-full group relative`} aria-label={`View ${name}'s Biography`}>
+        <div className="aspect-[10/13.5] bg-blue/50 mb-3 md:mb-5 items-center justify-center relative hidden md:flex">
 
           <div className="absolute z-20 inset-0 opacity-0 md:group-hover:opacity-100 bg-gradient-to-tr from-orange via-orange to-yellow mix-blend-multiply"></div>
 
@@ -51,7 +51,14 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
 
         <MetaText text={jobTitle} className="mb-2" />
 
-        <span className="block text-[4.7vw] md:text-[3.2vw] lg:text-[2.75vw] xl:text-[2.4vw] 2xl:text-[1.8vw] leading-none md:leading-none lg:leading-none xl:leading-none 2xl:leading-none">{name}</span>
+        <span className="text-[4.7vw] md:text-[3.2vw] lg:text-[2.75vw] xl:text-[2.4vw] 2xl:text-[1.8vw] leading-none md:leading-none lg:leading-none xl:leading-none 2xl:leading-none flex flex-wrap items-center">
+          <span className="block">
+            {name}
+          </span>
+          <span className="block ml-auto text-soft-black md:hidden">
+            +
+          </span>
+        </span>
       </button>
 
       <Modal

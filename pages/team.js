@@ -155,15 +155,15 @@ export default function Team(initialData) {
         </div>
 
         <div className="border-b border-black">
-          <Container className="pt-[6vw] pb-[12vw]">
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-5 md:gap-x-8 xl:gap-x-10 2xl:gap-x-12 gap-y-[6vw]">
+          <Container className="md:pt-[6vw] md:pb-[12vw] md:px-6 lg:px-8" noPad>
+            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-5 md:gap-x-8 xl:gap-x-10 2xl:gap-x-12 md:gap-y-[6vw]">
               {team.map((e, i) => {
                 let location = slugify(e.location.name)
                 let department = slugify(e.department.name)
                 return (
                   (location == currentLocation && department == currentDepartment) || (currentLocation == 'All' && department == currentDepartment) || (location == currentLocation && currentDepartment == 'All') || (currentDepartment == 'All' && currentLocation == 'All')
                 ) && ( 
-                  <div className="col-span-1" key={i}>
+                  <div className="col-span-1 border-b border-b-black last-of-type:border-b-0 md:border-b-0" key={i}>
                     <TeamMember
                       name={e.name}
                       jobTitle={`${e.jobTitle}`}
