@@ -12,10 +12,12 @@ import GridIcon from '@/icons/grid.svg'
 import ListIcon from '@/icons/list.svg'
 import SanityPageService from '@/services/sanityPageService'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const query = `{
   "projects": *[_type == "projects"] | order(order asc) {
     name,
+    mwh,
     status->{
       name
     },
@@ -130,7 +132,10 @@ export default function Projects(initialData) {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">Our Projects</h1>
+              <div className="mb-auto">
+                <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] break-hyphens mb-6 lg:mb-8">Our Projects</h1>
+                <Link href="/development"><a className="w-full block text-lg lg:text-xl xl:text-2xl leading-snug lg:leading-snug xl:leading-snug"><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link>
+              </div>
               <div className="w-full lg:max-w-[55%]">
                 <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
               </div>
@@ -145,44 +150,50 @@ export default function Projects(initialData) {
                 <MetaText text="Filter By" className="px-5 lg:px-4" />
               </div>
               <div className="w-full lg:flex-1 px-5 lg:px-3 pb-6 pt-3 lg:py-3">
-                <Select
-                  instanceId="storageDropdown"
-                  onChange={storageSelectBlur}
-                  isClearable={false}
-                  isSearchable={false}
-                  backspaceRemovesValue={false}
-                  blurInputOnSelect
-                  placeholder="All Storage"
-                  options={storageDropdown}
-                  className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1001] react-select-container mb-3 lg:mb-0"
-                  classNamePrefix="react-select"
-                />
+                {storage.length > 1 && (
+                  <Select
+                    instanceId="storageDropdown"
+                    onChange={storageSelectBlur}
+                    isClearable={false}
+                    isSearchable={false}
+                    backspaceRemovesValue={false}
+                    blurInputOnSelect
+                    placeholder="All Storage"
+                    options={storageDropdown}
+                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1001] react-select-container mb-3 lg:mb-0"
+                    classNamePrefix="react-select"
+                  />
+                )}
+                
+                {country.length > 1 && (
+                  <Select
+                    instanceId="countryDropdown"
+                    onChange={countrySelectBlur}
+                    isClearable={false}
+                    isSearchable={false}
+                    backspaceRemovesValue={false}
+                    blurInputOnSelect
+                    placeholder="All Locations"
+                    options={countryDropdown}
+                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 lg:mb-0"
+                    classNamePrefix="react-select"
+                  />
+                )}
 
-                <Select
-                  instanceId="countryDropdown"
-                  onChange={countrySelectBlur}
-                  isClearable={false}
-                  isSearchable={false}
-                  backspaceRemovesValue={false}
-                  blurInputOnSelect
-                  placeholder="All Locations"
-                  options={countryDropdown}
-                  className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 lg:mb-0"
-                  classNamePrefix="react-select"
-                />
-
-                <Select
-                  instanceId="statusDropdown"
-                  onChange={statusSelectBlur}
-                  isClearable={false}
-                  isSearchable={false}
-                  backspaceRemovesValue={false}
-                  blurInputOnSelect
-                  placeholder="All Statuses"
-                  options={statusDropdown}
-                  className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[999] react-select-container"
-                  classNamePrefix="react-select"
-                />
+                {status.length > 1 && (
+                  <Select
+                    instanceId="statusDropdown"
+                    onChange={statusSelectBlur}
+                    isClearable={false}
+                    isSearchable={false}
+                    backspaceRemovesValue={false}
+                    blurInputOnSelect
+                    placeholder="All Statuses"
+                    options={statusDropdown}
+                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[999] react-select-container"
+                    classNamePrefix="react-select"
+                  />
+                )}
               </div>
               <div className="w-full lg:w-auto px-5 lg:px-6 pb-6 pt-3 lg:py-3 items-center border-l border-black hidden lg:flex lg:space-x-5">
                 <button onClick={() => setCurrentView('grid')} className="block">
@@ -222,7 +233,7 @@ export default function Projects(initialData) {
 
                           <div className={`w-full md:flex-1 px-3 py-2 items-end ${currentView == 'grid' ? 'hidden' : 'flex'}`}>
                             <div className="md:ml-auto flex items-end space-x-6">
-                              <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>200kw</span>
+                              <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>{e.mwh}MWh</span>
                               
                               <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
                             </div>
@@ -231,7 +242,7 @@ export default function Projects(initialData) {
                       </div>
                       
                       <div className={`px-3 py-2 w-full mt-auto items-end ${currentView == 'grid' ? 'flex' : 'hidden' }`}>
-                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">200kw</span>
+                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.mwh}MWh</span>
                         <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
                       </div>
                     </div>
@@ -246,11 +257,11 @@ export default function Projects(initialData) {
                   </div>
 
                   <div className="w-full py-12">
-                    <span className="px-3 block text-[6vw] lg:text-[3vw] xl:text-[2.5vw] leading-none max-w-[80%]">We have another XX MWh of battery storage acquired</span>
+                    <span className="px-3 block text-[6vw] lg:text-[3vw] xl:text-[2.5vw] leading-none max-w-[90%]">In addition we have over 1 GWh of capacity in exclusivity</span>
                   </div>
                   
                   <div className="px-3 py-2 w-full mt-auto self-end">
-                    <Button href="/contact" label="Get&nbsp;Involved" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" />
+                    <Button href="/development" label="Development" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the development page" />
                   </div>
                 </div>
               </div>
