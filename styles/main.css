@@ -79,6 +79,11 @@ a, button {
   background: radial-gradient(#FFFFFF, rgba(255,255,255,0));
 }
 
+.radial--purple {
+  @apply blur-3xl;
+  background: radial-gradient(#965578, rgba(150, 85, 120, 0));
+}
+
 .break-hyphens {
   word-wrap: break-word;
   overflow-wrap: break-word;

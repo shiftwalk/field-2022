@@ -6,22 +6,63 @@ import LocalImage from '@/components/local-image'
 import Button from '@/components/button'
 import MetaText from '@/components/meta-text'
 import Link from 'next/link'
+import { useState } from 'react'
+
+const categories = [{
+  title: "Company",
+},{
+  title: "Sustainability",
+},{
+  title: "Industry News",
+},{
+  title: "Life At Field",
+}]
 
 const viewsData = [{
     heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Company",
   },{
     heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Sustainability",
   },{
     heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Sustainability",
   },{
     heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Industry News",
   },{
     heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Life At Field",
   },{
     heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Life At Field",
+  },{
+    heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Life At Field",
+  },{
+    heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Life At Field",
+  },{
+    heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Life At Field",
+  },{
+    heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Life At Field",
+  },{
+    heading: "Lorem ipsum dolor sit amet, consectetur",
+    category: "Sustainability",
 }]
 
 export default function Views() {
+  const [currentCategory, setCurrentCategory] = useState('All')
+
+  const updateCategory = (e) => {
+    setCurrentCategory(e)
+  }
+
+  let filteredViews = viewsData
+  filteredViews = (currentCategory !== 'All') ? filteredViews.filter(d => d.category == currentCategory) : filteredViews
+
   return (
     <Layout>
       <NextSeo title="Views" />
@@ -42,7 +83,7 @@ export default function Views() {
                 </div>
 
                 <div className="mb-auto">
-                  <h1 className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.3vw] leading-[0.9]">Lorem ipsum dolor sit amet, consectetur</h1>
+                  <h1 className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.3vw] leading-[0.9]">{viewsData[0].heading}</h1>
                   <div className="w-full md:w-[80%] xl:w-[65%]">
                     <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
                   </div>
@@ -62,11 +103,12 @@ export default function Views() {
               <MetaText text="Filter By" className="px-5 md:px-4" />
             </div>
             <div className="w-full md:flex-1 px-5 md:px-6 lg:px-12 pb-6 pt-3 md:py-3">
-              <button href="/" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10">Show All</button>
-              <button href="/" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 opacity-30">Company</button>
-              <button href="/" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 opacity-30">Sustainability</button>
-              <button href="/" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 opacity-30">Industry News</button>
-              <button href="/" className="inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 opacity-30">Life At Field</button>
+              <button onClick={()=> updateCategory('All')} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${'All' == currentCategory ? 'opacity-100' : 'opacity-30'}`}>Show All</button>
+              {categories.map((e, i) => {
+                return (
+                  <button onClick={()=> updateCategory(e.title)} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${e.title == currentCategory ? 'opacity-100' : 'opacity-30'}`}>{e.title}</button>    
+                )
+              })}
             </div>
           </div>
         </Container>
@@ -74,14 +116,14 @@ export default function Views() {
         <div className="">
           <Container className="pt-[5vw] pb-[8vw]">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
-              {viewsData.slice(0,3).map((e, i) => {
+              {filteredViews.slice(0,3).map((e, i) => {
                 return ( 
                   <Link href="/views-slug" key={i}>
                     <a className="col-span-1 group">
                       <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-yellow">
                         <div className="flex flex-wrap px-3w-full mb-auto">
                           <span className="flex space-x-2 py-2">
-                            <span className="px-3 py-2"><MetaText text="Category" /></span>
+                            <span className="px-3 py-2"><MetaText text={e.category} /></span>
                           </span>
                         </div>
 
@@ -100,7 +142,7 @@ export default function Views() {
         </div>
 
         <div className="border-t border-black">
-          {viewsData.map((e, i) => {
+          {filteredViews.slice(3,8).map((e, i) => {
             return ( 
               <Link href="/views-slug" key={i}>
                 <a className="block group relative">
@@ -108,7 +150,7 @@ export default function Views() {
                   
                   <div className="md:flex items-center w-full border-b-black border-b group-hover:bg-yellow py-6 md:py-6 lg:py-6 px-8 md:px-10 lg:px-12">
                     <div className="flex-1 mb-6 md:mb-0">
-                      <MetaText text="Category" className="mb-3" />
+                      <MetaText text={e.category} className="mb-3" />
 
                       <span className="block text-[5.2vw] md:text-[3vw] xl:text-[2vw] leading-none w-11/12">{e.heading}</span>
                     </div>
@@ -126,9 +168,12 @@ export default function Views() {
             )
           })}
         </div>
-
+        
+        
         <Container className="pb-[10vw] pt-8">
-          <Button href="#" label="+&nbsp;Show&nbsp;More&nbsp;Articles" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" />
+          {filteredViews.length > 10 && (
+            <Button href="#" label="+&nbsp;Show&nbsp;More&nbsp;Articles" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" />
+          )}
         </Container>
       </main>
     

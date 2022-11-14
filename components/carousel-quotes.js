@@ -4,9 +4,9 @@ import Marquee from "react-fast-marquee";
 
 export const CarouselQuotes = () => {
   return (
-    <Marquee gradient={false} speed={90} className="overflow-hidden w-full whitespace-normal">
-      <div className="w-[75vw] whitespace-normal border-r border-black bg-blue">
-        <div className="flex flex-wrap">
+    <Marquee gradient={false} speed={90} className="overflow-hidden w-full whitespace-normal flex flex-col">
+      <div className="w-[75vw] h-full lg:h-auto whitespace-normal border-r border-black bg-blue">
+        <div className="flex flex-wrap h-full">
           <div className="w-full lg:w-[55%] p-4 md:p-5 lg:p-6 flex flex-col">
             <div className="mb-auto w-full pb-[25vw] lg:pb-[5vw]">
               <MetaText text="Life At Field" />
@@ -22,8 +22,8 @@ export const CarouselQuotes = () => {
         </div>
       </div>
 
-      <div className="w-[75vw] border-r border-black bg-off-white-dark">
-        <div className="flex flex-wrap">
+      <div className="w-[75vw] h-full lg:h-auto border-r border-black bg-off-white-dark">
+        <div className="flex flex-wrap h-full">
           <div className="w-full lg:w-[55%] p-4 md:p-5 lg:p-6 flex flex-col">
             <div className="mb-auto w-full pb-[25vw] lg:pb-[5vw]">
               <MetaText text="Life At Field" />
@@ -39,8 +39,8 @@ export const CarouselQuotes = () => {
         </div>
       </div>
 
-      <div className="w-[75vw] border-r border-black bg-blue">
-        <div className="flex flex-wrap">
+      <div className="w-[75vw] h-full lg:h-auto border-r border-black bg-blue">
+        <div className="flex flex-wrap h-full">
           <div className="w-full lg:w-[55%] p-4 md:p-5 lg:p-6 flex flex-col">
             <div className="mb-auto w-full pb-[25vw] lg:pb-[5vw]">
               <MetaText text="Life At Field" />
@@ -56,8 +56,8 @@ export const CarouselQuotes = () => {
         </div>
       </div>
 
-      <div className="w-[75vw] border-r border-black bg-off-white-dark">
-        <div className="flex flex-wrap">
+      <div className="w-[75vw] h-full lg:h-auto border-r border-black bg-off-white-dark">
+        <div className="flex flex-wrap h-full">
           <div className="w-full lg:w-[55%] p-4 md:p-5 lg:p-6 flex flex-col">
             <div className="mb-auto w-full pb-[25vw] lg:pb-[5vw]">
               <MetaText text="Life At Field" />

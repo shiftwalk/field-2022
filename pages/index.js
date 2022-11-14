@@ -23,7 +23,7 @@ export default function Home() {
             {/* Grain overlay */}
             <div className="grain absolute inset-0 w-full h-full z-10 hidden lg:block"></div>
 
-              {/* Right blob */}
+            {/* Right blob */}
             <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={0.1}>
               <div className="absolute inset-0 origin-right">
                 <div className="absolute top-0 right-0 w-[120vw] h-[140%] rounded-full bg-gradient-to-tr from-orange via-yellow  to-yellow translate-x-[48vw] translate-y-[-32%] blur-xl overflow-x-hidden flex items-start justify-start scale-[1.15]">
@@ -56,7 +56,7 @@ export default function Home() {
               <div className="w-full lg:w-[50%] max-w-[880px]">
                 <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">We’re Field. We're accelerating the build out of renewable infrastructure needed to reach net zero. We're starting with battery storage, to store energy for when it's needed, creating a more reliable, flexible and greener grid.</p>
 
-                <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Our&nbsp;Mission" a11yText={"Navigate to the mission page" } />
+                <Button href="/mission" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Our&nbsp;Mission" a11yText={"Navigate to the mission page" } />
               </div>
             </article>
           </Container>

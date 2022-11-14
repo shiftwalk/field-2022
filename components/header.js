@@ -24,7 +24,7 @@ export default function Header({ path }) {
 
   return (
     <div className="absolute lg:fixed top-0 left-0 right-0 z-[1000]">
-      <div className="absolute inset-0 w-full bg-none z-[0] h-[200px] lg:h-[250px] mx-3 md:mx-4 lg:mx-5 border-x border-black pointer-events-none hidden lg:block"></div>
+      <div className="absolute inset-0 z-[0] h-[200px] lg:h-[250px] mx-3 md:mx-4 lg:mx-5 border-x border-black pointer-events-none hidden lg:block"></div>
       
       <header className={`absolute lg:fixed top-0 left-0 right-0 w-full z-[1000] border-b border-black transition-all ease-in-out duration-[420ms] ${scrollDirection == 'down' ? 'lg:translate-y-[-100px]' : 'lg:translate-y-[0]'} ${scrollAmount < 100 ? '' : 'lg:bg-white' }`}>
         <Container className="py-[18px] lg:py-5">

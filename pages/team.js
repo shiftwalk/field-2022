@@ -78,34 +78,43 @@ export default function Team(initialData) {
       <NextSeo title="Team" />
       
       <main>
-        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-tr from-orange via-yellow to-purple lg:bg-none">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-tl from-orange via-yellow to-purple lg:bg-none">
 
           <div className="grain absolute inset-0 w-full h-full z-10 block lg:hidden"></div>
 
           {/* Background gradient */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
+          <div className="absolute inset-0 w-full h-full lg:bg-gradient-to-t lg:from-[#C99C97] lg:to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
 
             {/* Grain overlay */}
             <div className="grain absolute inset-0 w-full h-full z-10 hidden lg:block"></div>
-          
-            {/* Left blob */}
-            <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={-0.1}>
-              <div className="absolute inset-0 origin-left">
-                <div className="absolute top-0 left-0 w-[120vw] h-[140%] rounded-full bg-gradient-to-tr from-orange via-yellow  to-yellow translate-x-[-57vw] translate-y-[-32%] blur-xl overflow-hidden flex items-start justify-start scale-[1.15]">
-                  <div className="w-[45%] h-[46%] rounded-full radial mt-[7%] ml-[0%]"></div>
-                  <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[70%] rounded-full bg-gradient-to-t from-white/80 via-white/50 rotate-[90deg] z-[2]"></div>
-                  <div className="absolute bottom-[-15%] left-[23%] right-0 w-[100%] h-[45%] bg-gradient-to-t from-orange via-orange rotate-[-35deg]"></div>
-                </div>
-              </div>
-            </MouseParallax>
 
             {/* Right blob */}
             <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={0.1}>
               <div className="absolute inset-0 origin-right">
-                <div className="absolute top-0 right-0 w-[70vw] h-[130%] rounded-full bg-gradient-to-t from-orange via-yellow to-yellow translate-x-[42vw] translate-y-[-15%] blur-xl flex items-center justify-center overflow-hidden">
-                  <div className="w-[80%] h-[50%] rounded-full radial mt-[-45%] mr-[-10%]"></div>
-                  <div className="absolute bottom-0 left-0 right-0 w-[100%] h-[45%] rounded-full bg-gradient-to-t from-white via-white/60 rotate-[0deg]"></div>
-                  <div className="absolute bottom-0 left-[-40%] right-0 w-[100%] h-[45%] rounded-full bg-gradient-to-t from-orange via-orange/60 rotate-[80deg]"></div>
+                <div className="absolute top-0 right-0 w-[120vw] h-[170%] rounded-full bg-gradient-to-tr from-orange via-yellow  to-yellow translate-x-[48vw] translate-y-[-32%] blur-xl overflow-x-hidden flex items-start justify-start scale-[1.15]">
+                  <div className="w-[45%] h-[46%] rounded-full radial mt-[7%] ml-[0%]"></div>
+                  <div className="absolute bottom-0 right-[20%] w-[50%] h-[40%] rounded-full bg-gradient-to-t from-purple via-purple/50 rotate-[-50deg] z-[2]"></div>
+                  <div className="absolute bottom-[-10%] left-[-10%] right-0 w-[100%] h-[45%] bg-gradient-to-t from-orange rotate-[25deg]"></div>
+
+                  <div className="absolute bottom-[-10%] left-[24%] right-0 w-[25%] h-[45%] bg-gradient-to-t from-yellow to-yellow z-1 rounded-xl opacity-25 rotate-[-13deg]"></div>
+
+                  <div className="absolute top-[-15%] left-[-40%] w-[76%] h-[67%] bg-gradient-to-b from-purple via-purple/90 to-orange/60 z-1 rounded-xl opacity-70 rotate-[-20deg]"></div>
+
+                  <div className="w-[43%] h-[42%] rounded-full radial radial--purple mt-[5%] ml-[-15%] top-0 left-0 absolute opacity-80"></div>
+
+                  <div className="absolute bottom-[-25%] left-[-10%] right-0 w-[70%] h-[45%] bg-gradient-to-t from-purple rotate-[25deg] z-1"></div>
+                </div>
+              </div>
+            </MouseParallax>
+
+            {/* Left blob */}
+            <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={-0.1}>
+              <div className="absolute inset-0 origin-left">
+                <div className="absolute top-[20%] left-0 w-[70vw] h-[130%] rounded-full bg-gradient-to-t from-orange via-yellow to-yellow translate-x-[-50vw] translate-y-[-15%] blur-xl flex items-center justify-center overflow-y-hidden origin-center">
+                  {/* <div className="absolute top-[-15%] right-[-40%] w-[76%] h-[67%] bg-gradient-to-b from-purple/90 via-purple/70 to-orange/80 z-1 rounded-xl opacity-100 rotate-[20deg]"></div> */}
+                  <div className="w-[80%] h-[50%] rounded-full radial mt-[-20%] mr-[-20%]"></div>
+                  <div className="absolute bottom-0 left-0 right-0 w-[100%] h-[45%] rounded-full bg-gradient-to-t from-purple via-purple/70 rotate-[20deg]"></div>
+                  <div className="w-[56%] h-[65%] rounded-full radial radial--purple mt-[-25%] mr-[-10%] top-0 right-0 absolute opacity-100"></div>
                 </div>
               </div>
             </MouseParallax>

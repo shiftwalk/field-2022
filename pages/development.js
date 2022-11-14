@@ -13,7 +13,7 @@ export default function Development() {
       <NextSeo title="Development" />
       
       <main>
-        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-gradient-to-tr from-orange via-yellow to-purple">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-gradient-to-br from-orange via-yellow to-purple">
 
           <div className="grain absolute inset-0 w-full h-full z-10 block lg:hidden"></div>
 

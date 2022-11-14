@@ -75,7 +75,7 @@ export default function Footer({ noCta }) {
           </div>
         </div>
       )}
-      <Container className="py-0 my-0">
+      <Container className="py-0 my-0 md:py-0 lg:py-0">
         <div className="flex flex-wrap">
           <div className="w-full lg:w-2/3 mb-10 pt-[15vw] md:pt-[10vw]">
             <LogoMarkIcon className="w-[70px] md:w-[8vw] xl:w-[100px] mb-8" />

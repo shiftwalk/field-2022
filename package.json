@@ -27,6 +27,7 @@
   "dependencies": {
     "@cyriacbr/react-split-text": "^1.0.0",
     "@sanity/block-content-to-react": "^3.0.0",
+    "conditional-wrap": "^1.0.2",
     "embla-carousel-class-names": "^7.0.4",
     "embla-carousel-react": "^7.0.4",
     "framer-motion": "^7.6.0",

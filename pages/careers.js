@@ -67,7 +67,7 @@ export default function Careers() {
               <div className="w-full lg:w-[50%] max-w-[880px]">
                 <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">Want to be part of a team determined to make the renewable transition happen? Read on to find out what it’s like working at Field and see our current job openings.</p>
 
-                <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
+                <Button internal={false} href="https://field.pinpointhq.com/" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
               </div>
             </article>
           </Container>
@@ -95,7 +95,7 @@ export default function Careers() {
                 </div>
 
                 <div className="w-full mt-auto pt-[7vw] 2xl:pt-[12vw]">
-                  <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl mb-0 pb-0" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
+                <Button internal={false} href="https://field.pinpointhq.com/" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function Careers() {
             })}
 
             <li className="p-5 md:p-6 lg:p-8 pb-[10vw] md:pb-[8vw] lg:pb-[6vw]">
-              <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl mb-0 pb-0" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
+              <Button internal={false} href="https://field.pinpointhq.com/" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
             </li>
           </ul>
         </Container>
@@ -151,7 +151,7 @@ export default function Careers() {
           <div className="max-w-[96%] py-[13.5vw]">
             <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-8 lg:mb-12">You can take a look at our current live positions below. We're always up for speaking to great people who are determined to make the renewable transition happen - if you don't see a role that suits you, say hello careers@field.energy, or sign up here to be notified when we add new roles.</h2>
 
-            <Button href="#" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
+            <Button internal={false} href="https://field.pinpointhq.com/" className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
           </div>
         </Container>
         
