@@ -1,6 +1,5 @@
 import FancyLink from '@/components/fancyLink'
 import Container from '@/components/container'
-import MobileMenu from "@/components/mobile-menu"
 import useScrollDirection from '@/helpers/scroll-direction'
 import { useScroll } from 'framer-motion'
 
@@ -42,7 +41,7 @@ export default function Header({ path }) {
                 destination="/"
                 a11yText="Navigate to the home page"
                 label="Home"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path == '/'}
               />
 
@@ -50,7 +49,7 @@ export default function Header({ path }) {
                 destination="/mission"
                 a11yText="Navigate to the mission page"
                 label="Mission"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path == '/mission'}
               />
 
@@ -58,7 +57,7 @@ export default function Header({ path }) {
                 destination="/projects"
                 a11yText="Navigate to the projects page"
                 label="Projects"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path == '/projects'}
               />
 
@@ -66,7 +65,7 @@ export default function Header({ path }) {
                 destination="/team"
                 a11yText="Navigate to the team page"
                 label="Team"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path == '/team'}
               />
 
@@ -74,7 +73,7 @@ export default function Header({ path }) {
                 destination="/development"
                 a11yText="Navigate to the development page"
                 label="Development"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path == '/development'}
               />
 
@@ -82,7 +81,7 @@ export default function Header({ path }) {
                 destination="/careers"
                 a11yText="Navigate to the careers page"
                 label="Careers"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path == '/careers'}
               />
 
@@ -90,8 +89,8 @@ export default function Header({ path }) {
                 destination="/views"
                 a11yText="Navigate to the views page"
                 label="Views"
-                className="block lg:px-2 lg:pt-3 lg:pb-2 xl:px-3 xl:pt-3 xl:pb-2"
-                active={path == '/views'}
+                className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
+                active={path.includes('/views')}
               />
             </nav>
 

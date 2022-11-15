@@ -8,7 +8,7 @@ import FancyLink from "./fancyLink"
 
 export default function MobileMenu({ menuClose }) {
   return (
-    <Div100vh className="w-full h-screen bg-white bg-opacity-70 backdrop-blur-lg lg:hidden fixed inset-0 z-[10000] flex flex-col">
+    <Div100vh className="w-full h-screen bg-white bg-opacity-90 backdrop-blur-lg lg:hidden fixed inset-0 z-[10000] flex flex-col">
 
       <div className="absolute inset-0 mx-3 md:mx-4 border-x border-x-black z-[0] pointer-events-none"></div>
 

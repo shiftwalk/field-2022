@@ -198,7 +198,7 @@ export default function Team(initialData) {
         </div>
       </main>
     
-      <Footer />
+      <Footer noCta/>
     </Layout>
   )
 }

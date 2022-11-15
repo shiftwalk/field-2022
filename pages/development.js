@@ -171,9 +171,27 @@ export default function Development() {
               </div>
 
               <div className="lg:flex lg:space-x-3 max-w-[80%] lg:max-w-none">
-                <button onClick={()=> setCurrent('Landowners')} className={`block lg:inline-block w-full lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-6 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full overflow-hidden ${currentFor == 'Landowners' ? 'bg-black text-white' : '' }`}>For Landowners</button>
-                <button onClick={()=> setCurrent('Developers')} className={`block lg:inline-block w-full lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-6 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full overflow-hidden ${currentFor == 'Developers' ? 'bg-black text-white' : '' }`}>For Developers</button>
-                <button onClick={()=> setCurrent('Local')} className={`block lg:inline-block w-full lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-6 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full overflow-hidden ${currentFor == 'Local' ? 'bg-black text-white' : '' }`}>For Local Communities</button>
+                <button onClick={()=> setCurrent('Landowners')} className={`group block lg:inline-block w-full relative overflow-hidden lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-6 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full ${currentFor == 'Landowners' ? 'bg-black text-white' : '' }`}>
+                  <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                  <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
+                    For Landowners
+                  </span>
+                </button>
+                <button onClick={()=> setCurrent('Developers')} className={`group block lg:inline-block w-full relative overflow-hidden lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-4 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full ${currentFor == 'Developers' ? 'bg-black text-white' : '' }`}>
+                  <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                  <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
+                    For Developers
+                  </span>
+                </button>
+                <button onClick={()=> setCurrent('Local')} className={`group block lg:inline-block w-full relative overflow-hidden lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-4 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full ${currentFor == 'Local' ? 'bg-black text-white' : '' }`}>
+                  <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                  <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
+                    For Local Communities
+                  </span>
+                </button>
               </div>
             </div>
           </Container>
@@ -280,6 +298,7 @@ export default function Development() {
                           {e.text && (
                             <div className="content content--small w-full mt-auto">
                               <p>{e.text}</p>
+                            
                             </div>
                           )}
                         </div>

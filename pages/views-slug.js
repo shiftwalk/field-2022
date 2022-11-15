@@ -133,7 +133,7 @@ export default function ViewsSlug() {
   
       </main>
     
-      <Footer />
+      <Footer noCta />
     </Layout>
   )
 }
