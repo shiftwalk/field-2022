@@ -15,7 +15,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const query = `{
-  "projects": *[_type == "projects"] | order(order asc) {
+  "projects": *[_type == "projects"] | order(status->name == 'Operational') {
     name,
     mwh,
     status->{
@@ -210,7 +210,7 @@ export default function Projects(initialData) {
         <div className="">
           <Container className="pt-[6vw] pb-[12vw]">
             <div className={`grid ${currentView == 'grid' ? 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8' : 'grid-cols-1 gap-5 md:gap-8' }`}>
-              {filteredProjects.map((e, i) => {
+              {filteredProjects.reverse().map((e, i) => {
                 return (
                   <a href="#" className="col-span-1 group" key={i}>
                     <div className={`w-full border-black border flex flex-col group-hover:bg-white ${ currentView == 'grid' ? 'lg:aspect-square' : '' }`}>
