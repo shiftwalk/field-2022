@@ -97,7 +97,7 @@ export default function Header({ path }) {
 
             <div className="ml-auto lg:space-x-6 xl:space-x-8 flex w-auto lg:hidden">
               <Link href="/menu">
-                <a className="block w-[43px] outline-none border-none">
+                <a className="block w-[43px] outline-none border-none" aria-label="Navigate to the menu">
                   <MenuIcon className="w-full" />
                 </a>
               </Link>
