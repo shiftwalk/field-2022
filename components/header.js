@@ -91,6 +91,7 @@ export default function Header({ path }) {
                 label="Views"
                 className="block lg:px-2 lg:pt-3 lg:pb-3 xl:px-3 xl:pt-3 xl:pb-3"
                 active={path.includes('/views')}
+                views={path.includes('/views/')}
               />
             </nav>
 

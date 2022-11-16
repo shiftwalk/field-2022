@@ -1,5 +1,7 @@
 import BlockContentWrapper from '@/components/block-content-wrapper'
 import ModularImageBlock from '@/components/modular-image-block'
+import ModularTextBlock from '@/components/modular-text-block'
+import ModularQuoteBlock from '@/components/modular-quote-block'
 
 const notImplemented = ({ type }) => <h1>Not implemented {type}</h1>
 
@@ -7,14 +9,28 @@ const bodySerializers = {
   block: {
     component: BlockContentWrapper,
     wrapper: ({ children }) => 
-      <div className="mb-3">
+      <div>
         {children}
       </div>
   },
-  imageBlock: {
+  modularImageBlock: {
     component: ModularImageBlock,
     wrapper: ({ children }) => 
-      <div className="mb-3">
+      <div>
+        {children}
+      </div>
+  },
+  modularQuoteBlock: {
+    component: ModularQuoteBlock,
+    wrapper: ({ children }) => 
+      <div>
+        {children}
+      </div>
+  },
+  textBlock: {
+    component: ModularTextBlock,
+    wrapper: ({ children }) => 
+      <div>
         {children}
       </div>
   }
@@ -32,7 +48,7 @@ function getSerializers() {
 
 export const blockSerializers = getSerializers()
 
-const BodyRenderer = ({ body }) => {
+const BodyRenderer = ({ body, caseStudy }) => {
   if (!body) return <></>
   return body.map((item) => {
     const type = item._type
@@ -43,7 +59,7 @@ const BodyRenderer = ({ body }) => {
 
     if (!Component || !serializer) throw new Error(`No serializer implemented for body object: ${type}`)    
     
-    return Wrapper ? <Wrapper key={item._key}><Component {...item} {...args} /></Wrapper> : <Component key={item._key} {...item} {...args} />
+    return Wrapper ? <Wrapper key={item._key}><Component {...item} {...args} caseStudy={caseStudy} /></Wrapper> : <Component key={item._key} {...item} {...args} />
   })
 }
 

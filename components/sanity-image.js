@@ -11,7 +11,7 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
   const myCustomImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder
       .width(
-        (widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 800)
+        (widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 1300)
       )
       .quality(90)
       .fit('clip')
@@ -26,7 +26,7 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
     const { x, y } = focalPoint;
     attributes.objectPosition = `${x * 100}% ${y * 100}%`;
   }
-
+  if (sizes) { attributes.sizes = sizes } else { attributes.sizes = null }
   if (image.alt) { attributes.alt = image.alt } else { attributes.alt = 'MISSING ALT TEXT' }
   if (layout) { attributes.layout = layout } else { attributes.layout = 'responsive' }
   if (priority) { attributes.priority = true } else { attributes.priority = false }
@@ -48,8 +48,6 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
         <Img
           {...imageProps}
           {...attributes}
-          width={null}
-          height={null}
           unoptimized={true}
           onLoad={event => {
             const target = event.target;
@@ -58,10 +56,6 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
             }
           }}
         />
-        
-        {(image.caption && !noCaption) && (
-          <figcaption className={`text-base md:text-lg xl:text-xl leading-tight xl:leading-tight md:leading-tight ${layout == 'fill' && 'mt-2 -mb-1 py-2 bg-white absolute bottom-0 left-0 w-full z-[10]'}`}>{image.caption}</figcaption>
-        )}
       </figure>
     </div>
   )

@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-export default function FancyLink( {destination, a11yText, label, className, active, noDot} ) {
+export default function FancyLink( {destination, a11yText, label, className, active, noDot, views } ) {
   return (
     <Link href={destination}>
-      <a aria-label={a11yText} className={`${className} group relative ${active && 'pointer-events-none'}`} aria-disabled={active}>
+      <a aria-label={a11yText} className={`${className} group relative ${(active && !views) && 'pointer-events-none'}`} aria-disabled={active && !views}>
         {label}
         
         { !noDot && (

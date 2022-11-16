@@ -23,9 +23,9 @@ export default function LocalImage({ src, layout, width, height, className, prio
         </>
       )}
 
-      <div className={`absolute z-10 top-0 right-0 bottom-0 h-full bg-black ${imageIsLoaded ? 'w-0' : 'w-full'} transition-all duration-[1300ms] ease-[cubic-bezier(0.77,0,0.18,1)]`}></div>
+      <div className={`absolute z-10 top-0 right-0 bottom-0 h-full bg-black ${imageIsLoaded || priority ? 'w-0' : 'w-full'} transition-all duration-[1300ms] ease-[cubic-bezier(0.77,0,0.18,1)]`}></div>
       
-      <figure className={`image ${className} ${layout == 'fill' && 'cover-image' } ${imageIsLoaded ? 'opacity-100 scale-100' : 'opacity-100 scale-110'} transition-all duration-[1700ms] ease-[cubic-bezier(0.76, 0, 0.24, 1)]`}>
+      <figure className={`image ${className} ${layout == 'fill' && 'cover-image' } ${imageIsLoaded || priority ? 'opacity-100 scale-100' : 'opacity-100 scale-110'} transition-all duration-[1700ms] ease-[cubic-bezier(0.76, 0, 0.24, 1)]`}>
         <Img
           quality={90}
           src={src}

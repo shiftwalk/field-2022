@@ -7,61 +7,57 @@ import Button from '@/components/button'
 import MetaText from '@/components/meta-text'
 import Link from 'next/link'
 import { useState } from 'react'
+import SanityPageService from '@/services/sanityPageService'
 
-const categories = [{
-  title: "Company",
-},{
-  title: "Sustainability",
-},{
-  title: "Industry News",
-},{
-  title: "Life At Field",
-}]
+const query = `{
+  "views": *[_type == "views"] | order(publishedDate desc) {
+    title,
+    featured,
+    heroImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    publishDate,
+    category-> {
+      name
+    },
+    slug {
+      current
+    }
+  },
+  "featured": *[_type == "views" && featured == true][0] {
+    title,
+    category-> {
+      name
+    },
+    slug {
+      current
+    }
+  },
+  "categories": *[_type == "categories"] {
+    name
+  },
+}`
 
-const viewsData = [{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Company",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Sustainability",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Sustainability",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Industry News",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Life At Field",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Life At Field",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Life At Field",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Life At Field",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Life At Field",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Life At Field",
-  },{
-    heading: "Lorem ipsum dolor sit amet, consectetur",
-    category: "Sustainability",
-}]
+const pageService = new SanityPageService(query)
 
-export default function Views() {
+export default function Views(initialData) {
+  const { data: { views, categories, featured }  } = pageService.getPreviewHook(initialData)()
   const [currentCategory, setCurrentCategory] = useState('All')
 
   const updateCategory = (e) => {
     setCurrentCategory(e)
   }
 
-  let filteredViews = viewsData
-  filteredViews = (currentCategory !== 'All') ? filteredViews.filter(d => d.category == currentCategory) : filteredViews
+  let filteredViews = views
+  filteredViews = (currentCategory !== 'All') ? filteredViews.filter(d => d.category.name == currentCategory) : filteredViews
 
   return (
     <Layout>
@@ -73,7 +69,7 @@ export default function Views() {
             <div className="w-full flex flex-wrap h-full">
               <div className="w-full md:w-1/2 md:h-full aspect-[12/8] md:aspect-auto md:border-r border-b md:border-b-0 border-black">
                 <div className="relative overflow-hidden w-full h-full">
-                  <LocalImage src="/images/featured.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                  <LocalImage priority={true} src="/images/featured.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
                 </div>
               </div>
 
@@ -83,14 +79,11 @@ export default function Views() {
                 </div>
 
                 <div className="mb-auto">
-                  <h1 className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.3vw] leading-[0.9]">{viewsData[0].heading}</h1>
-                  <div className="w-full md:w-[80%] xl:w-[65%]">
-                    <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                  </div>
+                  <h1 className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.3vw] leading-[1]">{featured.title}</h1>
                 </div>
                 
                 <div>
-                  <Button href="/views-slug" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Read&nbsp;Article" a11yText={"Navigate to the article page" } />
+                  <Button href={`/views/${featured.slug.current}`} className="inline-block text-lg lg:text-xl xl:text-2xl" label="Read&nbsp;Article" a11yText={"Navigate to the article page" } />
                 </div>
               </article>
             </div>
@@ -106,7 +99,7 @@ export default function Views() {
               <button onClick={()=> updateCategory('All')} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${'All' == currentCategory ? 'opacity-100' : 'opacity-30'}`}>Show All</button>
               {categories.map((e, i) => {
                 return (
-                  <button onClick={()=> updateCategory(e.title)} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${e.title == currentCategory ? 'opacity-100' : 'opacity-30'}`}>{e.title}</button>    
+                  <button onClick={()=> updateCategory(e.name)} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${e.name == currentCategory ? 'opacity-100' : 'opacity-30'}`} key={i}>{e.name}</button>    
                 )
               })}
             </div>
@@ -118,19 +111,25 @@ export default function Views() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
               {filteredViews.slice(0,3).map((e, i) => {
                 return ( 
-                  <Link href="/views-slug" key={i}>
+                  <Link href={`/views/${e.slug.current}`} key={i}>
                     <a className="col-span-1 group">
                       <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-yellow">
                         <div className="flex flex-wrap px-3w-full mb-auto">
                           <span className="flex space-x-2 py-2">
-                            <span className="px-3 py-2"><MetaText text={e.category} /></span>
+                            <span className="px-3 py-2"><MetaText text={e.category.name} /></span>
                           </span>
                         </div>
 
-                        <span className="px-3 block text-[6.3vw] md:text-[3.7vw] xl:text-[2.5vw] leading-none w-11/12">{e.heading}</span>
+                        <span className="px-3 block text-[6.3vw] md:text-[3.7vw] xl:text-[2.5vw] leading-none w-11/12">{e.title}</span>
                         
                         <div className="px-3 py-4 w-full mt-auto flex items-end">
-                          <Button href="/contact" label="Read&nbsp;Article" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" outline />
+                          <span className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug group relative px-6 md:px-8 lg:px-10 pt-3 md:pt-4 pb-[15px] md:pb-[18px] border border-black rounded-full overflow-hidden">
+                            <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                            <span className={`relative block overflow-hidden z-10 md:group-hover:text-white  transition-colors ease-in-out duration-[450ms]`}>
+                              Read Article
+                            </span>
+                          </span>
                         </div>
                       </div>
                     </a>
@@ -144,19 +143,25 @@ export default function Views() {
         <div className="border-t border-black">
           {filteredViews.slice(3,8).map((e, i) => {
             return ( 
-              <Link href="/views-slug" key={i}>
+              <Link href={`/views/${e.slug.current}`} key={i}>
                 <a className="block group relative">
                   <Container className="absolute inset-0" />
                   
                   <div className="md:flex items-center w-full border-b-black border-b group-hover:bg-yellow py-6 md:py-6 lg:py-6 px-8 md:px-10 lg:px-12">
                     <div className="flex-1 mb-6 md:mb-0">
-                      <MetaText text={e.category} className="mb-3" />
+                      <MetaText text={e.category.name} className="mb-3" />
 
-                      <span className="block text-[5.2vw] md:text-[3vw] xl:text-[2vw] leading-none w-11/12">{e.heading}</span>
+                      <span className="block text-[5.2vw] md:text-[3vw] xl:text-[2vw] leading-none w-11/12">{e.title}</span>
                     </div>
 
                     <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">
-                      <Button href="/contact" label="Read&nbsp;Article" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" outline />
+                      <span className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug group relative px-6 md:px-8 lg:px-10 pt-3 md:pt-4 pb-[15px] md:pb-[18px] border border-black rounded-full overflow-hidden">
+                        <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                        <span className={`relative block overflow-hidden z-10 md:group-hover:text-white  transition-colors ease-in-out duration-[450ms]`}>
+                          Read Article
+                        </span>
+                      </span>
                     </div>
                     
                     <div className="w-full md:w-auto md:ml-auto block md:hidden">
@@ -180,4 +185,11 @@ export default function Views() {
       <Footer noCta />
     </Layout>
   )
+}
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }
