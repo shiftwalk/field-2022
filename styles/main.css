@@ -167,26 +167,56 @@ scrollbar-width: none;
 }
 
 .react-select__control {
-  @apply border-0 bg-black rounded-full text-white pl-5 pr-3 py-3 cursor-pointer hover:bg-yellow !important;
+  @apply border border-black bg-black rounded-full text-white pl-5 pr-3 py-3 cursor-pointer relative overflow-hidden !important;
   box-shadow: none !important;
+
+  
+  &:after {
+    content: ' ';
+    @apply hidden md:block absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0;
+  }
+
+  &:hover {
+    .react-select__single-value, .react-select__input-container, .react-select__value-container, .react-select__placeholder, .react-select__indicator {
+      @apply md:text-black !important;
+    }
+
+    &:after {
+      @apply md:w-full;
+    }
+  }
 }
 
 .react-select__control--is-focused {
-  @apply border-0 outline-none bg-yellow !important;
+  @apply outline-none text-black !important;
   box-shadow: none !important;
+
+  &:after {
+    @apply md:w-full;
+  }
+  .react-select__single-value, .react-select__input-container, .react-select__value-container, .react-select__placeholder, .react-select__indicator {
+    @apply md:text-black !important;
+  }
 }
 
 .react-select__control--menu-is-open {
-  @apply border-0 outline-none bg-yellow !important;
+  @apply outline-none text-black !important;
   box-shadow: none !important; 
+  
+  &:after {
+    @apply md:w-full;
+  }
+  .react-select__single-value, .react-select__input-container, .react-select__value-container, .react-select__placeholder, .react-select__indicator {
+    @apply md:text-black !important;
+  }
 }
 
 .react-select__single-value, .react-select__input-container, .react-select__value-container, .react-select__placeholder {
-  @apply text-white opacity-100 !important;
+  @apply text-white opacity-100 relative z-10 transition-colors ease-in-out duration-[450ms] !important;
 }
 
 .react-select__indicator {
-  @apply opacity-100 hover:opacity-100 focus:opacity-100 text-white ml-0 pl-2 md:pl-5 !important;
+  @apply opacity-100 hover:opacity-100 focus:opacity-100 text-white ml-0 pl-2 md:pl-5 relative z-10 !important;
 }
 
 .react-select__indicator-separator {

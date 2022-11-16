@@ -134,10 +134,9 @@ export default function Projects(initialData) {
             <article className="h-full flex flex-col">
               <div className="mb-auto">
                 <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] break-hyphens mb-6 lg:mb-8">Our Projects</h1>
-                <Link href="/development"><a className="w-full block text-lg lg:text-xl xl:text-2xl leading-snug lg:leading-snug xl:leading-snug"><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link>
               </div>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link></p>
               </div>
             </article>
           </Container>
