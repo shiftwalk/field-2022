@@ -64,7 +64,7 @@ export default function Views(initialData) {
       <NextSeo title="Views" />
       
       <main>
-        <div className="md:h-screen flex flex-col pt-[79px] md:pt-[82px] lg:pt-[92px] overflow-hidden relative border-b border-black">
+        <div className="md:h-screen flex flex-col pt-[78px] md:pt-[78px] lg:pt-[92px] overflow-hidden relative border-b border-black">
           <Container noPad className="h-full flex flex-col relative z-10">
             <div className="w-full flex flex-wrap h-full">
               <div className="w-full md:w-1/2 md:h-full aspect-[12/8] md:aspect-auto md:border-r border-b md:border-b-0 border-black">
