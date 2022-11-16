@@ -18,7 +18,7 @@ export default function Menu() {
         <div className="absolute inset-0 mx-3 md:mx-4 border-x border-x-black z-[0] pointer-events-none"></div>
 
         <div className="w-full mb-auto">
-          <div className="flex flex-wrap items-center py-[18px] mx-3 md:mx-4 border-x border-black px-5 md:px-6">
+          <div className="flex flex-wrap items-center py-[19px] mx-3 md:mx-4 border-x border-black px-5 md:px-6">
             <Link href="/">
               <a aria-label="Navigate to the home page" className={`w-[65px] md:w-[65px] px-1 py-0 block -translate-x-1`}>
                 <LogoMarkIcon className="w-full block" />
