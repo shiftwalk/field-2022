@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import MetaText from '@/components/meta-text'
 import SanityPageService from '@/services/sanityPageService'
 import BlockContent from '@sanity/block-content-to-react'
+import { useRef } from 'react'
 
 const query = `{
   "privacy": *[_type == "privacy"][0]{
@@ -23,12 +24,15 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function PrivacyPolicy(initialData) {
+  const contentArea = useRef(null)
   const { data: { privacy }  } = pageService.getPreviewHook(initialData)()
 
   let d = new Date(privacy.date);
   const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
   const mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
   const da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
+
+  const executeScroll = () => contentArea.current.scrollIntoView({behavior: "smooth"})
   
   return (
     <Layout>
@@ -40,14 +44,23 @@ export default function PrivacyPolicy(initialData) {
             <article className="relative">
               <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">Privacy<br/>Policy</h1>
 
-              <button className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white "><span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">→</span></button>
+              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
+
+                <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                <span className={`relative block overflow-hidden z-10 md:group-hover:text-black transition-colors ease-in-out duration-[450ms]`}>
+                  <span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">
+                    →
+                  </span>
+                </span>
+              </button>
               
               <MetaText text={`Last Updated: ${da} ${mo} ${ye}`} className="absolute bottom-0 right-0" />
             </article>
           </Container>
         </div>
 
-        <div className="bg-white">
+        <div className="bg-white" ref={contentArea}>
           <Container>
             <div className="flex flex-wrap pt-[8vw] pb-[8vw]">
               <div className="w-full md:w-1/4 mb-8 md:mb-0">
