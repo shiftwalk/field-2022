@@ -96,7 +96,7 @@ export default function ViewsSlug(initialData) {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
           <Container>
             <article className="relative">
-              <h1 className="text-[12vw] md:text-[8vw] leading-[0.85] uppercase italic w-full md:w-[93%] break-hyphens mb-[12vw]">{article.title}</h1>
+              <h1 className="text-[8.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-[93%] break-hyphens mb-[12vw]">{article.title}</h1>
 
               <button className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white "><span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">→</span></button>
               
@@ -172,7 +172,7 @@ export default function ViewsSlug(initialData) {
                         <div className="flex-1 mb-6 md:mb-0">
                           <MetaText text={e.category.name} className="mb-3" />
 
-                          <span className="block text-[5.2vw] md:text-[3vw] xl:text-[2vw] leading-none w-11/12">{e.title}</span>
+                          <span className="block text-[4.5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
                         </div>
 
                         <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">

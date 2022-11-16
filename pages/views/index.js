@@ -79,7 +79,7 @@ export default function Views(initialData) {
                 </div>
 
                 <div className="mb-auto">
-                  <h1 className="text-[7.5vw] md:text-[5.5vw] lg:text-[4.3vw] leading-[1]">{featured.title}</h1>
+                  <h1 className="text-[6.5vw] md:text-[4.5vw] lg:text-[3.3vw] xl:text-[3vw] leading-[1.05] md:leading-[1.05] lg:leading-[1.05] xl:leading-[1.05] xl:w-11/12">{featured.title}</h1>
                 </div>
                 
                 <div>
@@ -120,7 +120,7 @@ export default function Views(initialData) {
                           </span>
                         </div>
 
-                        <span className="px-3 block text-[6.3vw] md:text-[3.7vw] xl:text-[2.5vw] leading-none w-11/12">{e.title}</span>
+                        <span className="px-3 block text-[5.6vw] md:text-[3vw] xl:text-[2vw] leading-[1.085] md:leading-[1.085] xl:leading-[1.085] w-11/12">{e.title}</span>
                         
                         <div className="px-3 py-4 w-full mt-auto flex items-end">
                           <span className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug group relative px-6 md:px-8 lg:px-10 pt-3 md:pt-4 pb-[15px] md:pb-[18px] border border-black rounded-full overflow-hidden">
@@ -151,7 +151,7 @@ export default function Views(initialData) {
                     <div className="flex-1 mb-6 md:mb-0">
                       <MetaText text={e.category.name} className="mb-3" />
 
-                      <span className="block text-[5.2vw] md:text-[3vw] xl:text-[2vw] leading-none w-11/12">{e.title}</span>
+                      <span className="block text-[4.5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
                     </div>
 
                     <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">
