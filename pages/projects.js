@@ -13,6 +13,7 @@ import ListIcon from '@/icons/list.svg'
 import SanityPageService from '@/services/sanityPageService'
 import { useState } from 'react'
 import Link from 'next/link'
+import ConditionalWrap from 'conditional-wrap'
 
 const query = `{
   "projects": *[_type == "projects"] | order(status->name == 'Operational') {
@@ -30,6 +31,7 @@ const query = `{
         hex
       }
     },
+    googleMapsUrl,
   },
   "country": *[_type == "country"] | order(order asc) { name },
   "storage": *[_type == "storage"] | order(order asc) { name },
@@ -211,8 +213,16 @@ export default function Projects(initialData) {
             <div className={`grid ${currentView == 'grid' ? 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8' : 'grid-cols-1 gap-5 md:gap-8' }`}>
               {filteredProjects.reverse().map((e, i) => {
                 return (
-                  <a href="#" className="col-span-1 group" key={i}>
-                    <div className={`w-full border-black border flex flex-col group-hover:bg-white ${ currentView == 'grid' ? 'lg:aspect-square' : '' }`}>
+                  <ConditionalWrap
+                    key={`location-${i}`}
+                    condition={!!e.googleMapsUrl}
+                    wrap={children => (
+                      <a href={e.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="col-span-1 group">
+                        {children}
+                      </a>
+                    )}
+                  >
+                    <div className={`w-full border-black border col-span-1 flex flex-col group-hover:bg-white ${ currentView == 'grid' ? 'lg:aspect-square' : '' }`} key={i}>
                       <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
                         <span className="flex space-x-2 py-2 items-center">
                           <span className="px-3 py-[9px] text-white rounded-full border border-current" style={{ backgroundColor: e.storage.tagColor.hex}}><MetaText text={e.storage.name} className="text-white" /></span>
@@ -234,7 +244,9 @@ export default function Projects(initialData) {
                             <div className="md:ml-auto flex items-end space-x-6">
                               <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>{e.mwh}MWh</span>
                               
-                              <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                              { e.googleMapsUrl && (
+                                <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -242,10 +254,12 @@ export default function Projects(initialData) {
                       
                       <div className={`px-3 py-2 w-full mt-auto items-end ${currentView == 'grid' ? 'flex' : 'hidden' }`}>
                         <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.mwh}MWh</span>
-                        <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                        { e.googleMapsUrl && (
+                          <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                        )}
                       </div>
                     </div>
-                  </a>
+                  </ConditionalWrap>
                 )
               })}
 
