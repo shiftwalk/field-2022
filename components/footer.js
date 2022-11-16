@@ -103,8 +103,8 @@ export default function Footer({ noCta }) {
                     destination="/"
                     a11yText="Navigate to the home page"
                     label="Home"
-                    className="block pb-0 mb-2"
-                    noDot
+                    className="inline-block pb-0 mb-2"
+                    rightDot
                   />
                 </li>
                 <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
@@ -112,8 +112,8 @@ export default function Footer({ noCta }) {
                     destination="/mission"
                     a11yText="Navigate to the mission page"
                     label="Mission"
-                    className="block pb-0 mb-2"
-                    noDot
+                    className="inline-block pb-0 mb-2"
+                    rightDot
                   />
                 </li>
                 <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
@@ -121,8 +121,8 @@ export default function Footer({ noCta }) {
                     destination="/projects"
                     a11yText="Navigate to the projects page"
                     label="Projects"
-                    className="block pb-0 mb-2"
-                    noDot
+                    className="inline-block pb-0 mb-2"
+                    rightDot
                   />
                 </li>
                 <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
@@ -130,8 +130,8 @@ export default function Footer({ noCta }) {
                     destination="/team"
                     a11yText="Navigate to the team page"
                     label="Team"
-                    className="block pb-0 mb-2"
-                    noDot
+                    className="inline-block pb-0 mb-2"
+                    rightDot
                   />
                 </li>
                 <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
@@ -139,8 +139,8 @@ export default function Footer({ noCta }) {
                     destination="/development"
                     a11yText="Navigate to the development page"
                     label="Development"
-                    className="block pb-0 mb-2"
-                    noDot
+                    className="inline-block pb-0 mb-2"
+                    rightDot
                   />
                 </li>
                 <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
@@ -148,8 +148,8 @@ export default function Footer({ noCta }) {
                     destination="/careers"
                     a11yText="Navigate to the careers page"
                     label="Careers"
-                    className="block pb-0 mb-2"
-                    noDot
+                    className="inline-block pb-0 mb-2"
+                    rightDot
                   />
                 </li>
                 <li className="block text-xl xl:text-2xl leading-[1.18] xl:leading-[1.18]">
@@ -157,8 +157,8 @@ export default function Footer({ noCta }) {
                     destination="/views"
                     a11yText="Navigate to the views page"
                     label="Views"
-                    className="block pb-0 mb-0"
-                    noDot
+                    className="inline-block pb-0 mb-0"
+                    rightDot
                   />
                 </li>
                 <li className="block">

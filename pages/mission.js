@@ -12,6 +12,8 @@ import { CarouselCards } from '@/components/carousel-cards'
 
 export default function Mission() {
   const charts = useRef(null)
+  const contentArea = useRef(null)
+
   const chartIsInView = useInView(charts, { 
     once: true,
     margin: "0px 60% -60% 0px"
@@ -23,6 +25,8 @@ export default function Mission() {
     margin: "0px 50% -50% 0px"
   })
 
+  const executeScroll = () => contentArea.current.scrollIntoView({behavior: "smooth"})    
+
   return (
     <Layout>
       <NextSeo title="Mission" />
@@ -33,7 +37,16 @@ export default function Mission() {
             <article>
               <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">Accelera&shy;ting the build out of renew&shy;able infra&shy;structure</h1>
 
-              <button className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white "><span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">→</span></button>
+              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
+
+                <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                <span className={`relative block overflow-hidden z-10 md:group-hover:text-black transition-colors ease-in-out duration-[450ms]`}>
+                  <span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">
+                    →
+                  </span>
+                </span>
+              </button>
             </article>
           </Container>
         </div>
@@ -41,7 +54,7 @@ export default function Mission() {
         <LocalImage src="/images/mission-test.jpg" alt="Mission Image" layout="responsive" width={2401} height={927} bordered />
 
         <Container>
-          <div className="max-w-[96%] pt-5">
+          <div className="max-w-[96%] pt-5" ref={contentArea}>
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">The Challenge</span>
             <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">To reach net zero, we need the biggest global transition of energy infrastructure ever seen, in the shortest amount of time. To do this, we have to solve big challenges; storing energy, reducing grid intermittency, and decarbonising our heating supply.</h2>
           </div>

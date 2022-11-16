@@ -69,7 +69,7 @@ export default function Views(initialData) {
             <div className="w-full flex flex-wrap h-full">
               <div className="w-full md:w-1/2 md:h-full aspect-[12/8] md:aspect-auto md:border-r border-b md:border-b-0 border-black">
                 <div className="relative overflow-hidden w-full h-full">
-                  <LocalImage priority={true} src="/images/featured.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                  <LocalImage src="/images/featured.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
                 </div>
               </div> 
 

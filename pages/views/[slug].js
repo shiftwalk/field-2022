@@ -8,14 +8,7 @@ import Link from 'next/link'
 import Button from '@/components/button'
 import SanityPageService from '@/services/sanityPageService'
 import BodyRenderer from '@/components/body-renderer'
-
-const relatedData = [{
-  heading: "Lorem ipsum dolor sit amet, consectetur",
-},{
-  heading: "Lorem ipsum dolor sit amet, consectetur",
-},{
-  heading: "Lorem ipsum dolor sit amet, consectetur",
-}]
+import { useRef } from 'react'
 
 const query = `{
   "article": *[_type == "views" && slug.current == $slug][0]{
@@ -82,12 +75,15 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function ViewsSlug(initialData) {
-  // Sanity Data
+  const contentArea = useRef(null)
   const { data: { article  } } = pageService.getPreviewHook(initialData)()
   let d = new Date(article.publishDate);
   let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
   let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
   let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
+  const executeScroll = () => contentArea.current.scrollIntoView({behavior: "smooth"})    
+
   return (
     <Layout>
       <NextSeo title={article.title} />
@@ -98,7 +94,16 @@ export default function ViewsSlug(initialData) {
             <article className="relative">
               <h1 className="text-[8.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-[93%] break-hyphens mb-[12vw]">{article.title}</h1>
 
-              <button className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white "><span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">→</span></button>
+              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
+
+                <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+                <span className={`relative block overflow-hidden z-10 md:group-hover:text-black transition-colors ease-in-out duration-[450ms]`}>
+                  <span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] ml-[3px] md:ml-[4px] xl:ml-[6px] rotate-90">
+                    →
+                  </span>
+                </span>
+              </button>
               
               <MetaText text={`Posted ${da} ${mo} ${ye}`} className="absolute bottom-0 right-0" />
             </article>
@@ -107,7 +112,7 @@ export default function ViewsSlug(initialData) {
 
         {/* <LocalImage src="/images/mission-test.jpg" alt="Mission Image" layout="responsive" width={2401} height={927} bordered /> */}
 
-        <div className="bg-white relative">
+        <div className="bg-white relative" ref={contentArea}>
           <Container className="pt-[8vw]"/>
 
           <div className="w-full md:w-1/4 mb-8 md:mb-0 absolute top-0 left-0 px-8 md:px-10 lg:px-[52px] pt-[8vw] md:my-8">
