@@ -3,7 +3,6 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
-import LocalImage from '@/components/local-image'
 import MetaText from '@/components/meta-text'
 import Select from 'react-select'
 import Button from '@/components/button'
@@ -14,6 +13,7 @@ import SanityPageService from '@/services/sanityPageService'
 import { useState } from 'react'
 import Link from 'next/link'
 import ConditionalWrap from 'conditional-wrap'
+import SanityImage from '@/components/sanity-image'
 
 const query = `{
   "projects": *[_type == "projects"] | order(status->name == 'Operational') {
@@ -35,13 +35,31 @@ const query = `{
   },
   "country": *[_type == "country"] | order(order asc) { name },
   "storage": *[_type == "storage"] | order(order asc) { name },
-  "status": *[_type == "status"] | order(order asc) { name }
+  "status": *[_type == "status"] | order(order asc) { name },
+  "projectsLanding": *[_type == "projectsLanding"][0]{ 
+    title,
+    heroHeading,
+    heroText,
+    supportingImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    pipelineCtaText,
+    developmentCtaText
+  }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Projects(initialData) {
-  const { data: { projects, country, storage, status }  } = pageService.getPreviewHook(initialData)()
+  const { data: { projects, country, storage, status, projectsLanding }  } = pageService.getPreviewHook(initialData)()
   const [currentView, setCurrentView] = useState('grid')
   const [currentCountry, setCurrentCountry] = useState('All')
   const [currentStorage, setCurrentStorage] = useState('All')
@@ -96,7 +114,7 @@ export default function Projects(initialData) {
 
   return (
     <Layout>
-      <NextSeo title="Projects" />
+      <NextSeo title={projectsLanding.title} />
       
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-bl from-orange via-yellow to-purple lg:bg-none">
@@ -133,10 +151,10 @@ export default function Projects(initialData) {
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
               <div className="mb-auto">
-                <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] break-hyphens mb-6 lg:mb-8">Our Projects</h1>
+                <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] break-hyphens mb-6 lg:mb-8">{projectsLanding.heroHeading}</h1>
               </div>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link></p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">{projectsLanding.heroText} <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link></p>
               </div>
             </article>
           </Container>
@@ -268,7 +286,7 @@ export default function Projects(initialData) {
                   </div>
 
                   <div className="w-full py-12">
-                    <span className="px-3 block text-[6vw] lg:text-[3vw] xl:text-[2.5vw] leading-none max-w-[90%]">In addition we have over 1 GWh of capacity in exclusivity</span>
+                    <span className="px-3 block text-[6vw] lg:text-[3vw] xl:text-[2.5vw] leading-none max-w-[90%]">{projectsLanding.pipelineCtaText}</span>
                   </div>
                   
                   <div className="px-3 py-2 w-full mt-auto self-end">
@@ -280,13 +298,13 @@ export default function Projects(initialData) {
           </Container>
         </div>
 
-        <LocalImage src="/images/projects.jpg" alt="Mission Image" layout="responsive" width={2000 } height={773} bordered />
+        <SanityImage image={projectsLanding.supportingImage} alt="Projects Image" bordered />
 
         <div className="bg-white">
           <Container>
             <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5">
               <MetaText text="Development" className="mb-[13vw]" />
-              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">We're always up for speaking to great people who are determined to make the renewable transition happen.</h2>
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">{projectsLanding.developmentCtaText}</h2>
 
               <Button href="/development" label="Development" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[13.5vw]" a11yText="Navigate to the development page" />
             </div>

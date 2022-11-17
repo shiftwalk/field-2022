@@ -31,13 +31,19 @@ const query = `{
     bio
   },
   "departments": *[_type == "departments"] | order(order asc) { name },
-  "locations": *[_type == "locations"] | order(order asc) { name }
+  "locations": *[_type == "locations"] | order(order asc) { name },
+  "teamLanding": *[_type == "teamLandingNew"][0]{ 
+    title,
+    heroHeading,
+    heroText,
+    joinTheTeamCtaText
+  }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Team(initialData) {
-  const { data: { team, departments, locations }  } = pageService.getPreviewHook(initialData)()
+  const { data: { team, departments, locations, teamLanding }  } = pageService.getPreviewHook(initialData)()
   const [currentLocation, setCurrentLocation] = useState('All')
   const [currentDepartment, setCurrentDepartment] = useState('All')
 
@@ -75,7 +81,7 @@ export default function Team(initialData) {
 
   return (
     <Layout>
-      <NextSeo title="Team" />
+      <NextSeo title={teamLanding.title} />
       
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-tl from-orange via-yellow to-purple lg:bg-none">
@@ -119,9 +125,9 @@ export default function Team(initialData) {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">The Field Team</h1>
+              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">{teamLanding.heroHeading}</h1>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We believe systemic changes can be made, and we're determined to make them happen fast.</p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">{teamLanding.heroText}</p>
               </div>
             </article>
           </Container>

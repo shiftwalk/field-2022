@@ -6,11 +6,65 @@ import { NextSeo } from 'next-seo'
 import LocalImage from '@/components/local-image'
 import BatteryIcon from '@/icons/battery.svg'
 import { useRef } from 'react'
-import MetaText from '@/components/meta-text'
 import Button from '@/components/button'
 import { CarouselCards } from '@/components/carousel-cards'
+import SanityPageService from '@/services/sanityPageService'
+import SanityImage from '@/components/sanity-image'
 
-export default function Mission() {
+const query = `{
+  "mission": *[_type == "missionNew"][0]{
+    title,
+    heroHeading,
+    heroImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    theChallengeText,
+    theChallengeCTAText,
+    theChallengeCtaImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    ourPlanText,
+    roadmapText,
+    roadmapBars[] {
+      year,
+      metaInfo
+    },
+    impactNumber,
+    impactText,
+    howWeDoItCards[] {
+      heading,
+      text,
+    },
+    seo {
+      ...,
+      shareGraphic {
+        asset->
+      }
+    }
+  }
+}`
+
+const pageService = new SanityPageService(query)
+
+export default function Mission(initialData) {
+  const { data: { mission }  } = pageService.getPreviewHook(initialData)()
+
   const charts = useRef(null)
   const contentArea = useRef(null)
 
@@ -19,23 +73,17 @@ export default function Mission() {
     margin: "0px 60% -60% 0px"
   })
 
-  const countUp = useRef(null)
-  const countUpIsInView = useInView(countUp, { 
-    once: true,
-    margin: "0px 50% -50% 0px"
-  })
-
   const executeScroll = () => contentArea.current.scrollIntoView({behavior: "smooth"})    
 
   return (
     <Layout>
-      <NextSeo title="Mission" />
+      <NextSeo title={mission.title} />
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
           <Container>
             <article>
-              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">Accelera&shy;ting the build out of renew&shy;able infra&shy;structure</h1>
+              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">{mission.heroHeading}</h1>
 
               <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
 
@@ -51,12 +99,12 @@ export default function Mission() {
           </Container>
         </div>
 
-        <LocalImage src="/images/mission-test.jpg" alt="Mission Image" layout="responsive" width={2401} height={927} bordered />
+        <SanityImage image={mission.heroImage} alt="Mission Image" bordered />
 
         <Container>
           <div className="max-w-[96%] pt-5" ref={contentArea}>
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">The Challenge</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">To reach net zero, we need the biggest global transition of energy infrastructure ever seen, in the shortest amount of time. To do this, we have to solve big challenges; storing energy, reducing grid intermittency, and decarbonising our heating supply.</h2>
+            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">{mission.theChallengeText}</h2>
           </div>
         </Container>
 
@@ -65,11 +113,11 @@ export default function Mission() {
             <div className="flex flex-wrap">
               <div className="w-full md:w-1/2 aspect-[10/11]">
                 <div className="relative overflow-hidden aspect-[10/11]">
-                  <LocalImage src="/images/mission-test-2.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]" />
+                  <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]" />
                 </div>
               </div>
               <div className="w-full md:w-1/2 bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
-                <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">We're developing, building, and optimising the grid-scale energy infrastructure needed to tackle these challenges.</h2>
+                <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
               </div>
             </div>
           </Container>
@@ -78,7 +126,7 @@ export default function Mission() {
         <Container>
           <div className="max-w-[96%] pt-5">
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">Our Plan</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-12">We're building a vertically integrated infrastructure business that can help tackle the urgent climate crisis. We're starting by developing, building and operating battery storage sites — first in the UK, then abroad. And we're creating our own technology platform to optimise our assets - allowing us to move faster and maximise returns.</h2>
+            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-12">{mission.ourPlanText}</h2>
             <Button href="/projects" label="See&nbsp;Our&nbsp;Projects" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[12vw]" a11yText="Navigate to the Projects Page" />
           </div>
         </Container>
@@ -88,7 +136,7 @@ export default function Mission() {
           <Container className="relative z-10">
             <div className="max-w-[96%] pt-5">
               <span className="block uppercase text-current text-xs leading-none tracking-wider mb-[15vw]">Our Roadmap</span>
-              <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none w-full max-w-[70%] md:max-w-[50%]">We have a network of battery storage sites in operation and in development across the UK and Europe.</h2>
+              <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none w-full max-w-[70%] md:max-w-[50%]">{mission.roadmapText}</h2>
             </div>
           </Container>
 
@@ -96,68 +144,59 @@ export default function Mission() {
             <Container className="h-full relative z-10" />
 
             <div className="absolute inset-0 flex items-end z-0 px-3 md:px-4 lg:px-5 text-soft-black-dark text-[4vw] md:text-[2.9vw] leading-none md:leading-none overflow-hidden" ref={charts}>
-              <div
-                className={`w-1/4 bg-off-white-dark p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? 'h-[20%]' : 'h-[15%]' }`}
-              >
-                <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2022</span>
-                </span>
-                <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
-                </span>
+              {mission.roadmapBars.map((e, i) => {
+                let color = 'bg-off-white-dark'
+                let startHeight = 'h-[10%]' 
+                let endHeight = 'h-[20%]' 
+                
+                if (i == 1) {
+                  startHeight = 'h-[20%]' 
+                  endHeight = 'h-[40%]' 
+                  color = 'bg-blue'
+                }
+                if (i == 2) {
+                  startHeight = 'h-[30%]' 
+                  endHeight = 'h-[65%]' 
+                  color = 'bg-orange'
+                }
+                if (i == 3) {
+                  startHeight = 'h-[40%]' 
+                  endHeight = 'h-[97%]' 
+                  color = 'bg-yellow'
+                }
+                return ( 
+                  <div
+                    className={`w-1/4 ${color} p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? endHeight : startHeight }`}
+                    key={i}
+                  >
+                    <span className="block mb-1 relative overflow-hidden">
+                      <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>{e.year}</span>
+                    </span>
+                    <span className="block relative overflow-hidden">
+                      <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>{e.metaInfo}</span>
+                    </span>
 
-                <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
-              </div>
-              <div
-                className={`w-1/4 bg-blue p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[200ms] relative ${ chartIsInView ? 'h-[35%]' : 'h-[20%]' }`}
-              >
-                <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2023</span>
-                </span>
-                <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
-                </span>
-                <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
-              </div>
-              <div
-                className={`w-1/4 bg-orange p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[150ms] relative ${ chartIsInView ? 'h-[65%]' : 'h-[30%]' }`}
-              >
-                <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2024</span>
-                </span>
-                <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
-                </span>
-                <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
-              </div>
-              <div
-                className={`w-1/4 bg-yellow p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[100ms] relative ${ chartIsInView ? 'h-[97%]' : 'h-[40%]' }`}
-              >
-                <span className="block mb-1 relative overflow-hidden">
-                  <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>2030</span>
-                </span>
-                <span className="block relative overflow-hidden">
-                  <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>XX MWh UK battery</span>
-                </span>
-                <BatteryIcon className="w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6" />
-              </div>
+                    <BatteryIcon className={`w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6 transition-opacity ease-in-out duration-500 delay-[850ms] ${ chartIsInView ? 'opacity-100' : 'opacity-0' }`} />
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
 
         <div className="bg-white border-b border-black">
           <Container>
-            <div className="text-center py-[13.5vw]" ref={countUp}>
+            <div className="text-center py-[13.5vw]">
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
               <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[2vw]">
-                <span className="relative inline-block overflow-hidden">
-                  <span className={`block pr-[2px] md:pr-[4px] transition-translate ease-in-out duration-500 ${ countUpIsInView ? 'translate-y-[-8%]' : 'translate-y-full' }`}>
-                    62,982,700
+                <span className="relative inline-block">
+                  <span className={`block pr-[2px] md:pr-[4px]`}>
+                    {mission.impactNumber}
                   </span>
                 </span>
               </span>
 
-              <h2 className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight w-full md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto">Our 11GWh project pipeline aims to save this many tonnes of CO2eq from entering the atmosphere over the projects' operational period of 20 years.</h2>
+              <h2 className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight w-full md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto">{mission.impactText}</h2>
             </div>
           </Container>
         </div>
@@ -168,7 +207,7 @@ export default function Mission() {
           </div>
 
           <div className="mb-[13.5vw] pl-5 md:pl-6 lg:pl-8 cursor-grab"> 
-            <CarouselCards />
+            <CarouselCards items={mission.howWeDoItCards} />
           </div>
         </Container>
       </main>
@@ -176,4 +215,11 @@ export default function Mission() {
       <Footer />
     </Layout>
   )
+}
+
+export async function getStaticProps(context) {
+  const props = await pageService.fetchQuery(context)
+  return { 
+    props: props
+  };
 }
