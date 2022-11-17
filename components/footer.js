@@ -158,7 +158,7 @@ export default function Footer({ noCta }) {
                   />
                 </li>
                 <li className="block">
-                  <Button outline href="/contact" label="Contact&nbsp;Us" a11yText={"Navigate to the contact page"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8" />
+                  <Button internal={false} outline href="mailto:hello@field.energy" label="Contact&nbsp;Us" a11yText={"Email Field at hello@field.energy"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8" />
                 </li>
               </ul>
             </nav>

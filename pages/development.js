@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import { MouseParallax } from 'react-just-parallax'
 import MetaText from '@/components/meta-text'
 import Button from '@/components/button'
+import ContactButton from '@/components/contact-button'
 import LocalImage from '@/components/local-image'
 import AccordionItem from '@/components/accordion-item'
 import { useState } from 'react'
@@ -341,7 +342,7 @@ export default function Development() {
                   <div className="w-full mt-auto">
                     <p className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight max-w-[90%] lg:max-w-[85%] xl:max-w-[78%] mb-6 md:mb-8 pb-0">The Field development team have delivered some of the UK’s leading renewable energy projects across a range of technologies including anaerobic digestion, biomass, wind, solar, energy from waste and gas peaking plants. We have a team of expert grid specialists to ensure we get the right connection in the right place. Your project couldn’t be in better hands.</p>
 
-                    <Button href="/contact" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Get&nbsp;In&nbsp;Touch" a11yText={"Navigate to the contact page" } />
+                    <Button internal={false} href="mailto:hello@field.energy" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Get&nbsp;In&nbsp;Touch" a11yText={"Contact Field Energy" } />
                   </div>
 
                 </div>
@@ -356,7 +357,7 @@ export default function Development() {
               <MetaText text="Contact the team" className="pb-[13vw] pt-6" />
               <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none">If you’re a landowner, developer or member of a local community in the UK or abroad with questions for us, we’d love to hear them.</h2>
 
-              <Button outline href="/contact" label="Get&nbsp;In&nbsp;Touch" a11yText={"Navigate to the contact page"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8 mb-[13.5vw]" />
+              <ContactButton outline href="/contact" label="Get&nbsp;In&nbsp;Touch" a11yText={"Navigate to the contact page"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8 mb-[13.5vw]" />
             </div>
           </Container>
         </div>

@@ -105,9 +105,35 @@ a, button {
 
   &.is-selected {
     .embla__slide--inner {
-      @apply bg-yellow;
+      
     }
   }
+}
+
+.embla--quotes {
+  .embla__slide {
+    flex: 0 0 90%;
+  
+    @screen md {
+      flex: 0 0 80%;
+    }
+  
+    @screen lg {
+      flex: 0 0 80%;
+    }
+  
+    @screen xl {
+      flex: 0 0 80%;
+    }
+  
+    @apply mr-0 md:mr-0;
+  
+    &.is-selected {
+      .embla__slide--inner {
+        @apply bg-none;
+      }
+    }
+  } 
 }
 
 .ReactModal__Overlay {
