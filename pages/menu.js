@@ -52,12 +52,12 @@ export default function Menu() {
               </li>
               <li className="block border-b border-b-black">
                 <div className="mx-3 md:mx-4 border-x border-black">
-                  <MobileMenuItem href="/team" label="Team" />
+                  <MobileMenuItem href="/development" label="Development" />
                 </div>
               </li>
               <li className="block border-b border-b-black">
                 <div className="mx-3 md:mx-4 border-x border-black">
-                  <MobileMenuItem href="/development" label="Development" />
+                  <MobileMenuItem href="/team" label="Team" />
                 </div>
               </li>
               <li className="block border-b border-b-black">
