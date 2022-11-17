@@ -12,13 +12,9 @@ export default function Footer({ noCta }) {
       { !noCta && (
         <div className="bg-gradient-to-tr from-orange via-yellow to-purple h-[75vw] lg:h-[50vw] 2xl:h-[48vw] border-b border-black relative overflow-hidden">
 
-          <div className="grain absolute inset-0 w-full h-full z-10 block lg:hidden"></div>
-
           <div className="absolute inset-0 w-full h-full lg:bg-gradient-to-t lg:from-[#C99C97] lg:to-[#D9D5D0] overflow-hidden origin-center z-20">
 
             <div className="absolute inset-x-3 md:inset-x-4 lg:inset-x-5 inset-y-0 z-[50] overflow-hidden border-x border-black">
-              {/* Grain overlay */}
-              <div className="grain absolute inset-0 w-full h-full z-10 hidden lg:block"></div>
               
               <div className="absolute inset-0 whitespace-nowrap translate-y-[-10%] lg:translate-y-[-7.5%] 2xl:translate-y-[-10%] translate-x-[-2.4%] z-10">
                 <span className="block text-[22.55vw] uppercase italic leading-[0.84]">Net Zero</span>

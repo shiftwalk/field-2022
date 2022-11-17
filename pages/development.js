@@ -118,8 +118,6 @@ export default function Development() {
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-gradient-to-br from-orange via-yellow to-purple">
 
-          <div className="grain absolute inset-0 w-full h-full z-10 block lg:hidden"></div>
-
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
 
@@ -153,7 +151,7 @@ export default function Development() {
             <article className="h-full flex flex-col">
               <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">Develo&shy;pment</h1>
               <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We're Field. We're accelerating the build out of renewable infrastructure needed to reach net zero. We're starting with battery storage, to store energy for when it's needed, creating a more reliable, flexible and greener grid.</p>
+                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">We're continuing to grow our pipeline of battery storage projects across Europe. If you're a landowner, developer or member of a local community interested in developing battery storage, read on to find out more about working together.</p>
               </div>
             </article>
           </Container>
@@ -162,7 +160,7 @@ export default function Development() {
         <div className="border-b border-black">
           <Container>
             <div className="max-w-[100%] md:max-w-[90%] lg:max-w-[90%] pt-[10vw] pb-12">
-              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none pb-[6.5vw]">Field has an extensive development pipeline of renewable battery storage projects located across both brownfield and greenfield locations. Field is responsible for all stages of project development, from initiation and landowner engagement through to concept design, planning, and construction.</h2>
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none pb-[6.5vw]">Field has an extensive development pipeline of renewable battery storage projects located across both brownfield and greenfield locations. We're responsible for all stages of project development, from initiation and landowner engagement through to concept design, planning, and construction - with an experienced team bringing strong project management and project delivery expertise across the renewable energy project lifecycle.</h2>
 
               <MetaText text="Find Out More:" className="mb-5 md:mb-6" />
 

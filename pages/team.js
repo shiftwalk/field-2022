@@ -85,9 +85,6 @@ export default function Team(initialData) {
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full lg:bg-gradient-to-t lg:from-[#C99C97] lg:to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
 
-            {/* Grain overlay */}
-            <div className="grain absolute inset-0 w-full h-full z-10 hidden lg:block"></div>
-
             {/* Right blob */}
             <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={0.1}>
               <div className="absolute inset-0 origin-right">

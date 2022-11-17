@@ -101,8 +101,6 @@ export default function Projects(initialData) {
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-bl from-orange via-yellow to-purple lg:bg-none">
 
-          <div className="grain absolute inset-0 w-full h-full z-10 block lg:hidden"></div>
-
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
 
