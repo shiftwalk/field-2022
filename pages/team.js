@@ -44,15 +44,15 @@ const pageService = new SanityPageService(query)
 
 export default function Team(initialData) {
   const { data: { team, departments, locations, teamLanding }  } = pageService.getPreviewHook(initialData)()
-  const [currentLocation, setCurrentLocation] = useState('All')
-  const [currentDepartment, setCurrentDepartment] = useState('All')
+  const [currentLocation, setCurrentLocation] = useState('all')
+  const [currentDepartment, setCurrentDepartment] = useState('all')
 
   const locationsDropdown = [{
-    label: `All Locations`, value: 'All',
+    label: `All Locations`, value: 'all',
   }]
 
   const departmentsDropdown = [{
-    label: `All Departments`, value: 'All',
+    label: `All Departments`, value: 'all',
   }]
 
   locations.forEach(location => {
@@ -68,16 +68,16 @@ export default function Team(initialData) {
   })
 
   const departmentSelectBlur = (selectedValue) => {
-    setCurrentDepartment(selectedValue.value)
+    setCurrentDepartment(slugify(selectedValue.value))
   }
 
   const locationsSelectBlur = (selectedValue) => {
-    setCurrentLocation(selectedValue.value)
+    setCurrentLocation(slugify(selectedValue.value))
   }
 
   let filteredTeam = team
-  filteredTeam = (currentLocation !== 'All') ? filteredTeam.filter(d => d.location.name == currentLocation) : filteredTeam
-  filteredTeam = (currentDepartment !== 'All') ? filteredTeam.filter(d => d.department.name == currentDepartment) : filteredTeam
+  filteredTeam = (currentLocation !== 'all') ? filteredTeam.filter(d => slugify(d.location.name) == currentLocation) : filteredTeam
+  filteredTeam = (currentDepartment !== 'all') ? filteredTeam.filter(d => slugify(d.department.name) == currentDepartment) : filteredTeam
 
   return (
     <Layout>
