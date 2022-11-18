@@ -203,6 +203,7 @@ export default function Team(initialData) {
   )
 }
 
+
 export async function getStaticProps(context) {
   const props = await pageService.fetchQuery(context)
   return { 
