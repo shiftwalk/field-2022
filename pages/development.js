@@ -155,7 +155,7 @@ export default function Development(initialData) {
                           <div className="col-span-1 flex flex-wrap" key={i}>
                             <div className="bg-white border border-black p-5 aspect-square flex flex-wrap w-full">
                               <div className="w-full mb-auto">
-                                <h2 className="text-[7.65vw] lg:text-[4.2vw] xl:text-[2.8vw] leading-[1.025] lg:leading-[1.025] xl:leading-[1.025] block w-[90%]">{e.title}</h2>
+                                <h2 className="text-[7.65vw] lg:text-[4.2vw] xl:text-[2.8vw] leading-[1.025] lg:leading-[1.025] xl:leading-[1.025] block w-[90%] break-words">{e.title}</h2>
                               </div>
 
                               {e.text && (

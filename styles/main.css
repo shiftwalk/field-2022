@@ -58,9 +58,9 @@ a, button {
   word-wrap: break-word;
   overflow-wrap: break-word;
 
--webkit-hyphens: auto;
-  -moz-hyphens: auto;
-        hyphens: auto;
+-webkit-hyphens: auto !important;
+  -moz-hyphens: auto!important;
+        hyphens: auto!important;
 }
 
 @screen md {
