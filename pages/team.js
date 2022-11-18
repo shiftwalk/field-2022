@@ -12,9 +12,8 @@ import { useEffect, useRef, useState } from 'react'
 var slugify = require('slugify')
 
 const query = `{
-  "team": *[_type == "team"] | order(order asc) {
+  "team": *[_type == "team"] | order(orderRank desc) {
     name,
-    order,
     jobTitle,
     department->{
       name,
