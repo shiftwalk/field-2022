@@ -135,12 +135,12 @@ export default function Mission(initialData) {
         <div className="border-y border-y-black bg-purple text-off-white">
           <Container className="relative z-10">
             <div className="max-w-[96%] pt-5">
-              <span className="block uppercase text-current text-xs leading-none tracking-wider mb-[15vw]">Our Roadmap</span>
+              <span className="block uppercase text-current text-xs leading-none tracking-wider mb-[15vw] lg:mb-[10vw] 2xl:mb-[15vw]">Our Roadmap</span>
               <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none w-full max-w-[70%] md:max-w-[50%]">{mission.roadmapText}</h2>
             </div>
           </Container>
 
-          <div className="w-full h-[100vw] md:h-[85vw] lg:h-[70vw] z-0 mt-[-20vw] relative">
+          <div className="w-full h-[100vw] md:h-[85vw] lg:h-[55vw] 2xl:h-[70vw] z-0 mt-[-20vw] relative">
             <Container className="h-full relative z-10" />
 
             <div className="absolute inset-0 flex items-end z-0 px-3 md:px-4 lg:px-5 text-soft-black-dark text-[4vw] md:text-[2.9vw] leading-none md:leading-none overflow-hidden" ref={charts}>

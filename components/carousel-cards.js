@@ -40,7 +40,7 @@ export const CarouselCards = ({ items }) => {
           {items.map((e, i) => {
             return ( 
               <div className="embla__slide" key={i}>
-                <div className="transition-color ease-in-out duration-300 w-full aspect-square md:aspect-[12/11] lg:aspect-[12/10] border-black border flex flex-col p-4 md:p-5 embla__slide--inner">
+                <div className="w-full aspect-square md:aspect-[12/11] lg:aspect-[12/10] border-black border flex flex-col p-4 md:p-5 embla__slide--inner hover:bg-white">
                   <div className="w-full mb-auto">
                     <span className="block text-[7.5vw] md:text-[5vw] xl:text-[4vw] leading-none max-w-[80%]">{e.heading}</span>
                   </div>
@@ -55,7 +55,7 @@ export const CarouselCards = ({ items }) => {
           {items.map((e, i) => {
             return ( 
               <div className="embla__slide" key={i}>
-                <div className="transition-color ease-in-out duration-300 w-full aspect-square md:aspect-[12/11] lg:aspect-[12/10] border-black border flex flex-col p-4 md:p-5 embla__slide--inner">
+                <div className="w-full aspect-square md:aspect-[12/11] lg:aspect-[12/10] border-black border flex flex-col p-4 md:p-5 embla__slide--inner hover:bg-white">
                   <div className="w-full mb-auto">
                     <span className="block text-[7.5vw] md:text-[5vw] xl:text-[4vw] leading-none max-w-[80%]">{e.heading}</span>
                   </div>
