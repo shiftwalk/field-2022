@@ -74,7 +74,7 @@ export default function Projects(initialData) {
   }]
 
   const statusDropdown = [{
-    label: `All Statuses`, value: 'All',
+    label: `All`, value: 'All',
   }]
 
   country.forEach(location => {
@@ -205,7 +205,7 @@ export default function Projects(initialData) {
                     isSearchable={false}
                     backspaceRemovesValue={false}
                     blurInputOnSelect
-                    placeholder="All Statuses"
+                    placeholder="All"
                     options={statusDropdown}
                     className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[999] react-select-container"
                     classNamePrefix="react-select"
@@ -258,7 +258,7 @@ export default function Projects(initialData) {
 
                           <div className={`w-full md:flex-1 px-3 py-2 items-end ${currentView == 'grid' ? 'hidden' : 'flex'}`}>
                             <div className="md:ml-auto flex items-end space-x-6">
-                              <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>{e.mwh}MWh</span>
+                              <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>{e.mwh}&nbsp;MWh</span>
                               
                               { e.googleMapsUrl && (
                                 <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
@@ -269,7 +269,7 @@ export default function Projects(initialData) {
                       </div>
                       
                       <div className={`px-3 py-2 w-full mt-auto items-end ${currentView == 'grid' ? 'flex' : 'hidden' }`}>
-                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.mwh}MWh</span>
+                        <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.mwh}&nbsp;MWh</span>
                         { e.googleMapsUrl && (
                           <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
                         )}

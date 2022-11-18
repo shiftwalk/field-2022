@@ -167,7 +167,9 @@ export default function Careers(initialData) {
 
         <Container>
           <div className="max-w-[96%] py-[13.5vw]">
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-8 lg:mb-12">{careers.careersCtaText}</h2>
+            <div className="content content--fancy">
+              <BlockContent serializers={{ container: ({ children }) => children }} blocks={careers.careersCtaText} />
+            </div>
 
             <Button internal={false} href={careers.externalCareersLink} className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
           </div>

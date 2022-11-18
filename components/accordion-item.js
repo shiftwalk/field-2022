@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BlockContent from '@sanity/block-content-to-react'
 
 export default function AccordionItem({ question, answer, isOpen }) {
   const [open, setOpen] = useState(isOpen ? isOpen : false);
@@ -23,7 +24,7 @@ export default function AccordionItem({ question, answer, isOpen }) {
       {open && (
         <div className="px-5 md:px-6 lg:px-8 pt-5 md:pt-5 lg:pt-7 pb-[10vw] lg:pb-[7.5vw] border-b border-black">
           <div className="content w-[85%] lg:w-[60%] lg:max-w-screen-md">
-            <p>{answer}</p>
+            <BlockContent serializers={{ container: ({ children }) => children }} blocks={answer} />
           </div>
         </div>
       )}

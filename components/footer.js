@@ -79,14 +79,8 @@ export default function Footer({ noCta }) {
             <span className="text-[clamp(36px,_3.6vw,_50px)] leading-[0.9] block max-w-[85%] md:max-w-[50%] lg:max-w-[55%] xl:max-w-[450px] mb-8">Renewable energy infrastructure to get to net zero</span>
 
             <div className="flex items-center space-x-3">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
-                <FacebookIcon className="block w-[45%]" />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
+              <a href="https://www.linkedin.com/company/field-energy/" aria-label="Navigate to Field's LinkedIn Profile" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
                 <LinkedinIcon className="block w-[45%]" />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
-                <TwitterIcon className="block w-[45%]" />
               </a>
             </div>
           </div>

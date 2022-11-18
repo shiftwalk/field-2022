@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ContactButton( {href, a11yText, className, outline} ) {
+export default function ContactButton( {hrefs, className} ) {
   const [open, setOpen] = useState(false);
 
   function updateOpenButton() {
@@ -24,8 +24,11 @@ export default function ContactButton( {href, a11yText, className, outline} ) {
       { open && (
         <div className="absolute top-[55px] lg:top-[45px] xl:top-[60px] left-0 w-full react-select__menu">
           <ul className="w-full react-select__menu-list">
-            <li className="block"><a href="mailto:development-gb@field.energy" className="border-b border-black bg-white py-4 px-5 cursor-pointer block hover:bg-off-white hover:text-black">UK</a></li>
-            <li className="block"><a href="mailto:development-it@field.energy" className="bg-white py-4 px-5 cursor-pointer block hover:bg-off-white hover:text-black">Italy</a></li>
+            {hrefs?.map((e, i) => {
+              return (
+                <li className="block" key={i}><a href={`mailto:${e.emailAddress}`} className={`${ (i + 1) !== hrefs.length ? 'border-b border-black' : '' } bg-white py-4 px-5 cursor-pointer block hover:bg-off-white hover:text-black`}>{e.country}</a></li>
+              )
+            })}
           </ul>
         </div>
       )}
