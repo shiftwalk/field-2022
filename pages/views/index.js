@@ -8,9 +8,10 @@ import MetaText from '@/components/meta-text'
 import Link from 'next/link'
 import { useState } from 'react'
 import SanityPageService from '@/services/sanityPageService'
+import SanityImage from '@/components/sanity-image'
 
 const query = `{
-  "views": *[_type == "views"] | order(publishedDate desc) {
+  "views": *[_type == "views"] | order(publishDate desc) {
     title,
     featured,
     heroImage {
@@ -32,6 +33,30 @@ const query = `{
       current
     }
   },
+  "viewsLanding": *[_type == "viewsLanding"][0] {
+    title,
+    featuredArticleImage {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
+    featuredArticle-> {
+      title,
+      publishDate,
+      category-> {
+        name
+      },
+      slug {
+        current
+      }
+    }
+  },
   "featured": *[_type == "views" && featured == true][0] {
     title,
     category-> {
@@ -49,7 +74,7 @@ const query = `{
 const pageService = new SanityPageService(query)
 
 export default function Views(initialData) {
-  const { data: { views, categories, featured }  } = pageService.getPreviewHook(initialData)()
+  const { data: { views, categories, viewsLanding }  } = pageService.getPreviewHook(initialData)()
   const [currentCategory, setCurrentCategory] = useState('All')
 
   const updateCategory = (e) => {
@@ -59,9 +84,14 @@ export default function Views(initialData) {
   let filteredViews = views
   filteredViews = (currentCategory !== 'All') ? filteredViews.filter(d => d.category.name == currentCategory) : filteredViews
 
+  let d = new Date(viewsLanding.featuredArticle.publishDate);
+  let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+  let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+  let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
   return (
     <Layout>
-      <NextSeo title="Views" />
+      <NextSeo title={viewsLanding.title} />
       
       <main>
         <div className="md:h-screen flex flex-col pt-[78px] md:pt-[78px] lg:pt-[92px] overflow-hidden relative border-b border-black">
@@ -69,21 +99,21 @@ export default function Views(initialData) {
             <div className="w-full flex flex-wrap h-full">
               <div className="w-full md:w-1/2 md:h-full aspect-[12/8] md:aspect-auto md:border-r border-b md:border-b-0 border-black">
                 <div className="relative overflow-hidden w-full h-full">
-                  <LocalImage src="/images/featured.jpg" alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
+                  <SanityImage image={viewsLanding.featuredArticleImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full" />
                 </div>
               </div> 
 
               <article className="w-full md:w-1/2 h-full flex flex-col p-5 md:p-6 lg:p-6">
                 <div className="mb-8 md:mb-auto">
-                  <MetaText text="Featured Article" />
+                  <MetaText text={`Featured Article - ${da} ${mo} ${ye}`} />
                 </div>
 
                 <div className="mb-auto">
-                  <h1 className="text-[6.5vw] md:text-[4.5vw] lg:text-[3.3vw] xl:text-[3vw] leading-[1.05] md:leading-[1.05] lg:leading-[1.05] xl:leading-[1.05] xl:w-11/12">{featured.title}</h1>
+                  <h1 className="text-[6.5vw] md:text-[4.5vw] lg:text-[3.3vw] xl:text-[3vw] leading-[1.05] md:leading-[1.05] lg:leading-[1.05] xl:leading-[1.05] xl:w-11/12">{viewsLanding.featuredArticle.title}</h1>
                 </div>
                 
                 <div>
-                  <Button href={`/views/${featured.slug.current}`} className="inline-block text-lg lg:text-xl xl:text-2xl" label="Read&nbsp;Article" a11yText={"Navigate to the article page" } />
+                  <Button href={`/views/${viewsLanding.featuredArticle.slug.current}`} className="inline-block text-lg lg:text-xl xl:text-2xl" label="Read&nbsp;Article" a11yText={"Navigate to the article page" } />
                 </div>
               </article>
             </div>
@@ -110,13 +140,18 @@ export default function Views(initialData) {
           <Container className="pt-[5vw] pb-[8vw]">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8">
               {filteredViews.slice(0,3).map((e, i) => {
+                let d = new Date(e.publishDate);
+                let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+                let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+                let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
                 return ( 
                   <Link href={`/views/${e.slug.current}`} key={i}>
                     <a className="col-span-1 group">
                       <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-yellow">
                         <div className="flex flex-wrap px-3w-full mb-auto">
                           <span className="flex space-x-2 py-2">
-                            <span className="px-3 py-2"><MetaText text={e.category.name} /></span>
+                            <span className="px-3 py-2"><MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}`} /></span>
                           </span>
                         </div>
 
@@ -142,6 +177,11 @@ export default function Views(initialData) {
 
         <div className="border-t border-black">
           {filteredViews.slice(3,8).map((e, i) => {
+            let d = new Date(e.publishDate);
+            let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+            let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+            let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
             return ( 
               <Link href={`/views/${e.slug.current}`} key={i}>
                 <a className="block group relative">
@@ -149,7 +189,7 @@ export default function Views(initialData) {
                   
                   <div className="md:flex items-center w-full border-b-black border-b group-hover:bg-yellow py-6 md:py-6 lg:py-6 px-8 md:px-10 lg:px-12">
                     <div className="flex-1 mb-6 md:mb-0">
-                      <MetaText text={e.category.name} className="mb-3" />
+                      <MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}`} className="mb-3" />
 
                       <span className="block text-[4.5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
                     </div>
