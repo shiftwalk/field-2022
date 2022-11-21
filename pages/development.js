@@ -78,8 +78,8 @@ export default function Development(initialData) {
           
             {/* Left blob */}
             <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={-0.1}>
-              <div className="absolute inset-0 origin-left">
-                <div className="absolute top-0 left-0 w-[75vw] h-[130%] rounded-full bg-gradient-to-tr from-orange via-yellow  to-yellow translate-x-[-25vw] translate-y-[-35%] blur-xl overflow-hidden flex items-start justify-start scale-[1.15]">
+              <div className="absolute inset-0 origin-left blur-xl">
+                <div className="absolute top-0 left-0 w-[75vw] h-[130%] rounded-full bg-gradient-to-tr from-orange via-yellow  to-yellow translate-x-[-25vw] translate-y-[-35%] overflow-hidden flex items-start justify-start scale-[1.15]">
                   <div className="w-[45%] h-[46%] rounded-full radial mt-[7%] ml-[0%]"></div>
                   <div className="absolute bottom-[-10%] left-[20%] w-[50%] h-[70%] rounded-full bg-gradient-to-t from-white/80 via-white/50 rotate-[90deg] z-[2]"></div>
                   <div className="absolute bottom-[-15%] left-[23%] right-0 w-[100%] h-[45%] bg-gradient-to-t from-orange via-orange rotate-[-35deg]"></div>
@@ -89,8 +89,8 @@ export default function Development(initialData) {
 
             {/* Right blob */}
             <MouseParallax enableOnTouchDevice={false} isAbsolutelyPositioned lerpEase={0.05} strength={0.1}>
-              <div className="absolute inset-0 origin-right">
-                <div className="absolute top-0 right-0 w-[75vw] h-[130%] rounded-full bg-gradient-to-t from-orange via-yellow to-yellow translate-x-[25vw] translate-y-[-5%] blur-xl flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 origin-right blur-xl">
+                <div className="absolute top-0 right-0 w-[75vw] h-[130%] rounded-full bg-gradient-to-t from-orange via-yellow to-yellow translate-x-[25vw] translate-y-[-5%] flex items-center justify-center overflow-hidden">
                   <div className="w-[80%] h-[50%] rounded-full radial mt-[-45%] mr-[-10%]"></div>
                   <div className="absolute bottom-0 left-0 right-0 w-[100%] h-[45%] rounded-full bg-gradient-to-t from-white via-white/60 rotate-[0deg]"></div>
                   <div className="w-[55%] h-[150%] rounded-full radial radial--purple mt-[5%] ml-[-15%] top-0 left-0 absolute opacity-70"></div>

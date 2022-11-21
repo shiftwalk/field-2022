@@ -22,7 +22,7 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
   return (
     <>
       <button onClick={openModal} className={`block md:border-none px-5 py-4 md:py-0 md:px-0 m-0 outline-none text-left w-full group relative`} aria-label={`View ${name}'s Biography`}>
-        <div className="aspect-[10/13.5] bg-blue/50 mb-3 md:mb-5 items-center justify-center relative hidden md:flex">
+        <div className="aspect-team bg-blue/50 mb-3 md:mb-5 items-center justify-center relative hidden md:flex">
 
           <div className="absolute z-20 inset-0 opacity-0 md:group-hover:opacity-100 bg-gradient-to-tr from-orange via-orange to-yellow mix-blend-multiply"></div>
 
@@ -67,7 +67,7 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
         contentLabel="Example Modal"
       >
         <button className="w-6 h-6 block absolute top-3 md:top-5 right-3 md:right-5 z-30 text-white md:text-black" onClick={closeModal}>
-          <svg className="w-full" viewBox="0 0 50 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="4" d="m1.293 47.293 46-46M2.707 1.293l46 46"/></svg>
+          <svg className="w-full" viewBox="0 0 50 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" strokeWidth="4" d="m1.293 47.293 46-46M2.707 1.293l46 46"/></svg>
         </button>
 
         <div className="flex flex-wrap h-full">
@@ -88,9 +88,12 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
             <div className="md:w-[90%] md:max-h-[85%] self-center overflow-y-scroll modal--inner">
               <MetaText text={jobTitle} className="mb-2" />
               <h2 className="text-4xl md:text-5xl lg:text-6xl leading-none md:leading-none lg:leading-none xl:leading-none uppercase italic font-normal">{name}</h2>
-              
               <div className="w-[90%] content content--small overflow-y-scroll modal--inner--scroll max-h-[33vh] relative">
-                <BlockContent serializers={{ container: ({ children }) => children }} blocks={bio} className="relative z-10" />
+                { bio ? (
+                  <BlockContent serializers={{ container: ({ children }) => children }} blocks={bio} className="relative z-10" />
+                ) : (
+                  <p>Bio coming soon...</p>
+                )}
               </div>
             </div>
           </div>

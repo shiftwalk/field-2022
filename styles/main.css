@@ -257,3 +257,28 @@ scrollbar-width: none;
 .react-select__option--is-selected {
   @apply bg-black text-white !important;
 }
+
+.aspect-team {
+  @apply aspect-[10/13.5];
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+  .aspect-square::before {
+    float: left;
+    padding-top: 100%;
+    content: "";
+  }
+
+  .aspect-team::before {
+    float: left;
+    padding-top: 130%;
+    content: "";
+  }
+
+  .aspect-square::after,
+  .aspect-team::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
