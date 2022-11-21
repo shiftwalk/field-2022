@@ -100,7 +100,7 @@ export default function Careers(initialData) {
             <div className="flex flex-wrap">
               <div className="w-full lg:w-1/2 aspect-square lg:aspect-auto border-b border-black lg:border-b-0 lg:border-r">
                 <div className="relative overflow-hidden h-full">
-                  <SanityImage image={careers.workingAtFieldCtaImage} alt="Careers Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]"  />
+                  <SanityImage image={careers.workingAtFieldCtaImage} alt="Careers Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11] cover-image--right"  />
                 </div>
               </div>
               <div className="w-full lg:w-1/2 bg-yellow flex flex-wrap items-center px-5 py-6 md:pt-6 md:pb-6 md:px-6">

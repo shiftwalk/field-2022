@@ -28,6 +28,12 @@ body {
   }
 }
 
+.cover-image--right {
+  img {
+    @apply object-cover object-right;
+  }
+}
+
 .cover-image--top-mobile {
   img {
     object-position: 0 25%;
@@ -58,9 +64,9 @@ a, button {
   word-wrap: break-word;
   overflow-wrap: break-word;
 
--webkit-hyphens: auto !important;
-  -moz-hyphens: auto!important;
-        hyphens: auto!important;
+-webkit-hyphens: auto;
+  -moz-hyphens: auto;
+        hyphens: auto;
 }
 
 @screen md {
