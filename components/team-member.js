@@ -89,8 +89,8 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
               <MetaText text={jobTitle} className="mb-2" />
               <h2 className="text-4xl md:text-5xl lg:text-6xl leading-none md:leading-none lg:leading-none xl:leading-none uppercase italic font-normal">{name}</h2>
               
-              <div className="w-[90%] content content--small">
-                <BlockContent serializers={{ container: ({ children }) => children }} blocks={bio} />
+              <div className="w-[90%] content content--small overflow-y-scroll modal--inner--scroll max-h-[33vh] relative">
+                <BlockContent serializers={{ container: ({ children }) => children }} blocks={bio} className="relative z-10" />
               </div>
             </div>
           </div>

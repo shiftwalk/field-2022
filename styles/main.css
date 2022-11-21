@@ -159,6 +159,15 @@ a, button {
   scrollbar-width: none;
 }
 
+.modal--inner--scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.modal--inner--scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .mobile-menu::-webkit-scrollbar {
   display: none;
 }
