@@ -11,7 +11,7 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
   const myCustomImageBuilder = (imageUrlBuilder, options) => {
     return imageUrlBuilder
       .width(
-        (widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 1300)
+        (widthOverride ? widthOverride : options.width) || Math.min(( widthOverride ? widthOverride : options.originalImageDimensions.width), 1600)
       )
       .quality(90)
       .fit('clip')
