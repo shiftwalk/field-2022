@@ -15,7 +15,7 @@ export const CarouselQuotes = ({ items }) => {
   return (
     <div>
       <Container>
-        <div className="flex space-x-3 justify-end">
+        <div className="flex space-x-3 lg:justify-end">
           <button onClick={scrollPrev} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden">
 
             <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>

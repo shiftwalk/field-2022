@@ -92,9 +92,9 @@ export default function ViewsSlug(initialData) {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
           <Container>
             <article className="relative">
-              <h1 className="text-[9.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-full md:w-[93%] break-hyphens mb-[12vw]">{article.title}</h1>
-
-              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
+              <h1 className="text-[8.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-full md:w-[93%] mb-[12vw]">{article.title}</h1>
+              
+              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden opacity-0 lg:opacity-100">
 
                 <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
@@ -105,7 +105,7 @@ export default function ViewsSlug(initialData) {
                 </span>
               </button>
               
-              <MetaText text={`Posted ${da} ${mo} ${ye}`} className="absolute bottom-0 right-0" />
+              <MetaText text={`Posted ${da} ${mo} ${ye}`} className="absolute bottom-0 left-0 lg:left-auto lg:right-0" />
             </article>
           </Container>
         </div>
@@ -177,7 +177,7 @@ export default function ViewsSlug(initialData) {
                         <div className="flex-1 mb-6 md:mb-0">
                           <MetaText text={e.category.name} className="mb-3" />
 
-                          <span className="block text-[4.5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
+                          <span className="block text-[5.5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
                         </div>
 
                         <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">
@@ -203,7 +203,7 @@ export default function ViewsSlug(initialData) {
           )}
 
           <div className={`${article.related.length == 0 && 'border-t border-black'}`}>
-            <Container className="pt-12 pb-[10.5vw]">
+            <Container className="pt-8 pb-8 lg:pt-12 lg:pb-[10.5vw]">
               <Button href="/views" label="Back&nbsp;To&nbsp;Views" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the Views page"  />
             </Container>
           </div>

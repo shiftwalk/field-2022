@@ -83,9 +83,9 @@ export default function Mission(initialData) {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
           <Container>
             <article>
-              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">{mission.heroHeading}</h1>
+              <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] mb-[35vw] lg:mb-[12vw] break-hyphens">{mission.heroHeading}</h1>
 
-              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
+              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black items-center justify-center text-off-white group relative border-black border overflow-hidden hidden lg:flex">
 
                 <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
@@ -102,7 +102,7 @@ export default function Mission(initialData) {
         <SanityImage image={mission.heroImage} alt="Mission Image" bordered />
 
         <Container>
-          <div className="max-w-[96%] pt-5" ref={contentArea}>
+          <div className="max-w-[96%] pt-2 lg:pt-5" ref={contentArea}>
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">The Challenge</span>
             <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">{mission.theChallengeText}</h2>
           </div>
@@ -112,19 +112,19 @@ export default function Mission(initialData) {
           <Container noPad>
             <div className="flex flex-wrap">
               <div className="w-full md:w-1/2 aspect-[10/11]">
-                <div className="relative overflow-hidden aspect-[10/11]">
+                <div className="relative overflow-hidden aspect-[10/11] border-b md:border-b-0 md:border-r border-black">
                   <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]" />
                 </div>
               </div>
               <div className="w-full md:w-1/2 bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
-                <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
+                <h2 className="text-[5.5vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
               </div>
             </div>
           </Container>
         </div>
 
         <Container>
-          <div className="max-w-[96%] pt-5">
+          <div className="max-w-[96%] pt-2 lg:pt-5">
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">Our Plan</span>
             <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-12">{mission.ourPlanText}</h2>
             <Button href="/projects" label="See&nbsp;Our&nbsp;Projects" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[12vw]" a11yText="Navigate to the Projects Page" />
@@ -134,7 +134,7 @@ export default function Mission(initialData) {
 
         <div className="border-y border-y-black bg-purple text-off-white">
           <Container className="relative z-10">
-            <div className="max-w-[96%] pt-5">
+            <div className="max-w-[96%] pt-2 lg:pt-5">
               <span className="block uppercase text-current text-xs leading-none tracking-wider mb-[15vw] lg:mb-[10vw] 2xl:mb-[15vw]">Our Roadmap</span>
               <h2 className="text-[4.2vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none w-full max-w-[70%] md:max-w-[50%]">{mission.roadmapText}</h2>
             </div>
@@ -166,7 +166,7 @@ export default function Mission(initialData) {
                 }
                 return ( 
                   <div
-                    className={`w-1/4 ${color} p-3 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? endHeight : startHeight }`}
+                    className={`w-1/4 ${color} p-2 md:p-4 lg:p-5 xl:p-6 transition-all ease-[cubic-bezier(0.76, 0, 0.24, 1)] duration-[1000ms] delay-[250ms] relative ${ chartIsInView ? endHeight : startHeight }`}
                     key={i}
                   >
                     <span className="block mb-1 relative overflow-hidden">
@@ -176,7 +176,7 @@ export default function Mission(initialData) {
                       <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>{e.metaInfo}</span>
                     </span>
 
-                    <BatteryIcon className={`w-[20%] max-w-[45px] absolute bottom-0 left-0 m-3 md:m-4 lg:m-5 xl:m-6 transition-opacity ease-in-out duration-500 delay-[850ms] ${ chartIsInView ? 'opacity-100' : 'opacity-0' }`} />
+                    <BatteryIcon className={`w-[20%] max-w-[45px] absolute bottom-0 left-0 m-2 md:m-4 lg:m-5 xl:m-6 transition-opacity ease-in-out duration-500 delay-[850ms] ${ chartIsInView ? 'opacity-100' : 'opacity-0' }`} />
                   </div>
                 )
               })}
@@ -188,7 +188,7 @@ export default function Mission(initialData) {
           <Container>
             <div className="text-center py-[13.5vw]">
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
-              <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[2vw]">
+              <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[5vw] lg:mb-[2vw]">
                 <span className="relative inline-block">
                   <span className={`block pr-[2px] md:pr-[4px]`}>
                     {mission.impactNumber}
@@ -196,13 +196,13 @@ export default function Mission(initialData) {
                 </span>
               </span>
 
-              <h2 className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight w-full md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto">{mission.impactText}</h2>
+              <h2 className="text-base md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight w-full md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto pb-0 mb-0">{mission.impactText}</h2>
             </div>
           </Container>
         </div>
 
         <Container noPad className="py-5">
-          <div className="pt-5 px-5 md:px-6 lg:px-8">
+          <div className="pt-2 lg:pt-5 px-5 md:px-6 lg:px-8">
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">How We Do It</span>
           </div>
 

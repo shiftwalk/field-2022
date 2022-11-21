@@ -1,7 +1,7 @@
 /* Content Stylings */
 .content {
   & > p {
-    @apply mb-5 md:mb-8 last-of-type:mb-0 leading-snug md:leading-snug lg:leading-snug text-lg md:text-xl lg:text-2xl;
+    @apply mb-5 md:mb-8 last-of-type:mb-0 leading-tight md:leading-tight lg:leading-tight text-lg md:text-xl lg:text-2xl;
   }
 
   & > p > a {
@@ -9,7 +9,7 @@
   }
 
   & > ul {
-    @apply mb-8 md:mb-12 leading-snug md:leading-snug lg:leading-snug text-lg md:text-xl lg:text-2xl;
+    @apply mb-8 md:mb-12 leading-tight md:leading-tight lg:leading-tight text-lg md:text-xl lg:text-2xl;
 
     & li {
       @apply block pl-5 md:pl-6 relative mb-3;
@@ -22,7 +22,7 @@
   }
 
   & > ol {
-    @apply mb-8 md:mb-12 leading-snug md:leading-snug lg:leading-snug text-lg md:text-xl lg:text-2xl;
+    @apply mb-8 md:mb-12 leading-tight md:leading-tight lg:leading-tight text-lg md:text-xl lg:text-2xl;
 
     & li {
       @apply block pl-5 md:pl-6 relative mb-4 md:mb-5 lg:mb-6;
@@ -63,13 +63,19 @@
 
 .content--small {
   & > p {
-    @apply text-base md:text-lg lg:text-xl mb-3 md:mb-3;
+    @apply text-base md:text-lg lg:text-lg 2xl:text-xl mb-3 md:mb-3 leading-tight lg:leading-tight xl:leading-tight;
+  }
+}
+
+.content--yellow {
+  & > p {
+    @apply text-lg md:text-xl lg:text-xl 2xl:text-2xl leading-tight md:leading-tight lg:leading-tight 2xl:leading-tight;
   }
 }
 
 .content--fancy {
   & > p {
-    @apply text-[4.5vw] md:text-[2.75vw] lg:text-[2.1vw] leading-[1.1] md:leading-[1.1] lg:leading-[1.1] pb-6 md:pb-10 w-[90%];
+    @apply text-[5.8vw] md:text-[2.75vw] lg:text-[2.1vw] leading-[1.1] md:leading-[1.1] lg:leading-[1.1] pb-6 md:pb-10 w-full lg:w-[90%];
     
     &:first-of-type {
       @apply text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none pb-6 md:pb-10 w-full;

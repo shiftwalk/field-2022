@@ -84,10 +84,10 @@ export default function Careers(initialData) {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
           <Container>
             <article>
-              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[75%] break-hyphens mb-[20vw] md:mb-[16vw] lg:mb-[12vw]">{careers.heroHeading}</h1>
+              <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[75%] mb-[35vw] md:mb-[16vw] lg:mb-[12vw]">{careers.heroHeading}</h1>
 
               <div className="w-full lg:w-[50%] max-w-[880px]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">{careers.heroText}</p>
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-5 md:mb-8 leading-tight lg:leading-tight xl:leading-tight">{careers.heroText}</p>
 
                 <Button internal={false} href={careers.externalCareersLink} className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
               </div>
@@ -108,11 +108,11 @@ export default function Careers(initialData) {
                   <MetaText text="Working at Field" />
                 </div>
 
-                <div className="w-full content max-w-[90%] lg:max-w-[85%] xl:max-w-[78%]">
+                <div className="w-full content content--yellow max-w-[90%] lg:max-w-[85%] xl:max-w-[78%]">
                   <BlockContent serializers={{ container: ({ children }) => children }} blocks={careers.workingAtFieldCtaText} />
                 </div>
 
-                <div className="w-full mt-auto pt-[7vw] 2xl:pt-[12vw]">
+                <div className="w-full mt-auto pt-[7vw] lg:pt-[3.4vw] 2xl:pt-[4vw]">
                   <Button internal={false} href={careers.externalCareersLink} className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function Careers(initialData) {
         </div>
 
         <Container noPad className="relative z-10">
-          <span className="block uppercase text-current text-xs leading-none tracking-wider border-b border-black pt-8 md:pt-10 pb-[10vw] px-5 md:px-6 lg:px-8">Our Values</span>
+          <span className="block uppercase text-current text-xs leading-none tracking-wider border-b border-black pt-6 md:pt-10 pb-[10vw] px-5 md:px-6 lg:px-8">Our Values</span>
 
           <ul>
             {careers.values.map((e, i) => {
@@ -137,7 +137,7 @@ export default function Careers(initialData) {
               )
             })}
 
-            <li className="p-5 md:p-6 lg:p-8 pb-[10vw] md:pb-[8vw] lg:pb-[6vw]">
+            <li className="p-5 md:p-6 lg:p-8 pb-4 md:pb-[8vw] lg:pb-[6vw]">
               <Button internal={false} href={careers.externalCareersLink} className="inline-block text-lg lg:text-xl xl:text-2xl" label="See&nbsp;Opportunities" a11yText={"Navigate to the career opportunities page" } />
             </li>
           </ul>
@@ -145,16 +145,16 @@ export default function Careers(initialData) {
 
         <div className="bg-white border-t border-black">
           <Container>
-            <div className="pt-5 pb-[12vw]">
+            <div className="pt-2 lg:pt-5 pb-[12vw]">
               <MetaText text="Company Benefits" className="mb-[13vw]" />
               
-              <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 xl:gap-x-6 2xl:gap-x-8 gap-y-[10vw]">
+              <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 xl:gap-x-6 2xl:gap-x-8 gap-y-[16vw] lg:gap-y-[10vw]">
                 {careers.companyBenefits.map((e, i) => {
                   return ( 
                     <li className="col-span-1" key={i}>
                       <MetaText text={`#${i + 1}`} className="mb-3 md:mb-5" />
-                      <h2 className="text-[6vw] md:text-[3.9vw] lg:text-[2.7vw] leading-none md:leading-none lg:leading-none max-w-[70%] 2xl:max-w-[68%]">{e.heading}</h2>
-                      <p className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight max-w-[90%] md:max-w-[85%] 2xl:max-w-[80%] mb-0 pb-0">{e.text}</p>
+                      <h2 className="text-[8vw] md:text-[3.9vw] lg:text-[2.7vw] leading-none md:leading-none lg:leading-none max-w-[90%] 2xl:max-w-[68%]">{e.heading}</h2>
+                      <p className="text-lg md:text-xl 2xl:text-xl leading-tight md:leading-tight lg:leading-tight 2xl:leading-tight max-w-[90%] md:max-w-[85%] 2xl:max-w-[80%] mb-0 pb-0">{e.text}</p>
                     </li>
                   )
                 })}
@@ -167,7 +167,7 @@ export default function Careers(initialData) {
 
         <Container>
           <div className="max-w-[96%] py-[13.5vw]">
-            <div className="content content--fancy">
+            <div className="content content--fancy mb-[5vw] lg:mb-[2vw]">
               <BlockContent serializers={{ container: ({ children }) => children }} blocks={careers.careersCtaText} />
             </div>
 

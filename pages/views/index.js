@@ -108,9 +108,11 @@ export default function Views(initialData) {
                   <MetaText text={`Featured Article - ${da} ${mo} ${ye}`} />
                 </div>
 
-                <div className="mb-auto">
-                  <h1 className="text-[6.5vw] md:text-[4.5vw] lg:text-[3.3vw] xl:text-[3vw] leading-[1.05] md:leading-[1.05] lg:leading-[1.05] xl:leading-[1.05] xl:w-11/12">{viewsLanding.featuredArticle.title}</h1>
-                </div>
+                <Link href={`/views/${viewsLanding.featuredArticle.slug.current}`}>
+                  <a className="mb-auto">
+                    <h1 className="text-[6.5vw] md:text-[4.5vw] lg:text-[3.3vw] xl:text-[3vw] leading-[1.05] md:leading-[1.05] lg:leading-[1.05] xl:leading-[1.05] xl:w-11/12">{viewsLanding.featuredArticle.title}</h1>
+                  </a>
+                </Link>
                 
                 <div>
                   <Button href={`/views/${viewsLanding.featuredArticle.slug.current}`} className="inline-block text-lg lg:text-xl xl:text-2xl" label="Read&nbsp;Article" a11yText={"Navigate to the article page" } />
@@ -126,10 +128,10 @@ export default function Views(initialData) {
               <MetaText text="Filter By" className="px-5 md:px-4" />
             </div>
             <div className="w-full md:flex-1 px-5 md:px-6 lg:px-12 pb-6 pt-3 md:py-3">
-              <button onClick={()=> updateCategory('All')} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${'All' == currentCategory ? 'opacity-100' : 'opacity-30'}`}>Show All</button>
+              <button onClick={()=> updateCategory('All')} className={`block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${'All' == currentCategory ? 'opacity-100' : 'opacity-30'}`}>Show All</button>
               {categories.map((e, i) => {
                 return (
-                  <button onClick={()=> updateCategory(e.name)} className={`inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${e.name == currentCategory ? 'opacity-100' : 'opacity-30'}`} key={i}>{e.name}</button>    
+                  <button onClick={()=> updateCategory(e.name)} className={`block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug md:py-4 mr-5 md:mr-6 lg:mr-10 ${e.name == currentCategory ? 'opacity-100' : 'opacity-30'}`} key={i}>{e.name}</button>    
                 )
               })}
             </div>
@@ -191,7 +193,7 @@ export default function Views(initialData) {
                     <div className="flex-1 mb-6 md:mb-0">
                       <MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}`} className="mb-3" />
 
-                      <span className="block text-[4.5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
+                      <span className="block text-[5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
                     </div>
 
                     <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">

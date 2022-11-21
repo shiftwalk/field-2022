@@ -122,9 +122,9 @@ export default function Team(initialData) {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">{teamLanding.heroHeading}</h1>
-              <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">{teamLanding.heroText}</p>
+              <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-auto break-hyphens">{teamLanding.heroHeading}</h1>
+              <div className="w-full lg:w-[65%] lg:max-w-[850px]">
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-2 md:mb-4 leading-tight lg:leading-tight xl:leading-tight">{teamLanding.heroText}</p>
               </div>
             </article>
           </Container>
@@ -146,7 +146,7 @@ export default function Team(initialData) {
                   blurInputOnSelect
                   placeholder="All Departments"
                   options={departmentsDropdown}
-                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 md:mb-0"
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[1000] react-select-container mb-3 md:mb-0"
                   classNamePrefix="react-select"
                 />
 
@@ -159,7 +159,7 @@ export default function Team(initialData) {
                   blurInputOnSelect
                   placeholder="All Locations"
                   options={locationsDropdown}
-                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[100] react-select-container"
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[100] react-select-container"
                   classNamePrefix="react-select"
                 />
               </div>
@@ -188,7 +188,7 @@ export default function Team(initialData) {
 
         <div className="bg-white">
           <Container>
-            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5">
+            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-2 lg:pt-5">
               <MetaText text="Join the Team" className="mb-[13vw]" />
               <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">We're always up for speaking to great people who are determined to make the renewable transition happen.</h2>
 

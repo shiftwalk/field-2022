@@ -42,9 +42,9 @@ export default function PrivacyPolicy(initialData) {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
           <Container>
             <article className="relative">
-              <h1 className="text-[14vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">Privacy<br/>Policy</h1>
+              <h1 className="text-[8.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] break-hyphens mb-[12vw]">Privacy<br/>Policy</h1>
 
-              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden">
+              <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden opacity-0 lg:opacity-100">
 
                 <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-white md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
@@ -55,7 +55,7 @@ export default function PrivacyPolicy(initialData) {
                 </span>
               </button>
               
-              <MetaText text={`Last Updated: ${da} ${mo} ${ye}`} className="absolute bottom-0 right-0" />
+              <MetaText text={`Last Updated: ${da} ${mo} ${ye}`} className="absolute bottom-0 left-0 lg:left-auto lg:right-0" />
             </article>
           </Container>
         </div>

@@ -46,7 +46,7 @@ export const CarouselCards = ({ items }) => {
                   </div>
                   
                   <div className="w-full mt-auto self-end">
-                    <p className="block text-base md:text-lg lg:text-xl leading-tight md:leading-tight lg:leading-tight w-full max-w-[90%] md:max-w-[75%] 2xl:max-w-[65%]">{e.text}</p>
+                    <p className="block text-base md:text-lg lg:text-xl leading-tight md:leading-tight lg:leading-tight w-full max-w-[90%] md:max-w-[90%] 2xl:max-w-[70%]">{e.text}</p>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@ export const CarouselCards = ({ items }) => {
                   </div>
                   
                   <div className="w-full mt-auto self-end">
-                    <p className="block text-base md:text-lg lg:text-xl leading-tight md:leading-tight lg:leading-tight w-full max-w-[90%] md:max-w-[75%] 2xl:max-w-[65%]">{e.text}</p>
+                    <p className="block text-base md:text-lg lg:text-xl leading-tight md:leading-tight lg:leading-tight w-full max-w-[90%] md:max-w-[90%] 2xl:max-w-[70%]">{e.text}</p>
                   </div>
                 </div>
               </div>

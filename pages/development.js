@@ -102,9 +102,9 @@ export default function Development(initialData) {
 
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
-              <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">{development.heroHeading}</h1>
-              <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">{development.heroText}</p>
+              <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto ">{development.heroHeading}</h1>
+              <div className="w-full lg:w-[65%] lg:max-w-[850px]">
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-2 md:mb-4 leading-tight lg:leading-tight xl:leading-tight">{development.heroText}</p>
               </div>
             </article>
           </Container>
@@ -112,21 +112,21 @@ export default function Development(initialData) {
     
         <div className="border-b border-black">
           <Container>
-            <div className="max-w-[100%] md:max-w-[90%] lg:max-w-[90%] pt-[10vw] pb-12">
-              <div className="content content--fancy pb-[6.2vw]">
+            <div className="max-w-[100%] md:max-w-[90%] lg:max-w-[100%] 2xl:max-w-[95%] pt-[10vw] pb-12">
+              <div className="content content--fancy pb-[6.2vw] lg:pb-[2.5vw]">
                 <BlockContent serializers={{ container: ({ children }) => children }} blocks={development.introText} />
               </div>
 
-              <MetaText text="Find Out More:" className="mb-5 md:mb-6" />
+              <MetaText text="Find Out More:" className="mb-5 md:mb-4" />
 
-              <div className="content max-w-[80%] lg:max-w-none">
+              <div className="content max-w-[100%] lg:max-w-none mb-8 lg:mb-0">
                 <p>Select an option below to learn more about working with us.</p>
               </div>
 
-              <div className="lg:flex lg:space-x-3 max-w-[80%] lg:max-w-none">
+              <div className="lg:flex lg:space-x-3 max-w-[100%] lg:max-w-none">
                 {development.audiences.map((e, i) => {
                   return (
-                    <button onClick={()=> setCurrent(e.title)} className={`group block lg:inline-block w-full relative overflow-hidden lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-6 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full ${currentFor == e.title ? 'bg-black text-white' : '' }`} key={i}>
+                    <button onClick={()=> setCurrent(e.title)} className={`group block lg:inline-block w-full relative overflow-hidden lg:w-auto text-xl xl:text-2xl leading-none lg:leading-none mt-4 lg:mt-8 px-6 md:px-8 lg:px-10 pt-4 md:pt-4 pb-4 md:pb-4 border border-black rounded-full ${currentFor == e.title ? 'bg-black text-white' : '' }`} key={i}>
                       <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
                       <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
@@ -148,15 +148,15 @@ export default function Development(initialData) {
               <div className={`${currentFor == e.title ? 'block' : 'hidden'}`} key={i}>
                 {e.whyWorkWithUs?.length && (
                   <Container>
-                    <MetaText text="Why Work With Us" className="pt-6 lg:pt-12 mb-4 lg:mb-6" />
+                    <MetaText text="Why Work With Us" className="pt-2 lg:pt-12 mb-12 lg:mb-6" />
 
                     <div className={`grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8 mb-[12vw] lg:mb-[7vw]`}>
                       {e.whyWorkWithUs?.map((e, i) => {
                         return (
-                          <div className="col-span-1 flex flex-wrap" key={i}>
+                          <div className="col-span-1 flex flex-wrap whitespace-normal" key={i}>
                             <div className="bg-white border border-black p-5 aspect-square flex flex-wrap w-full">
-                              <div className="w-full mb-auto">
-                                <h2 className="text-[7.65vw] lg:text-[4.2vw] xl:text-[2.8vw] leading-[1.025] lg:leading-[1.025] xl:leading-[1.025] block w-[90%] break-words">{e.title}</h2>
+                              <div className="mb-auto w-full">
+                                <h2 className="text-[7.65vw] lg:text-[4.2vw] xl:text-[2.8vw] leading-[1.025] lg:leading-[1.025] xl:leading-[1.025] block w-[90%]"><p dangerouslySetInnerHTML={{ __html: e.title }}/></h2>
                               </div>
 
                               {e.text && (
@@ -206,9 +206,12 @@ export default function Development(initialData) {
                   </div>
 
                   <div className="w-full mt-auto">
-                    <p className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight max-w-[90%] lg:max-w-[85%] xl:max-w-[78%] mb-6 md:mb-8 pb-0">{development.orangeCtaText}</p>
+                    <p className="text-lg md:text-xl lg:text-xl 2xl:text-2xl leading-tight md:leading-tight lg:leading-tight 2xl:leading-tight max-w-[90%] lg:max-w-[85%] xl:max-w-[78%] mb-6 md:mb-8 pb-0">{development.orangeCtaText}</p>
 
-                    <Button internal={false} href="mailto:hello@field.energy" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Get&nbsp;In&nbsp;Touch" a11yText={"Contact Field Energy" } />
+                    <ContactButton
+                      hrefs={development.contactEmailLinks}
+                      className="inline-block text-xl xl:text-2xl leading-none lg:leading-none"
+                    />
                   </div>
 
                 </div>

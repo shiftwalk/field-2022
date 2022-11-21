@@ -151,10 +151,10 @@ export default function Projects(initialData) {
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
               <div className="mb-auto">
-                <h1 className="text-[15vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] break-hyphens mb-6 lg:mb-8">{projectsLanding.heroHeading}</h1>
+                <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-6 lg:mb-8">{projectsLanding.heroHeading}</h1>
               </div>
-              <div className="w-full lg:max-w-[55%]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-2 md:mb-8">{projectsLanding.heroText} <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link></p>
+              <div className="w-full lg:w-[65%] lg:max-w-[850px]">
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-2 md:mb-4 leading-tight lg:leading-tight xl:leading-tight">{projectsLanding.heroText} <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link></p>
               </div>
             </article>
           </Container>
@@ -177,7 +177,7 @@ export default function Projects(initialData) {
                     blurInputOnSelect
                     placeholder="All Storage"
                     options={storageDropdown}
-                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1001] react-select-container mb-3 lg:mb-0"
+                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[1001] react-select-container mb-3 lg:mb-0"
                     classNamePrefix="react-select"
                   />
                 )}
@@ -192,7 +192,7 @@ export default function Projects(initialData) {
                     blurInputOnSelect
                     placeholder="All Locations"
                     options={countryDropdown}
-                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[1000] react-select-container mb-3 lg:mb-0"
+                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[1000] react-select-container mb-3 lg:mb-0"
                     classNamePrefix="react-select"
                   />
                 )}
@@ -207,7 +207,7 @@ export default function Projects(initialData) {
                     blurInputOnSelect
                     placeholder="All"
                     options={statusDropdown}
-                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 mr-3 relative z-[999] react-select-container"
+                    className="block lg:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[999] react-select-container"
                     classNamePrefix="react-select"
                   />
                 )}
@@ -241,19 +241,19 @@ export default function Projects(initialData) {
                     <div className={`w-full border-black border col-span-1 flex flex-col group-hover:bg-white ${ currentView == 'grid' ? 'lg:aspect-square' : '' }`} key={i}>
                       <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
                         <span className="flex space-x-2 py-2 items-center">
-                          <span className="px-3 py-[9px] text-white rounded-full border border-current" style={{ backgroundColor: e.storage.tagColor.hex}}><MetaText text={e.storage.name} className="text-white" /></span>
-                          <span className={`px-3 rounded-full ${e.status.name == 'Operational' ? 'bg-orange text-white border border-current py-[9px]' : 'border border-black text-black py-2'}`}><MetaText text={e.status.name} className={e.status.name == 'Operational' ? 'text-white' : 'text-black'} /></span>
+                          <span className="px-3 py-[7px] lg:py-[9px] text-white rounded-full border border-current" style={{ backgroundColor: e.storage.tagColor.hex}}><MetaText text={e.storage.name} className="text-[10px] lg:text-xs text-white" /></span>
+                          <span className={`px-3 rounded-full ${e.status.name == 'Operational' ? 'bg-orange text-white border border-current py-[7px] lg:py-[9px]' : 'border border-black text-black py-[6px] lg:py-2'}`}><MetaText text={e.status.name} className={`${e.status.name == 'Operational' ? 'text-white' : 'text-black'} text-[10px] md:text-xs `} /></span>
                         </span>
 
                         <span className="border-l border-black ml-auto flex items-center justify-center py-2 pl-3">
-                          <BatteryIcon className="w-[35px]" />
+                          <BatteryIcon className="w-[28px] lg:w-[35px]" />
                         </span>
                       </div>
 
-                      <div className={`${currentView == 'grid' ? 'py-[7.5vw]' : 'pt-5 pb-2' }`}>
+                      <div className={`${currentView == 'grid' ? 'py-[10.5vw] lg:py-[7.5vw]' : 'pt-5 pb-2' }`}>
                         <div className="flex flex-wrap items-center">
                           <div className="w-full md:flex-1">
-                            <span className={`px-3 block ${ currentView == 'grid' ? 'text-[7vw] lg:text-[5vw] xl:text-[3.5vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none`}>{e.name}<span className={`${currentView == 'grid' ? 'block w-full' : 'inline-block ml-2' } text-black text-opacity-10 mb-auto`}>{e.country.name}</span></span>
+                            <span className={`px-3 block ${ currentView == 'grid' ? 'text-[8.5vw] lg:text-[5vw] xl:text-[3.5vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none`}>{e.name}<span className={`${currentView == 'grid' ? 'block w-full' : 'inline-block ml-2' } text-black text-opacity-10 mb-auto`}>{e.country.name}</span></span>
                           </div>
 
                           <div className={`w-full md:flex-1 px-3 py-2 items-end ${currentView == 'grid' ? 'hidden' : 'flex'}`}>
@@ -261,7 +261,7 @@ export default function Projects(initialData) {
                               <span className={`block ${currentView == 'grid' ? 'text-[4vw] md:text-[3vw] xl:text-[2vw]' : 'text-2xl lg:text-3xl xl:text-4xl' } leading-none md:leading-none xl:leading-none`}>{e.mwh}&nbsp;MWh</span>
                               
                               { e.googleMapsUrl && (
-                                <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                                <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[1px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-full lg:w-0 group-hover:w-full h-[1px]"></span></span>
                               )}
                             </div>
                           </div>
@@ -271,7 +271,7 @@ export default function Projects(initialData) {
                       <div className={`px-3 py-2 w-full mt-auto items-end ${currentView == 'grid' ? 'flex' : 'hidden' }`}>
                         <span className="block text-[4vw] md:text-[3vw] xl:text-[2vw] leading-none md:leading-none xl:leading-none">{e.mwh}&nbsp;MWh</span>
                         { e.googleMapsUrl && (
-                          <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-0 group-hover:w-full h-[1px]"></span></span>
+                          <span className="block text-base md:text-lg xl:text-xl leading-none md:leading-none xl:leading-none ml-auto text-right relative pb-[2px] mb-[2px]">See Location<span className="absolute bottom-0 left-0 right-0 bg-black w-full lg:w-0 group-hover:w-full h-[1px]"></span></span>
                         )}
                       </div>
                     </div>
@@ -302,7 +302,7 @@ export default function Projects(initialData) {
 
         <div className="bg-white">
           <Container>
-            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-5">
+            <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%] pt-2 lg:pt-5">
               <MetaText text="Development" className="mb-[13vw]" />
               <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-8 md:mb-10">{projectsLanding.developmentCtaText}</h2>
 

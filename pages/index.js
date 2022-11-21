@@ -85,9 +85,9 @@ export default function Home(initialData) {
           <Container className="h-full flex flex-col relative z-10">
             <article className="h-full flex flex-col">
               
-              <h1 className="text-[17vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto break-hyphens">{home.heroHeading}</h1>
-              <div className="w-full lg:w-[50%] max-w-[880px]">
-                <p className="text-lg lg:text-xl xl:text-2xl mb-5 md:mb-8 leading-snug lg:leading-snug xl:leading-snug">{home.heroText}</p>
+              <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto">{home.heroHeading}</h1>
+              <div className="w-full lg:w-[65%] lg:max-w-[850px]">
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-5 md:mb-8 leading-tight lg:leading-tight xl:leading-tight">{home.heroText}</p>
 
                 <Button href="/mission" className="inline-block text-lg lg:text-xl xl:text-2xl" label="Our&nbsp;Mission" a11yText={"Navigate to the mission page" } />
               </div>
@@ -103,7 +103,7 @@ export default function Home(initialData) {
                   <div className="w-full lg:w-1/3 md:px-5 flex flex-col mb-12 lg:mb-0" key={i}>
                     <span className="block uppercase text-current text-xs leading-none tracking-wider mb-5 w-full">{e.metaHeading}</span>
 
-                    <h2 className="text-[6vw] md:text-[4.75vw] lg:text-[2.5vw] xl:text-[2.25vw] leading-none md:leading-none lg:leading-none xl:leading-none mb-6 lg:mb-8 pb-0 w-[90%] xl:w-[85%]">{e.text}</h2>
+                    <h2 className="text-[6vw] md:text-[4.75vw] lg:text-[2.5vw] xl:text-[2.25vw] leading-[1.05] md:leading-[1.05] lg:leading-[1.05] xl:leading-[1.05] mb-6 lg:mb-8 pb-0 w-[90%] xl:w-[85%]">{e.text}</h2>
 
                     <div className="relative overflow-hidden w-full mt-auto">
                       <div className="w-full mt-auto">
