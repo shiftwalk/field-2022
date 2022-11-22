@@ -3,13 +3,14 @@ import Footer from '@/components/footer'
 import Container from '@/components/container'
 import { useInView } from "framer-motion"
 import { NextSeo } from 'next-seo'
-import LocalImage from '@/components/local-image'
+import BlockContent from '@sanity/block-content-to-react'
 import BatteryIcon from '@/icons/battery.svg'
 import { useRef } from 'react'
 import Button from '@/components/button'
 import { CarouselCards } from '@/components/carousel-cards'
 import SanityPageService from '@/services/sanityPageService'
 import SanityImage from '@/components/sanity-image'
+import { useCountUp } from 'react-countup';
 
 const query = `{
   "mission": *[_type == "missionNew"][0]{
@@ -64,6 +65,8 @@ const pageService = new SanityPageService(query)
 
 export default function Mission(initialData) {
   const { data: { mission }  } = pageService.getPreviewHook(initialData)()
+  const numberEnd = mission.impactNumber.replaceAll(',','')
+  const numberStart = numberEnd / 2
 
   const charts = useRef(null)
   const contentArea = useRef(null)
@@ -72,6 +75,18 @@ export default function Mission(initialData) {
     once: true,
     margin: "0px 60% -60% 0px"
   })
+
+  useCountUp({
+    ref: 'counter',
+    start: numberStart,
+    end: numberEnd,
+    separator: ",",
+    duration: 2,
+    enableScrollSpy: true,
+    useEasing: true,
+    smartEasingAmount: numberStart,
+    smartEasingThreshold: numberStart
+  });
 
   const executeScroll = () => contentArea.current.scrollIntoView({behavior: "smooth"})    
 
@@ -111,13 +126,13 @@ export default function Mission(initialData) {
         <div className="border-y border-y-black">
           <Container noPad>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-1/2 aspect-[10/11]">
+              <div className="w-full md:w-[43%] aspect-[10/11]">
                 <div className="relative overflow-hidden aspect-[10/11] border-b md:border-b-0 md:border-r border-black">
                   <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]" />
                 </div>
               </div>
-              <div className="w-full md:w-1/2 bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
-                <h2 className="text-[5.5vw] md:text-[3.2vw] lg:text-[2.5vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
+              <div className="w-full md:w-[57%] bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
+                <h2 className="text-[5.5vw] md:text-[3.6vw] lg:text-[3vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
               </div>
             </div>
           </Container>
@@ -126,7 +141,10 @@ export default function Mission(initialData) {
         <Container>
           <div className="max-w-[96%] pt-2 lg:pt-5">
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">Our Plan</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-12">{mission.ourPlanText}</h2>
+            <div className="content content--fancy mb-12">
+              <BlockContent serializers={{ container: ({ children }) => children }} blocks={mission.ourPlanText} />
+            </div>
+
             <Button href="/projects" label="See&nbsp;Our&nbsp;Projects" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug mb-[12vw]" a11yText="Navigate to the Projects Page" />
           </div>
         </Container>
@@ -188,9 +206,9 @@ export default function Mission(initialData) {
           <Container>
             <div className="text-center py-[13.5vw]">
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
-              <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[5vw] lg:mb-[2vw]">
+              <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[5vw] lg:mb-[3vw]">
                 <span className="relative inline-block">
-                  <span className={`block pr-[2px] md:pr-[4px]`}>
+                  <span className={`block pr-[2px] md:pr-[4px] tabular-nums`} id="counter">
                     {mission.impactNumber}
                   </span>
                 </span>

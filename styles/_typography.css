@@ -5,7 +5,7 @@
   }
 
   & > p > a {
-    @apply underline hover:text-opacity-25 focus:text-opacity-25;
+    @apply underline hover:text-orange/80 focus:text-orange/80;
   }
 
   & > ul {

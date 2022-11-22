@@ -40,6 +40,7 @@
     "postcss-nested": "^5.0.5",
     "postcss-preset-env": "^6.7.0",
     "react": "^18.1.0",
+    "react-countup": "^6.3.2",
     "react-device-detect": "^2.2.2",
     "react-div-100vh": "^0.7.0",
     "react-dom": "^18.1.0",

@@ -154,7 +154,7 @@ export default function Projects(initialData) {
                 <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[60%] mb-6 lg:mb-8">{projectsLanding.heroHeading}</h1>
               </div>
               <div className="w-full lg:w-[65%] lg:max-w-[850px]">
-                <p className="text-lg lg:text-xl 2xl:text-2xl mb-2 md:mb-4 leading-tight lg:leading-tight xl:leading-tight">{projectsLanding.heroText} <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Developments section</span> <span className="inline">→</span></a></Link></p>
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-2 md:mb-4 leading-tight lg:leading-tight xl:leading-tight">{projectsLanding.heroText} <Link href="/development"><a className=""><span className="inline underline">Looking to partner with Field? See our Development section</span> <span className="inline">→</span></a></Link></p>
               </div>
             </article>
           </Container>
@@ -241,8 +241,8 @@ export default function Projects(initialData) {
                     <div className={`w-full border-black border col-span-1 flex flex-col group-hover:bg-white ${ currentView == 'grid' ? 'lg:aspect-square' : '' }`} key={i}>
                       <div className="flex flex-wrap px-3 border-b border-black w-full mb-auto">
                         <span className="flex space-x-2 py-2 items-center">
-                          <span className="px-3 py-[7px] lg:py-[9px] text-white rounded-full border border-current" style={{ backgroundColor: e.storage.tagColor.hex}}><MetaText text={e.storage.name} className="text-[10px] lg:text-xs text-white" /></span>
-                          <span className={`px-3 rounded-full ${e.status.name == 'Operational' ? 'bg-orange text-white border border-current py-[7px] lg:py-[9px]' : 'border border-black text-black py-[6px] lg:py-2'}`}><MetaText text={e.status.name} className={`${e.status.name == 'Operational' ? 'text-white' : 'text-black'} text-[10px] md:text-xs `} /></span>
+                          <span className="px-3 py-[7px] lg:py-[9px] text-white rounded-full" style={{ backgroundColor: e.storage.tagColor.hex}}><MetaText text={e.storage.name} className="text-[10px] lg:text-xs text-white" /></span>
+                          <span className={`px-3 rounded-full ${e.status.name == 'Operational' ? 'bg-orange text-white py-[7px] lg:py-[9px]' : 'bg-blue-dark text-white py-[7px] lg:py-[9px]'}`}><MetaText text={e.status.name} className={`${e.status.name == 'Operational' ? 'text-white' : 'text-white'} text-[10px] md:text-xs `} /></span>
                         </span>
 
                         <span className="border-l border-black ml-auto flex items-center justify-center py-2 pl-3">
@@ -285,8 +285,8 @@ export default function Projects(initialData) {
                     <span className="py-2 "><MetaText text="Pipeline" /></span>
                   </div>
 
-                  <div className="w-full py-12">
-                    <span className="px-3 block text-[6vw] lg:text-[3vw] xl:text-[2.5vw] leading-none max-w-[90%]">{projectsLanding.pipelineCtaText}</span>
+                  <div className="w-full py-12 lg:py-6">
+                    <span className="px-3 block text-[5.5vw] lg:text-[2.7vw] xl:text-[2vw] leading-none lg:leading-none xl:leading-none max-w-[90%]">{projectsLanding.pipelineCtaText}</span>
                   </div>
                   
                   <div className="px-3 py-2 w-full mt-auto self-end">

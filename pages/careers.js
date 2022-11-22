@@ -32,6 +32,17 @@ const query = `{
       text
     },
     companyBenefits[] {
+      icon {
+        asset-> {
+          ...
+        },
+        caption,
+        alt,
+        hotspot {
+          x,
+          y
+        },
+      },
       heading,
       text
     },
@@ -152,7 +163,11 @@ export default function Careers(initialData) {
                 {careers.companyBenefits.map((e, i) => {
                   return ( 
                     <li className="col-span-1" key={i}>
-                      <MetaText text={`#${i + 1}`} className="mb-3 md:mb-5" />
+                      <span className="block relative w-10 md:w-12 xl:w-14 mb-6">
+                        <SanityImage image={e.icon} className="w-full" noBg />
+                      </span>
+
+                      {/* <MetaText text={`#${i + 1}`} className="mb-3 md:mb-5" /> */}
                       <h2 className="text-[8vw] md:text-[3.9vw] lg:text-[2.7vw] leading-none md:leading-none lg:leading-none max-w-[90%] 2xl:max-w-[68%]">{e.heading}</h2>
                       <p className="text-lg md:text-xl 2xl:text-xl leading-tight md:leading-tight lg:leading-tight 2xl:leading-tight max-w-[90%] md:max-w-[85%] 2xl:max-w-[80%] mb-0 pb-0">{e.text}</p>
                     </li>

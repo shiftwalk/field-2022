@@ -32,7 +32,7 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
   if (priority) { attributes.priority = true } else { attributes.priority = false }
 
 	return (
-    <div className={`bg-blue relative overflow-hidden h-full z-10`}>
+    <div className={`${noBg ? '' : 'bg-blue'} relative overflow-hidden h-full z-10`}>
     { bordered && (
       <>
         <div className="border-t border-t-black border-b border-b-black absolute inset-0 h-full w-full z-10"></div>
