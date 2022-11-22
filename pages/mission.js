@@ -109,7 +109,7 @@ export default function Mission(initialData) {
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
-          <Container>
+          <Container> 
             <article>
               <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[93%] mb-[35vw] lg:mb-[12vw] break-hyphens">{mission.heroHeading}</h1>
 
