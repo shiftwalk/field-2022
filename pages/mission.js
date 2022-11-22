@@ -139,13 +139,13 @@ export default function Mission(initialData) {
         <div className="border-y border-y-black">
           <Container noPad>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-[43%] aspect-[10/11]">
-                <div className="relative overflow-hidden aspect-[10/11] border-b md:border-b-0 md:border-r border-black">
-                  <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/11]" />
+              <div className="w-full md:w-[55%] aspect-[10/4.5]">
+                <div className="relative overflow-hidden aspect-[10/4.5] border-b md:border-b-0 md:border-r border-black">
+                  <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/4.5]" />
                 </div>
               </div>
-              <div className="w-full md:w-[57%] bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
-                <h2 className="text-[5.5vw] md:text-[3.6vw] lg:text-[3vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
+              <div className="w-full md:w-[45%] bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
+                <h2 className="text-[5.5vw] md:text-[3.4vw] lg:text-[2.8vw] leading-[1.125] md:leading-none lg:leading-none max-w-[90%] lg:max-w-[85%] mb-0 pb-0">{mission.theChallengeCTAText}</h2>
               </div>
             </div>
           </Container>
