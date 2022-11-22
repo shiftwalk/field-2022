@@ -164,7 +164,7 @@ export default function Careers(initialData) {
                   return ( 
                     <li className="col-span-1" key={i}>
                       <span className="block relative w-10 md:w-12 xl:w-14 mb-6">
-                        <SanityImage image={e.icon} className="w-full" noBg />
+                        <SanityImage image={e.icon} className="w-full" noBg noLoader />
                       </span>
 
                       {/* <MetaText text={`#${i + 1}`} className="mb-3 md:mb-5" /> */}

@@ -4,7 +4,7 @@ import { useNextSanityImage } from 'next-sanity-image'
 import { useState } from "react"
 import Container from './container'
 
-export default function SanityImage({ bordered, image, layout, widthOverride, heightOverride, focalPoint, className, priority, noCaption, noBg, sizes }) {
+export default function SanityImage({ bordered, image, layout, widthOverride, heightOverride, focalPoint, className, priority, noCaption, noBg, sizes, noLoader }) {
   const [imageIsLoaded, setImageIsLoaded] = useState(false)
   
   // Pass in custom URL builder props
@@ -41,8 +41,10 @@ export default function SanityImage({ bordered, image, layout, widthOverride, he
         </div>
       </>
     )}
-
-    <div className={`absolute z-10 top-0 right-0 bottom-0 h-full bg-black ${imageIsLoaded ? 'w-0' : 'w-full'} transition-all duration-[1300ms] ease-[cubic-bezier(0.77,0,0.18,1)]`}></div>
+    
+    {!noLoader && (
+      <div className={`absolute z-10 top-0 right-0 bottom-0 h-full bg-black ${imageIsLoaded ? 'w-0' : 'w-full'} transition-all duration-[1300ms] ease-[cubic-bezier(0.77,0,0.18,1)]`}></div>
+    )}
 
       <figure className={`image ${className} ${layout == 'fill' && 'cover-image' } ${imageIsLoaded ? 'opacity-100 scale-100' : 'opacity-100 scale-110'} transition-all duration-[1700ms] ease-[cubic-bezier(0.76, 0, 0.24, 1)]`}>
         <Img

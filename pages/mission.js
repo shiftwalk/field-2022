@@ -5,7 +5,7 @@ import { useInView } from "framer-motion"
 import { NextSeo } from 'next-seo'
 import BlockContent from '@sanity/block-content-to-react'
 import BatteryIcon from '@/icons/battery.svg'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '@/components/button'
 import { CarouselCards } from '@/components/carousel-cards'
 import SanityPageService from '@/services/sanityPageService'
@@ -65,15 +65,21 @@ const pageService = new SanityPageService(query)
 
 export default function Mission(initialData) {
   const { data: { mission }  } = pageService.getPreviewHook(initialData)()
+  const [numberStart, setNumberStart] = useState(mission.impactNumber.replaceAll(',','') / 2)
+
   const numberEnd = mission.impactNumber.replaceAll(',','')
-  const numberStart = numberEnd / 2
 
   const charts = useRef(null)
   const contentArea = useRef(null)
+  const countUpArea = useRef(null)
 
   const chartIsInView = useInView(charts, { 
     once: true,
     margin: "0px 60% -60% 0px"
+  })
+
+  const countUpIsInView = useInView(countUpArea, { 
+    once: false
   })
 
   useCountUp({
@@ -82,11 +88,18 @@ export default function Mission(initialData) {
     end: numberEnd,
     separator: ",",
     duration: 2,
-    enableScrollSpy: true,
     useEasing: true,
     smartEasingAmount: numberStart,
     smartEasingThreshold: numberStart
   });
+
+  useEffect(() => {
+    if (countUpIsInView) {
+      setNumberStart(mission.impactNumber.replaceAll(',','') / 2);
+    } else {
+      setNumberStart(undefined);
+    }
+  }, [countUpIsInView]);
 
   const executeScroll = () => contentArea.current.scrollIntoView({behavior: "smooth"})    
 
@@ -207,7 +220,7 @@ export default function Mission(initialData) {
             <div className="text-center py-[13.5vw]">
               <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[3vw]">The Impact</span>
               <span className="block text-[14.5vw] md:text-[14vw] uppercase italic leading-none md:leading-[0.85] mb-[5vw] lg:mb-[3vw]">
-                <span className="relative inline-block">
+                <span className="relative inline-block" ref={countUpArea}>
                   <span className={`block pr-[2px] md:pr-[4px] tabular-nums`} id="counter">
                     {mission.impactNumber}
                   </span>
