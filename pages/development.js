@@ -154,7 +154,7 @@ export default function Development(initialData) {
                       {e.whyWorkWithUs?.map((e, i) => {
                         return (
                           <div className="col-span-1 flex flex-wrap whitespace-normal" key={i}>
-                            <div className="bg-white border border-black p-5 aspect-square flex flex-wrap w-full">
+                            <div className="bg-white border border-black p-5 aspect-square flex flex-wrap w-full hover:bg-off-white">
                               <div className="mb-auto w-full">
                                 <h2 className="text-[7.65vw] lg:text-[4.2vw] xl:text-[2.8vw] leading-[1.025] lg:leading-[1.025] xl:leading-[1.025] block w-[90%]"><p dangerouslySetInnerHTML={{ __html: e.title }}/></h2>
                               </div>

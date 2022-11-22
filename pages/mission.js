@@ -181,19 +181,24 @@ export default function Mission(initialData) {
                 let endHeight = 'h-[20%]' 
                 
                 if (i == 1) {
-                  startHeight = 'h-[20%]' 
+                  startHeight = 'h-[10%]' 
                   endHeight = 'h-[40%]' 
                   color = 'bg-blue'
                 }
                 if (i == 2) {
-                  startHeight = 'h-[30%]' 
+                  startHeight = 'h-[10%]' 
                   endHeight = 'h-[65%]' 
                   color = 'bg-orange'
                 }
                 if (i == 3) {
-                  startHeight = 'h-[40%]' 
-                  endHeight = 'h-[97%]' 
+                  startHeight = 'h-[10%]' 
+                  endHeight = 'h-[80%]' 
                   color = 'bg-yellow'
+                }
+                if (i == 4) {
+                  startHeight = 'h-[10%]' 
+                  endHeight = 'h-[97%]' 
+                  color = 'bg-off-white'
                 }
                 return ( 
                   <div
@@ -204,7 +209,7 @@ export default function Mission(initialData) {
                       <span className={`block transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[800ms]' : 'translate-y-full' }`}>{e.year}</span>
                     </span>
                     <span className="block relative overflow-hidden">
-                      <span className={`block text-[2.5vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>{e.metaInfo}</span>
+                      <span className={`block text-[2.25vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>{e.metaInfo}</span>
                     </span>
 
                     <BatteryIcon className={`w-[20%] max-w-[45px] absolute bottom-0 left-0 m-2 md:m-4 lg:m-5 xl:m-6 transition-opacity ease-in-out duration-500 delay-[850ms] ${ chartIsInView ? 'opacity-100' : 'opacity-0' }`} />

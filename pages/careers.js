@@ -27,10 +27,12 @@ const query = `{
       },
     },
     workingAtFieldCtaText,
+    valuesIntroText,
     values[] {
       heading,
       text
     },
+    companyBenefitsIntroText,
     companyBenefits[] {
       icon {
         asset-> {
@@ -132,7 +134,10 @@ export default function Careers(initialData) {
         </div>
 
         <Container noPad className="relative z-10">
-          <span className="block uppercase text-current text-xs leading-none tracking-wider border-b border-black pt-6 md:pt-10 pb-[10vw] px-5 md:px-6 lg:px-8">Our Values</span>
+          <span className="block uppercase text-current text-xs leading-none tracking-wider pt-6 md:pt-10 px-5 md:px-6 lg:px-8 pb-[10vw] lg:pb-[5vw]">Our Values</span>
+
+          <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none pb-[12vw] lg:pb-[7vw] px-5 md:px-6 lg:px-8 border-b border-black">
+          <span className="block w-[95%]">{careers.valuesIntroText}</span></h2>
 
           <ul>
             {careers.values.map((e, i) => {
@@ -157,13 +162,15 @@ export default function Careers(initialData) {
         <div className="bg-white border-t border-black">
           <Container>
             <div className="pt-2 lg:pt-5 pb-[12vw]">
-              <MetaText text="Company Benefits" className="mb-[13vw]" />
+              <span className="block uppercase text-current text-xs leading-none tracking-wider pb-[10vw] lg:pb-[5vw]">Company Benefits</span>
+
+              <h2 className="text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none pb-[14vw] lg:pb-[8vw]"><span className="block w-[95%]">{careers.companyBenefitsIntroText}</span></h2>
               
               <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-5 xl:gap-x-6 2xl:gap-x-8 gap-y-[16vw] lg:gap-y-[10vw]">
                 {careers.companyBenefits.map((e, i) => {
                   return ( 
                     <li className="col-span-1" key={i}>
-                      <span className="block relative w-10 md:w-12 xl:w-14 mb-6">
+                      <span className="block relative w-8 md:w-10 xl:w-12 mb-6">
                         <SanityImage image={e.icon} className="w-full" noBg noLoader />
                       </span>
 

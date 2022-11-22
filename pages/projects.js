@@ -16,7 +16,7 @@ import ConditionalWrap from 'conditional-wrap'
 import SanityImage from '@/components/sanity-image'
 
 const query = `{
-  "projects": *[_type == "projects"] | order(orderRank desc) {
+  "projects": *[_type == "projects"] | order(status->name == 'Operational') {
     name,
     mwh,
     status->{
