@@ -16,7 +16,7 @@ import ConditionalWrap from 'conditional-wrap'
 import SanityImage from '@/components/sanity-image'
 
 const query = `{
-  "projects": *[_type == "projects"] | order(status->name == 'Operational') {
+  "projects": *[_type == "projects"] | order((status->name == 'Operational') desc) {
     name,
     mwh,
     status->{
@@ -107,7 +107,7 @@ export default function Projects(initialData) {
     setCurrentStatus(selectedValue.value)
   }
 
-  let filteredProjects = projects.reverse()
+  let filteredProjects = projects
   filteredProjects = (currentCountry !== 'All') ? filteredProjects.filter(d => d.country.name == currentCountry) : filteredProjects
   filteredProjects = (currentStorage !== 'All') ? filteredProjects.filter(d => d.storage.name == currentStorage) : filteredProjects
   filteredProjects = (currentStatus !== 'All') ? filteredProjects.filter(d => d.status.name == currentStatus) : filteredProjects
