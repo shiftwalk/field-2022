@@ -108,9 +108,9 @@ export default function Projects(initialData) {
   }
 
   let filteredProjects = projects
-  filteredProjects = (currentCountry !== 'All') ? filteredProjects.filter(d => d.country.name == currentCountry) : filteredProjects
-  filteredProjects = (currentStorage !== 'All') ? filteredProjects.filter(d => d.storage.name == currentStorage) : filteredProjects
-  filteredProjects = (currentStatus !== 'All') ? filteredProjects.filter(d => d.status.name == currentStatus) : filteredProjects
+  filteredProjects = (currentCountry !== 'All') ? filteredProjects.filter(d => d.country.name == currentCountry) : filteredProjects.reverse()
+  filteredProjects = (currentStorage !== 'All') ? filteredProjects.filter(d => d.storage.name == currentStorage) : filteredProjects.reverse()
+  filteredProjects = (currentStatus !== 'All') ? filteredProjects.filter(d => d.status.name == currentStatus) : filteredProjects.reverse()
 
   return (
     <Layout>
@@ -227,7 +227,7 @@ export default function Projects(initialData) {
         <div className="">
           <Container className="pt-[6vw] pb-[12vw]">
             <div className={`grid ${currentView == 'grid' ? 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-8' : 'grid-cols-1 gap-5 md:gap-8' }`}>
-              {filteredProjects.reverse().map((e, i) => {
+              {filteredProjects.map((e, i) => {
                 return (
                   <ConditionalWrap
                     key={`location-${i}`}
