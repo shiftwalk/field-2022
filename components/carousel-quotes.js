@@ -14,9 +14,9 @@ export const CarouselQuotes = ({ items }) => {
 
   return (
     <div>
-      <Container>
-        <div className="flex space-x-3 lg:justify-end">
-          <button onClick={scrollPrev} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden">
+      <Container className="relative">
+        <div className="flex lg:justify-end absolute left-0 right-0 z-10 top-[250%] px-3 md:px-4 lg:px-5 pointer-events-none">
+          <button onClick={scrollPrev} className="pointer-events-auto rounded-full w-[46px] h-[46px] md:w-[55px] md:h-[55px] xl:w-[74px] xl:h-[74px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden mr-auto bg-off-white">
 
             <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
@@ -27,7 +27,7 @@ export const CarouselQuotes = ({ items }) => {
             </span>
           </button>
 
-          <button onClick={scrollNext} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden">
+          <button onClick={scrollNext} className="pointer-events-auto rounded-full w-[46px] h-[46px] md:w-[55px] md:h-[55px] xl:w-[74px] xl:h-[74px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden ml-auto bg-off-white">
 
             <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 

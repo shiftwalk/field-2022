@@ -28,24 +28,24 @@ export const CarouselCards = ({ items }) => {
   }, [embla, setScrollSnaps, onSelect]);
 
   return (
-    <>
-      <div className="flex space-x-3 py-5">
-        <button disabled={!prevBtnEnabled} onClick={scrollPrev} className={`rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden ${prevBtnEnabled ? '' : 'cursor-disabled pointer-events-none opacity-20' }`}>
+    <div className="relative">
+      <div className="flex flex-wrap py-5 absolute top-[35%] left-0 right-0 w-full z-10 pointer-events-none">
+        <button disabled={!prevBtnEnabled} onClick={scrollPrev} className={`rounded-full w-[46px] h-[46px] md:w-[55px] md:h-[55px] xl:w-[74px] xl:h-[74px] bg-off-white flex items-center justify-center text-black group relative border-black border translate-x-[-50%] overflow-hidden mr-auto pointer-events-auto ${prevBtnEnabled ? '' : 'cursor-disabled pointer-events-none' }`}>
 
           <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
-          <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
+          <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms] ${prevBtnEnabled ? '' : 'opacity-20' }`}>
             <span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] mt-[3px] md:mt-[4px] xl:mt-[6px] rotate-180">
               →
             </span>
           </span>
         </button>
 
-        <button disabled={!nextBtnEnabled} onClick={scrollNext} className={`rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-none flex items-center justify-center text-black group relative border-black border overflow-hidden ${nextBtnEnabled ? '' : 'cursor-disabled pointer-events-none opacity-20' }`}>
+        <button disabled={!nextBtnEnabled} onClick={scrollNext} className={`rounded-full w-[46px] h-[46px] md:w-[55px] md:h-[55px] xl:w-[74px] xl:h-[74px] bg-off-white flex items-center justify-center text-black group relative border-black border overflow-hidden translate-x-[20%] ml-auto self-end pointer-events-auto ${nextBtnEnabled ? '' : 'cursor-disabled pointer-events-none' }`}>
 
           <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
 
-          <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
+          <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms] ${nextBtnEnabled ? '' : 'opacity-20' }`}>
             <span className="block leading-none md:leading-none xl:leading-none text-[30px] md:text-[35px] xl:text-[50px] mt-[-3px] md:mt-[-4px] xl:mt-[-6px]">
               →
             </span>
@@ -72,6 +72,6 @@ export const CarouselCards = ({ items }) => {
           })}
         </div>
       </div>
-    </>
+    </div>
   )
 }

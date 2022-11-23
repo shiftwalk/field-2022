@@ -75,10 +75,10 @@
 
 .content--fancy {
   & > p {
-    @apply text-[5.8vw] md:text-[2.75vw] lg:text-[2.1vw] leading-[1.1] md:leading-[1.1] lg:leading-[1.1] pb-6 md:pb-10 w-full lg:w-[90%];
+    @apply text-[4.4vw] md:text-[2.75vw] lg:text-[2.1vw] leading-[1.125] md:leading-[1.125] lg:leading-[1.125] mb-6 md:mb-10 w-full lg:w-[90%];
     
     &:first-of-type {
-      @apply text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none pb-6 md:pb-10 w-full;
+      @apply text-[7vw] md:text-[5vw] lg:text-[4vw] leading-none md:leading-none lg:leading-none mb-6 md:mb-10 w-full;
     }
   }
 }

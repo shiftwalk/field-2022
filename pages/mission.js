@@ -65,6 +65,12 @@ const pageService = new SanityPageService(query)
 
 export default function Mission(initialData) {
   const { data: { mission }  } = pageService.getPreviewHook(initialData)()
+  if(typeof String.prototype.replaceAll === "undefined") {
+    String.prototype.replaceAll = function(match, replace) {
+       return this.replace(new RegExp(match, 'g'), () => replace);
+    }
+  }
+  
   const [numberStart, setNumberStart] = useState(mission.impactNumber.replaceAll(',','') / 2)
 
   const numberEnd = mission.impactNumber.replaceAll(',','')
@@ -132,7 +138,9 @@ export default function Mission(initialData) {
         <Container>
           <div className="max-w-[96%] pt-2 lg:pt-5" ref={contentArea}>
             <span className="block uppercase text-soft-black text-xs leading-none tracking-wider mb-[13.5vw]">The Challenge</span>
-            <h2 className="text-[5.5vw] md:text-[3.65vw] leading-[1.125] md:leading-none mb-[13.5vw]">{mission.theChallengeText}</h2>
+            <div className="content content--fancy mb-[13.5vw]">
+              <BlockContent serializers={{ container: ({ children }) => children }} blocks={mission.theChallengeText} />
+            </div>
           </div>
         </Container>
 
