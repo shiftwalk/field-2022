@@ -29,7 +29,7 @@ export const CarouselCards = ({ items }) => {
 
   return (
     <div className="relative">
-      <div className="flex flex-wrap py-5 absolute top-[35%] left-0 right-0 w-full z-[10000] pointer-events-none">
+      <div className="flex flex-wrap py-5 absolute top-[35%] left-0 right-0 w-full z-[999] pointer-events-none">
         <button disabled={!prevBtnEnabled} onClick={scrollPrev} className={`rounded-full w-[46px] h-[46px] md:w-[55px] md:h-[55px] xl:w-[74px] xl:h-[74px] bg-off-white flex items-center justify-center text-black group relative border-black border translate-x-[-50%] overflow-hidden mr-auto pointer-events-auto ${prevBtnEnabled ? '' : 'cursor-disabled pointer-events-none' }`}>
 
           <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>

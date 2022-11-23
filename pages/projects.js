@@ -107,10 +107,10 @@ export default function Projects(initialData) {
     setCurrentStatus(selectedValue.value)
   }
 
-  let filteredProjects = projects
-  filteredProjects = (currentCountry !== 'All') ? filteredProjects.filter(d => d.country.name == currentCountry) : filteredProjects.reverse()
-  filteredProjects = (currentStorage !== 'All') ? filteredProjects.filter(d => d.storage.name == currentStorage) : filteredProjects.reverse()
-  filteredProjects = (currentStatus !== 'All') ? filteredProjects.filter(d => d.status.name == currentStatus) : filteredProjects.reverse()
+  let filteredProjects = projects.reverse()
+  filteredProjects = (currentCountry !== 'All') ? filteredProjects.filter(d => d.country.name == currentCountry) : filteredProjects
+  filteredProjects = (currentStorage !== 'All') ? filteredProjects.filter(d => d.storage.name == currentStorage) : filteredProjects
+  filteredProjects = (currentStatus !== 'All') ? filteredProjects.filter(d => d.status.name == currentStatus) : filteredProjects
 
   return (
     <Layout>
