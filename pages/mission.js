@@ -147,9 +147,9 @@ export default function Mission(initialData) {
         <div className="border-y border-y-black">
           <Container noPad>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-[55%] aspect-[10/4.5]">
-                <div className="relative overflow-hidden aspect-[10/4.5] border-b md:border-b-0 md:border-r border-black">
-                  <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/4.5]" />
+              <div className="w-full md:w-[55%] aspect-[10/5.7]">
+                <div className="relative overflow-hidden aspect-[10/5.7] border-b md:border-b-0 md:border-r border-black">
+                  <SanityImage image={mission.theChallengeCtaImage} alt="Mission Image" layout="fill" className="absolute inset-0 w-full h-full aspect-[10/5.7]" />
                 </div>
               </div>
               <div className="w-full md:w-[45%] bg-off-white-dark flex items-center px-5 py-12 md:py-0 md:px-8">
