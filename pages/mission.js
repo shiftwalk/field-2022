@@ -44,7 +44,20 @@ const query = `{
     roadmapText,
     roadmapBars[] {
       year,
-      metaInfo
+      metaInfo,
+      icons[] {
+        icon {
+          asset-> {
+            ...
+          },
+          caption,
+          alt,
+          hotspot {
+            x,
+            y
+          },
+        }
+      }
     },
     impactNumber,
     impactText,
@@ -242,8 +255,16 @@ export default function Mission(initialData) {
                     <span className="block relative overflow-hidden">
                       <span className={`block text-[2.25vw] md:text-[1.3vw] transition-translate ease-in-out duration-500 ${ chartIsInView ? 'translate-y-0 delay-[850ms]' : 'translate-y-full' }`}>{e.metaInfo}</span>
                     </span>
-
-                    <BatteryIcon className={`w-[20%] max-w-[45px] absolute bottom-0 left-0 m-2 md:m-4 lg:m-5 xl:m-6 transition-opacity ease-in-out duration-500 delay-[850ms] ${ chartIsInView ? 'opacity-100' : 'opacity-0' }`} />
+                    
+                    <div className={`w-full absolute bottom-0 left-0 m-2 md:m-4 lg:m-5 xl:m-6 transition-opacity ease-in-out duration-500 delay-[850ms] flex space-x-1 lg:space-x-3 ${ chartIsInView ? 'opacity-100' : 'opacity-0' }`}>
+                        {e.icons.map((e, i) => {
+                          return (
+                            <div className="w-[20%] max-w-[45px]">
+                              <SanityImage image={e.icon} key={i} className="w-full" noBg noLoader />
+                            </div>
+                          )
+                        })}
+                    </div>
                   </div>
                 )
               })}

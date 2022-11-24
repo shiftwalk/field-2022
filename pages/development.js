@@ -94,7 +94,7 @@ export default function Development(initialData) {
       />
       
       <main>
-        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-gradient-to-br from-orange via-yellow to-purple">
+        <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative border-b border-black bg-gradient-to-br from-orange via-yellow to-purple">
 
           {/* Background gradient */}
           <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-[#C99C97] to-[#D9D5D0] overflow-hidden origin-center hidden lg:block">
@@ -127,9 +127,16 @@ export default function Development(initialData) {
             <article className="h-full flex flex-col">
               <h1 className="text-[9.5vw] md:text-[9vw] leading-[0.85] uppercase italic md:w-[80%] mb-auto ">{development.heroHeading}</h1>
               <div className="w-full lg:w-[65%] lg:max-w-[850px]">
-                <p className="text-lg lg:text-xl 2xl:text-2xl mb-2 md:mb-4 leading-tight lg:leading-tight xl:leading-tight">{development.heroText}</p>
+                <p className="text-lg lg:text-xl 2xl:text-2xl mb-1 md:mb-2 leading-tight lg:leading-tight xl:leading-tight">{development.heroText}</p>
               </div>
             </article>
+
+            <div className="inline-block relative mb-3">
+              <ContactButton
+                hrefs={development.contactEmailLinks}
+                className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8"
+              />
+            </div>
           </Container>
         </div>
     

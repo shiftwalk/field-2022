@@ -9,6 +9,10 @@ import Button from '@/components/button'
 import SanityPageService from '@/services/sanityPageService'
 import BodyRenderer from '@/components/body-renderer'
 import { useRef } from 'react'
+import FacebookIcon from '@/icons/facebook.svg'
+import LinkedinIcon from '@/icons/linkedin.svg'
+import TwitterIcon from '@/icons/twitter.svg'
+import LinkIcon from '@/icons/link.svg'
 
 const query = `{
   "article": *[_type == "views" && slug.current == $slug][0]{
@@ -136,10 +140,51 @@ export default function ViewsSlug(initialData) {
         {/* <LocalImage src="/images/mission-test.jpg" alt="Mission Image" layout="responsive" width={2401} height={927} bordered /> */}
 
         <div className="bg-white relative" ref={contentArea}>
-          <Container className="pt-[8vw]"/>
+          <Container className="pt-[27vw] md:pt-[8vw]"/>
 
           <div className="w-full md:w-1/4 mb-8 md:mb-0 absolute top-0 left-0 px-8 md:px-10 lg:px-[52px] pt-[8vw] md:my-8">
             <span className="inline-block uppercase text-off-white text-xs leading-none tracking-wider bg-purple px-5 py-2 rounded-full mt-2">{article.category.name}</span>
+
+            <span className="block text-sm lg:text-base xl:text-lg tracking-wide mb-2 lg:mb-4 mt-4 lg:mt-12">Share This Article</span>
+                    
+              <div className="flex flex-wrap md:block lg:flex">
+                <a
+                  href={`http://twitter.com/share?text=${article.title}&url=https://field.energy/views/${article.slug.current}
+                  `}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center mr-2 mb-2"
+                >
+                  <TwitterIcon className="w-[50%]" />
+                </a>
+
+                <a
+                  href={`https://www.facebook.com/share.php?u=https://field.energy/views/${article.slug.current}&quote=${article.title}
+                  `}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center mr-2 mb-2"
+                >
+                  <FacebookIcon className="w-[50%]" />
+                </a>
+
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=https://field.energy/views/${article.slug.current}&quote=${article.title}
+                  `}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center mr-2 mb-2"
+                >
+                  <LinkedinIcon className="w-[50%]" />
+                </a>
+
+                <button
+                  onClick={() => {navigator.clipboard.writeText(`https://field.energy/views/${article.slug.current}`)}}
+                  className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center mr-2 mb-2"
+                >
+                  <LinkIcon className="w-[50%]" />
+                </button>
+              </div>
           </div>
 
           <BodyRenderer body={article.contentBlocks} />

@@ -22,6 +22,17 @@ const query = `{
     status->{
       name
     },
+    icon {
+      asset-> {
+        ...
+      },
+      caption,
+      alt,
+      hotspot {
+        x,
+        y
+      },
+    },
     country->{
       name,
     },
@@ -269,7 +280,9 @@ export default function Projects(initialData) {
                         </span>
 
                         <span className="border-l border-black ml-auto flex items-center justify-center py-2 pl-3">
-                          <BatteryIcon className="w-[28px] lg:w-[35px]" />
+                          <div className="w-[28px] lg:w-[35px]">
+                            <SanityImage image={e.icon} className="w-full" noLoader noBg />
+                          </div>
                         </span>
                       </div>
 

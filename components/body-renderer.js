@@ -1,5 +1,6 @@
 import BlockContentWrapper from '@/components/block-content-wrapper'
 import ModularImageBlock from '@/components/modular-image-block'
+import ModularContentImageBlock from '@/components/modular-content-image-block'
 import ModularTextBlock from '@/components/modular-text-block'
 import ModularQuoteBlock from '@/components/modular-quote-block'
 
@@ -15,6 +16,13 @@ const bodySerializers = {
   },
   modularImageBlock: {
     component: ModularImageBlock,
+    wrapper: ({ children }) => 
+      <div>
+        {children}
+      </div>
+  },
+  modularContentImageBlock: {
+    component: ModularContentImageBlock,
     wrapper: ({ children }) => 
       <div>
         {children}

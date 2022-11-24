@@ -15,8 +15,8 @@ const query = `{
   "team": *[_type == "team"] | order(orderRank desc) {
     name,
     jobTitle,
-    department->{
-      name,
+    departmentMulti[]-> {
+      name
     },
     location->{
       name,
@@ -70,21 +70,22 @@ export default function Team(initialData) {
 
   departments.forEach(department => {
     departmentsDropdown.push(
-      { label: `${department.name}`, value: slugify(department.name), },
+      { label: `${department.name}`, value: department.name, },
     );
   })
 
   const departmentSelectBlur = (selectedValue) => {
-    setCurrentDepartment(slugify(selectedValue.value))
+    setCurrentDepartment(selectedValue.value)
   }
 
   const locationsSelectBlur = (selectedValue) => {
     setCurrentLocation(slugify(selectedValue.value))
   }
+  
 
   let filteredTeam = team
   filteredTeam = (currentLocation !== 'all') ? filteredTeam.filter(d => slugify(d.location.name) == currentLocation) : filteredTeam
-  filteredTeam = (currentDepartment !== 'all') ? filteredTeam.filter(d => slugify(d.department.name) == currentDepartment) : filteredTeam
+  filteredTeam = (currentDepartment !== 'all') ? filteredTeam.filter(d => d.departmentMulti.some( dept => dept['name'] === currentDepartment)) : filteredTeam
 
   return (
     <Layout>
@@ -169,7 +170,7 @@ export default function Team(initialData) {
                   blurInputOnSelect
                   placeholder="All Departments"
                   options={departmentsDropdown}
-                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[1000] react-select-container mb-3 md:mb-0"
+                  className="block md:inline-block text-lg lg:text-xl leading-snug lg:leading-snug pb-0 lg:mr-3 relative z-[101] react-select-container mb-3 md:mb-0"
                   classNamePrefix="react-select"
                 />
 
