@@ -53,13 +53,21 @@ const query = `{
     },
     pipelineCtaText,
     developmentCtaText
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Projects(initialData) {
-  const { data: { projects, country, storage, status, projectsLanding }  } = pageService.getPreviewHook(initialData)()
+  const { data: { projects, country, storage, status, projectsLanding, contact }  } = pageService.getPreviewHook(initialData)()
   const [currentView, setCurrentView] = useState('grid')
   const [currentCountry, setCurrentCountry] = useState('All')
   const [currentStorage, setCurrentStorage] = useState('All')
@@ -114,7 +122,22 @@ export default function Projects(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={projectsLanding.title} />
+      <NextSeo
+        title={projectsLanding.seo?.metaTitle ? projectsLanding.seo?.metaTitle : projectsLanding.title}
+        description={projectsLanding.seo?.metaDesc ? projectsLanding.seo?.metaDesc : null}
+        openGraph={{
+          title: projectsLanding.seo?.metaTitle ? projectsLanding.seo?.metaTitle : projectsLanding.title,
+          description: projectsLanding.seo?.metaDesc ? projectsLanding.seo?.metaDesc : null,
+          images: projectsLanding.seo?.shareGraphic?.asset[
+            {
+              url: projectsLanding.seo?.shareGraphic?.asset.url ? projectsLanding.seo?.shareGraphic?.asset.url : null,
+              width: projectsLanding.seo?.shareGraphic?.asset.metadata.dimensions.width ? projectsLanding.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: projectsLanding.seo?.shareGraphic?.asset.metadata.dimensions.height ? projectsLanding.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-bl from-orange via-yellow to-purple lg:bg-none">
@@ -312,7 +335,7 @@ export default function Projects(initialData) {
         </div>
       </main>
     
-      <Footer />
+      <Footer contact={contact} />
     </Layout>
   )
 }

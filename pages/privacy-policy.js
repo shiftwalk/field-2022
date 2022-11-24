@@ -18,6 +18,14 @@ const query = `{
         asset->
       }
     }
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
@@ -25,7 +33,7 @@ const pageService = new SanityPageService(query)
 
 export default function PrivacyPolicy(initialData) {
   const contentArea = useRef(null)
-  const { data: { privacy }  } = pageService.getPreviewHook(initialData)()
+  const { data: { privacy, contact }  } = pageService.getPreviewHook(initialData)()
 
   let d = new Date(privacy.date);
   const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
@@ -36,7 +44,22 @@ export default function PrivacyPolicy(initialData) {
   
   return (
     <Layout>
-      <NextSeo title="Privacy Policy" />
+      <NextSeo
+        title={privacy.seo?.metaTitle ? privacy.seo?.metaTitle : 'Privacy Policy'}
+        description={privacy.seo?.metaDesc ? privacy.seo?.metaDesc : null}
+        openGraph={{
+          title: privacy.seo?.metaTitle ? privacy.seo?.metaTitle : 'Privacy Policy',
+          description: privacy.seo?.metaDesc ? privacy.seo?.metaDesc : null,
+          images: privacy.seo?.shareGraphic?.asset[
+            {
+              url: privacy.seo?.shareGraphic?.asset.url ? privacy.seo?.shareGraphic?.asset.url : null,
+              width: privacy.seo?.shareGraphic?.asset.metadata.dimensions.width ? privacy.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: privacy.seo?.shareGraphic?.asset.metadata.dimensions.height ? privacy.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
@@ -77,7 +100,7 @@ export default function PrivacyPolicy(initialData) {
         </div>
       </main>
     
-      <Footer />
+      <Footer noCta contact={contact} />
     </Layout>
   )
 }

@@ -58,13 +58,21 @@ const query = `{
         asset->
       }
     }
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Mission(initialData) {
-  const { data: { mission }  } = pageService.getPreviewHook(initialData)()
+  const { data: { mission, contact }  } = pageService.getPreviewHook(initialData)()
   if(typeof String.prototype.replaceAll === "undefined") {
     String.prototype.replaceAll = function(match, replace) {
        return this.replace(new RegExp(match, 'g'), () => replace);
@@ -111,7 +119,22 @@ export default function Mission(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={mission.title} />
+      <NextSeo
+        title={mission.seo?.metaTitle ? mission.seo?.metaTitle : mission.title}
+        description={mission.seo?.metaDesc ? mission.seo?.metaDesc : null}
+        openGraph={{
+          title: mission.seo?.metaTitle ? mission.seo?.metaTitle : mission.title,
+          description: mission.seo?.metaDesc ? mission.seo?.metaDesc : null,
+          images: mission.seo?.shareGraphic?.asset[
+            {
+              url: mission.seo?.shareGraphic?.asset.url ? mission.seo?.shareGraphic?.asset.url : null,
+              width: mission.seo?.shareGraphic?.asset.metadata.dimensions.width ? mission.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: mission.seo?.shareGraphic?.asset.metadata.dimensions.height ? mission.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
@@ -256,7 +279,7 @@ export default function Mission(initialData) {
         </Container>
       </main>
     
-      <Footer />
+      <Footer contact={contact} />
     </Layout>
   )
 }

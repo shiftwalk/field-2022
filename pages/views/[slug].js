@@ -70,13 +70,21 @@ const query = `{
       }
     }
   },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
+  }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function ViewsSlug(initialData) {
   const contentArea = useRef(null)
-  const { data: { article  } } = pageService.getPreviewHook(initialData)()
+  const { data: { article, contact } } = pageService.getPreviewHook(initialData)()
   let d = new Date(article.publishDate);
   let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
   let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
@@ -86,7 +94,22 @@ export default function ViewsSlug(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={article.title} />
+      <NextSeo
+        title={article.seo?.metaTitle ? article.seo?.metaTitle : article.title}
+        description={article.seo?.metaDesc ? article.seo?.metaDesc : null}
+        openGraph={{
+          title: article.seo?.metaTitle ? article.seo?.metaTitle : article.title,
+          description: article.seo?.metaDesc ? article.seo?.metaDesc : null,
+          images: article.seo?.shareGraphic?.asset[
+            {
+              url: article.seo?.shareGraphic?.asset.url ? article.seo?.shareGraphic?.asset.url : null,
+              width: article.seo?.shareGraphic?.asset.metadata.dimensions.width ? article.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: article.seo?.shareGraphic?.asset.metadata.dimensions.height ? article.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
@@ -211,7 +234,7 @@ export default function ViewsSlug(initialData) {
   
       </main>
     
-      <Footer noCta />
+      <Footer noCta contact={contact} />
     </Layout>
   )
 }

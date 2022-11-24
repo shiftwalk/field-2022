@@ -53,13 +53,21 @@ const query = `{
         asset->
       }
     }
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Development(initialData) {
-  const { data: { development }  } = pageService.getPreviewHook(initialData)()
+  const { data: { development, contact }  } = pageService.getPreviewHook(initialData)()
   const [currentFor, setCurrentFor] = useState(development.audiences[0].title)
 
   const setCurrent = (e) => {
@@ -68,7 +76,22 @@ export default function Development(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={development.title} />
+      <NextSeo
+        title={development.seo?.metaTitle ? development.seo?.metaTitle : development.title}
+        description={development.seo?.metaDesc ? development.seo?.metaDesc : null}
+        openGraph={{
+          title: development.seo?.metaTitle ? development.seo?.metaTitle : development.title,
+          description: development.seo?.metaDesc ? development.seo?.metaDesc : null,
+          images: development.seo?.shareGraphic?.asset[
+            {
+              url: development.seo?.shareGraphic?.asset.url ? development.seo?.shareGraphic?.asset.url : null,
+              width: development.seo?.shareGraphic?.asset.metadata.dimensions.width ? development.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: development.seo?.shareGraphic?.asset.metadata.dimensions.height ? development.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black bg-gradient-to-br from-orange via-yellow to-purple">
@@ -235,7 +258,7 @@ export default function Development(initialData) {
         </div>
       </main>
     
-      <Footer noCta />
+      <Footer noCta contact={contact} />
     </Layout>
   )
 }

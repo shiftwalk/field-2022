@@ -6,7 +6,7 @@ import FacebookIcon from '@/icons/facebook.svg'
 import LinkedinIcon from '@/icons/linkedin.svg'
 import TwitterIcon from '@/icons/twitter.svg'
 
-export default function Footer({ noCta }) {
+export default function Footer({ noCta, contact }) {
   return (
     <footer className="border-t border-black bg-off-white">
       { !noCta && (
@@ -79,9 +79,21 @@ export default function Footer({ noCta }) {
             <span className="text-[clamp(36px,_3.6vw,_50px)] leading-[0.9] block max-w-[85%] md:max-w-[50%] lg:max-w-[55%] xl:max-w-[450px] mb-8">Renewable energy infrastructure to get to net zero</span>
 
             <div className="flex items-center space-x-3">
-              <a href="https://www.linkedin.com/company/field-energy/" aria-label="Navigate to Field's LinkedIn Profile" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center">
-                <LinkedinIcon className="block w-[45%]" />
-              </a>
+              {contact.socialLinks.map((e, i) => {
+                return (
+                  <a href={e.url} aria-label="Navigate to Field's LinkedIn Profile" target="_blank" rel="noopener noreferrer" className="w-8 h-8 xl:w-10 xl:h-10 rounded-full bg-yellow hover:bg-orange flex items-center justify-center" key={i}>
+                    { (e.title == 'LinkedIn' || e.title == 'linkedin' || e.title == 'Linkedin') && (
+                      <LinkedinIcon className="block w-[45%]" />
+                    )}
+                    { (e.title == 'Facebook' || e.title == 'facebook') && (
+                      <FacebookIcon className="block w-[45%]" />
+                    )}
+                    { (e.title == 'Twitter' || e.title == 'twitter') && (
+                      <TwitterIcon className="block w-[45%]" />
+                    )}
+                  </a>
+                )
+              })}
             </div>
           </div>
 
@@ -152,7 +164,7 @@ export default function Footer({ noCta }) {
                   />
                 </li>
                 <li className="block">
-                  <Button internal={false} outline href="mailto:hello@field.energy" label="Contact&nbsp;Us" a11yText={"Email Field at hello@field.energy"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8" />
+                  <Button internal={false} outline href={`mailto:${contact.emailAddress}`} label="Contact&nbsp;Us" a11yText={"Email Field at hello@field.energy"} className="inline-block text-xl xl:text-2xl leading-none lg:leading-none mt-8" />
                 </li>
               </ul>
             </nav>
@@ -164,7 +176,7 @@ export default function Footer({ noCta }) {
         <Container>
           <div className="flex flex-wrap">
             <div className="w-full md:flex-1 mb-6 md:mb-0">
-              <span className="block text-base leading-tight">Copyright 2022, Virmati Energy Ltd T/A Field (CN: 13095982)</span>
+              <span className="block text-base leading-tight">Copyright 2022, Virmati Energy Ltd T/A Field (CN: {contact.companyNumber})</span>
             </div>
             <div className="w-full md:flex-1 md:ml-auto flex md:justify-end items-center space-x-6">
               {/* <span className="block text-base leading-tight">

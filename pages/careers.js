@@ -82,16 +82,39 @@ const query = `{
         asset->
       }
     }
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Careers(initialData) {
-  const { data: { careers }  } = pageService.getPreviewHook(initialData)()
+  const { data: { careers, contact }  } = pageService.getPreviewHook(initialData)()
   return (
     <Layout>
-      <NextSeo title={careers.title} />
+      <NextSeo
+        title={careers.seo?.metaTitle ? careers.seo?.metaTitle : careers.title}
+        description={careers.seo?.metaDesc ? careers.seo?.metaDesc : null}
+        openGraph={{
+          title: careers.seo?.metaTitle ? careers.seo?.metaTitle : careers.title,
+          description: careers.seo?.metaDesc ? careers.seo?.metaDesc : null,
+          images: careers.seo?.shareGraphic?.asset[
+            {
+              url: careers.seo?.shareGraphic?.asset.url ? careers.seo?.shareGraphic?.asset.url : null,
+              width: careers.seo?.shareGraphic?.asset.metadata.dimensions.width ? careers.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: careers.seo?.shareGraphic?.asset.metadata.dimensions.height ? careers.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden">
@@ -201,7 +224,7 @@ export default function Careers(initialData) {
         <CarouselQuotes items={careers.testimonials} />
       </main>
     
-      <Footer noCta />
+      <Footer noCta contact={contact} />
     </Layout>
   )
 }

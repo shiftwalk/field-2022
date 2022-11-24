@@ -36,16 +36,39 @@ const query = `{
         asset->
       }
     }
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Home(initialData) {
-  const { data: { home }  } = pageService.getPreviewHook(initialData)()
+  const { data: { home, contact }  } = pageService.getPreviewHook(initialData)()
   return (
     <Layout>
-      <NextSeo title={home.title} />
+      <NextSeo
+        title={home.seo?.metaTitle ? home.seo?.metaTitle : home.title}
+        description={home.seo?.metaDesc ? home.seo?.metaDesc : null}
+        openGraph={{
+          title: home.seo?.metaTitle ? home.seo?.metaTitle : home.title,
+          description: home.seo?.metaDesc ? home.seo?.metaDesc : null,
+          images: home.seo?.shareGraphic?.asset[
+            {
+              url: home.seo?.shareGraphic?.asset.url ? home.seo?.shareGraphic?.asset.url : null,
+              width: home.seo?.shareGraphic?.asset.metadata.dimensions.width ? home.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: home.seo?.shareGraphic?.asset.metadata.dimensions.height ? home.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
   
       <main>
         <div className="h-screen flex flex-col pt-[75px] lg:pt-[94px] overflow-hidden relative bg-gradient-to-tr from-orange via-yellow to-purple lg:bg-none">
@@ -120,7 +143,7 @@ export default function Home(initialData) {
         </div>
       </main>
     
-      <Footer />
+      <Footer contact={contact} />
     </Layout>
   )
 }

@@ -36,13 +36,21 @@ const query = `{
     heroHeading,
     heroText,
     joinTheTeamCtaText
+  },
+  "contact": *[_type == "contact"][0] {
+    emailAddress,
+    companyNumber,
+    socialLinks[] {
+      title,
+      url
+    }
   }
 }`
 
 const pageService = new SanityPageService(query)
 
 export default function Team(initialData) {
-  const { data: { team, departments, locations, teamLanding }  } = pageService.getPreviewHook(initialData)()
+  const { data: { team, departments, locations, teamLanding, contact }  } = pageService.getPreviewHook(initialData)()
   const [currentLocation, setCurrentLocation] = useState('all')
   const [currentDepartment, setCurrentDepartment] = useState('all')
 
@@ -80,7 +88,22 @@ export default function Team(initialData) {
 
   return (
     <Layout>
-      <NextSeo title={teamLanding.title} />
+      <NextSeo
+        title={teamLanding.seo?.metaTitle ? teamLanding.seo?.metaTitle : teamLanding.title}
+        description={teamLanding.seo?.metaDesc ? teamLanding.seo?.metaDesc : null}
+        openGraph={{
+          title: teamLanding.seo?.metaTitle ? teamLanding.seo?.metaTitle : teamLanding.title,
+          description: teamLanding.seo?.metaDesc ? teamLanding.seo?.metaDesc : null,
+          images: teamLanding.seo?.shareGraphic?.asset[
+            {
+              url: teamLanding.seo?.shareGraphic?.asset.url ? teamLanding.seo?.shareGraphic?.asset.url : null,
+              width: teamLanding.seo?.shareGraphic?.asset.metadata.dimensions.width ? teamLanding.seo?.shareGraphic?.asset.metadata.dimensions.width : null,
+              height: teamLanding.seo?.shareGraphic?.asset.metadata.dimensions.height ? teamLanding.seo?.shareGraphic?.asset.metadata.dimensions.height : null,
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       
       <main>
         <div className="h-[75vh] flex flex-col pt-[75px] lg:pt-[94px] relative overflow-hidden bg-gradient-to-tl from-orange via-yellow to-purple lg:bg-none">
@@ -198,7 +221,7 @@ export default function Team(initialData) {
         </div>
       </main>
     
-      <Footer noCta/>
+      <Footer noCta contact={contact} />
     </Layout>
   )
 }
