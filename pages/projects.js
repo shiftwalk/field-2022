@@ -315,21 +315,23 @@ export default function Projects(initialData) {
                 )
               })}
 
-              <div className="col-span-1 aspect-square">
-                <div className={`w-full border-black border flex flex-col bg-yellow ${currentView == 'grid' ? 'aspect-square' : 'aspect-square md:aspect-auto' }`}>
-                  <div className="px-3 py-3 w-full mb-auto">
-                    <span className="py-2 "><MetaText text="Pipeline" /></span>
-                  </div>
+              { (currentStatus == 'All' || currentStatus == 'In Development') && (
+                <div className="col-span-1 aspect-square">
+                  <div className={`w-full border-black border flex flex-col bg-yellow ${currentView == 'grid' ? 'aspect-square' : 'aspect-square md:aspect-auto' }`}>
+                    <div className="px-3 py-3 w-full mb-auto">
+                      <span className="py-2 "><MetaText text="Pipeline" /></span>
+                    </div>
 
-                  <div className="w-full py-12 lg:py-6">
-                    <span className="px-3 block text-[5.5vw] lg:text-[2.7vw] xl:text-[2vw] leading-none lg:leading-none xl:leading-none max-w-[90%]">{projectsLanding.pipelineCtaText}</span>
-                  </div>
-                  
-                  <div className="px-3 py-2 w-full mt-auto self-end">
-                    <Button href="/development" label="Development" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the development page" />
+                    <div className="w-full py-12 lg:py-6">
+                      <span className="px-3 block text-[5.5vw] lg:text-[2.7vw] xl:text-[2vw] leading-none lg:leading-none xl:leading-none max-w-[90%]">{projectsLanding.pipelineCtaText}</span>
+                    </div>
+                    
+                    <div className="px-3 py-2 w-full mt-auto self-end">
+                      <Button href="/development" label="Development" className="inline-block text-xl lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the development page" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </Container>
         </div>
