@@ -106,7 +106,7 @@ export default function TeamMember({ name, jobTitle, image, bio }) {
                 )}
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </Modal>
     </>
