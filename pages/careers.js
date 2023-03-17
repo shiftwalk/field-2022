@@ -29,6 +29,17 @@ const query = `{
     workingAtFieldCtaText,
     valuesIntroText,
     values[] {
+      icon {
+        asset-> {
+          ...
+        },
+        caption,
+        alt,
+        hotspot {
+          x,
+          y
+        },
+      },
       heading,
       text
     },
@@ -168,6 +179,14 @@ export default function Careers(initialData) {
                 <li className="p-5 md:p-6 lg:p-8 pb-[20vw] md:pb-[13vw] lg:pb-[10vw] border-b border-black flex flex-wrap" key={i}>
                   <div className="w-[66%] md:w-[33%] lg:w-[20%]">
                     <h2 className="text-[8vw] md:text-[4.2vw] lg:text-[3vw] leading-none md:leading-none lg:leading-none uppercase italic">{e.heading}</h2>
+                  </div>
+
+                  <div className="w-flex-1 md:flex-1 lg:flex-1 ml-auto lg:mx-auto">
+                    <div className="w-[55px] md:w-16 xl:w-20 lg:mx-auto">
+                      <span className="block relative mb-6 w-full translate-y-[-8px]">
+                        <SanityImage image={e.icon} className="w-full" noBg noLoader />
+                      </span>
+                    </div>
                   </div>
                   <div className="w-full md:w-1/2 md:ml-auto">
                     <p className="text-lg md:text-xl lg:text-2xl leading-tight md:leading-tight lg:leading-tight max-w-[90%] lg:max-w-[85%] xl:max-w-[78%] mb-0 pb-0">{e.text}</p>
