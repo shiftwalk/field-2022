@@ -182,8 +182,8 @@ export default function Careers(initialData) {
                   </div>
 
                   <div className="w-flex-1 md:flex-1 lg:flex-1 ml-auto lg:mx-auto">
-                    <div className="w-[55px] md:w-16 xl:w-20 lg:mx-auto">
-                      <span className="block relative mb-6 w-full translate-y-[-8px]">
+                    <div className="w-[65px] md:w-[80px] lg:w-[110px] xl:w-[135px] 2xl:w-[150px] lg:mx-auto">
+                      <span className="block relative mb-6 w-full translate-y-[-8px] lg:translate-y-[-12px] 2xl:translate-y-[-15px]">
                         <SanityImage image={e.icon} className="w-full" noBg noLoader />
                       </span>
                     </div>
