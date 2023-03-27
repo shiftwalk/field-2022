@@ -34,6 +34,10 @@ const query = `{
         current
       }
     },
+    author-> {
+      name,
+      jobTitle
+    },
     publishDate,
     contentBlocks[] {
       ...,
@@ -119,7 +123,15 @@ export default function ViewsSlug(initialData) {
         <div className="pt-[75px] lg:pt-[94px] relative overflow-hidden border-b border-black">
           <Container>
             <article className="relative">
-              <h1 className="text-[8.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-full md:w-[93%] mb-[12vw]">{article.title}</h1>
+              <div className="mb-[12vw]">
+                <h1 className="text-[8.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-full md:w-[93%]">{article.title}</h1>
+
+                {article.author ? (
+                  <MetaText text={`Written By: ${article.author.name}`} className="" />
+                ) : (
+                  <MetaText text={`Written By: The Field Team`} className="" />
+                )}
+              </div>
               
               <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden opacity-0 lg:opacity-100">
 

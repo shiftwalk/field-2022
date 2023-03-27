@@ -14,6 +14,10 @@ const query = `{
   "views": *[_type == "views"] | order(publishDate desc) {
     title,
     featured,
+    author-> {
+      name,
+      jobTitle
+    },
     heroImage {
       asset-> {
         ...
@@ -52,6 +56,10 @@ const query = `{
       category-> {
         name
       },
+      author-> {
+        name,
+        jobTitle
+      },
       slug {
         current
       }
@@ -64,7 +72,11 @@ const query = `{
     },
     slug {
       current
-    }
+    },
+    author-> {
+      name,
+      jobTitle
+    },
   },
   "categories": *[_type == "categories"] {
     name
@@ -127,8 +139,13 @@ export default function Views(initialData) {
               </div> 
 
               <article className="w-full md:w-1/2 h-full flex flex-col p-5 md:p-6 lg:p-6">
-                <div className="mb-8 md:mb-auto">
-                  <MetaText text={`Featured Article - ${da} ${mo} ${ye}`} />
+                <div className="mb-8 md:mb-auto lg:flex">
+                  <MetaText text={`Featured Article - ${da} ${mo} ${ye}`} className="mb-1" />
+                  {viewsLanding.featuredArticle.author ? (
+                    <MetaText text={`Written By: ${viewsLanding.featuredArticle.author.name}`} className="ml-auto" />
+                  ) : (
+                    <MetaText text={`Written By: The Field Team`} className="ml-auto" />
+                  )}
                 </div>
 
                 <Link href={`/views/${viewsLanding.featuredArticle.slug.current}`}>
@@ -176,11 +193,19 @@ export default function Views(initialData) {
                       <div className="w-full aspect-square border-black border flex flex-col group-hover:bg-yellow">
                         <div className="flex flex-wrap px-3w-full mb-auto">
                           <span className="flex space-x-2 py-2">
-                            <span className="px-3 py-2"><MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}`} /></span>
+                            <span className="px-3 py-2">
+                              <MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}`} />
+                            </span>
                           </span>
                         </div>
 
                         <span className="px-3 block text-[5.6vw] md:text-[3vw] xl:text-[2vw] leading-[1.085] md:leading-[1.085] xl:leading-[1.085] w-11/12">{e.title}</span>
+
+                        {e.author ? (
+                          <MetaText text={`Written By: ${e.author.name}`} className="p-3" />
+                        ) : (
+                          <MetaText text={`Written By: The Field Team`} className="p-3" />
+                        )}
                         
                         <div className="px-3 py-4 w-full mt-auto flex items-end">
                           <span className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug group relative px-6 md:px-8 lg:px-10 pt-3 md:pt-4 pb-[15px] md:pb-[18px] border border-black rounded-full overflow-hidden">
@@ -214,9 +239,10 @@ export default function Views(initialData) {
                   
                   <div className="md:flex items-center w-full border-b-black border-b group-hover:bg-yellow py-6 md:py-6 lg:py-6 px-8 md:px-10 lg:px-12">
                     <div className="flex-1 mb-6 md:mb-0">
-                      <MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}`} className="mb-3" />
+                      <MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}${e.author ? ` - Written By: ${e.author.name}` : ` - Written By: The Field Team` }`} className="mb-3" />
 
                       <span className="block text-[5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
+                      
                     </div>
 
                     <div className="w-full md:w-auto md:ml-auto md:flex md:items-end hidden">
