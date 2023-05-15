@@ -18,6 +18,10 @@ const query = `{
       name,
       jobTitle
     },
+    authors[]-> {
+      name,
+      jobTitle
+    },
     heroImage {
       asset-> {
         ...
@@ -60,6 +64,10 @@ const query = `{
         name,
         jobTitle
       },
+      authors[]-> {
+        name,
+        jobTitle
+      },
       slug {
         current
       }
@@ -74,6 +82,10 @@ const query = `{
       current
     },
     author-> {
+      name,
+      jobTitle
+    },
+    authors[]-> {
       name,
       jobTitle
     },
@@ -141,8 +153,10 @@ export default function Views(initialData) {
               <article className="w-full md:w-1/2 h-full flex flex-col p-5 md:p-6 lg:p-6">
                 <div className="mb-8 md:mb-auto lg:flex">
                   <MetaText text={`Featured Article - ${da} ${mo} ${ye}`} className="mb-1" />
-                  {viewsLanding.featuredArticle.author ? (
-                    <MetaText text={`Written By: ${viewsLanding.featuredArticle.author.name}`} className="ml-auto" />
+
+
+                  {viewsLanding.featuredArticle.authors?.length > 0 ? (
+                    <span className={`block uppercase text-xs leading-none tracking-wider ml-auto`}>Written By: {viewsLanding.featuredArticle.authors.map((e, i) => { return (<>{i > 0 && ', '}{e.name}</>)})}</span>
                   ) : (
                     <MetaText text={`Written By: The Field Team`} className="ml-auto" />
                   )}
@@ -201,8 +215,8 @@ export default function Views(initialData) {
 
                         <span className="px-3 block text-[5.6vw] md:text-[3vw] xl:text-[2vw] leading-[1.085] md:leading-[1.085] xl:leading-[1.085] w-11/12">{e.title}</span>
 
-                        {e.author ? (
-                          <MetaText text={`Written By: ${e.author.name}`} className="p-3" />
+                        {e.authors?.length > 0 ? (
+                          <span className={`block uppercase text-xs leading-none tracking-wider p-3`}>Written By: {e.authors.map((e, i) => { return (<>{i > 0 && ', '}{e.name}</>)})}</span>
                         ) : (
                           <MetaText text={`Written By: The Field Team`} className="p-3" />
                         )}
@@ -239,7 +253,15 @@ export default function Views(initialData) {
                   
                   <div className="md:flex items-center w-full border-b-black border-b group-hover:bg-yellow py-6 md:py-6 lg:py-6 px-8 md:px-10 lg:px-12">
                     <div className="flex-1 mb-6 md:mb-0">
-                      <MetaText text={`${e.category.name}  - ${da} ${mo} ${ye}${e.author ? ` - Written By: ${e.author.name}` : ` - Written By: The Field Team` }`} className="mb-3" />
+                      {e.authors?.length > 0 ? (
+                        <span className={`block uppercase text-xs leading-none tracking-wider mb-3`}>
+                        {e.category.name} - {da} {mo} {ye} - Written By: {e.authors.map((e, i) => { return (<>{i > 0 && ', '}{e.name}</>)})}
+                        </span>
+                      ) : (
+                        <span className={`block uppercase text-xs leading-none tracking-wider mb-3`}>
+                        {e.category.name} - {da} {mo} {ye} - Written By: The Field Team
+                        </span>
+                      )}
 
                       <span className="block text-[5vw] md:text-[2.5vw] xl:text-[2vw] 2xl:text-[1.7vw] leading-[1.075] md:leading-[1.075] lg:leading-[1.075] xl:leading-[1.075] 2xl:leading-[1.075] w-11/12 lg:w-10/12">{e.title}</span>
                       

@@ -38,6 +38,10 @@ const query = `{
       name,
       jobTitle
     },
+    authors[]-> {
+      name,
+      jobTitle
+    },
     publishDate,
     contentBlocks[] {
       ...,
@@ -126,11 +130,17 @@ export default function ViewsSlug(initialData) {
               <div className="mb-[12vw]">
                 <h1 className="text-[8.5vw] md:text-[6.5vw] xl:text-[6vw] leading-[0.89] uppercase italic w-full md:w-[93%]">{article.title}</h1>
 
-                {article.author ? (
-                  <MetaText text={`Written By: ${article.author.name}`} className="" />
+                {article.authors?.length > 0 ? (
+                  <span className={`block uppercase text-xs leading-none tracking-wider `}>Written By: {article.authors.map((e, i) => { return (<>{i > 0 && ', '}{e.name}</>)})}</span>
                 ) : (
                   <MetaText text={`Written By: The Field Team`} className="" />
                 )}
+
+                {/* {article.author ? (
+                  <MetaText text={`Written By: ${article.author.name}`} className="" />
+                ) : (
+                  <MetaText text={`Written By: The Field Team`} className="" />
+                )} */}
               </div>
               
               <button onClick={executeScroll} className="rounded-full w-[40px] h-[40px] md:w-[45px] md:h-[45px] xl:w-[60px] xl:h-[60px] bg-black flex items-center justify-center text-off-white group relative border-black border overflow-hidden opacity-0 lg:opacity-100">
