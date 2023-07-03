@@ -215,7 +215,7 @@ export default function Mission(initialData) {
             </div>
           </Container>
 
-          <div className="w-full h-[100vw] md:h-[85vw] lg:h-[55vw] 2xl:h-[70vw] z-0 mt-[-20vw] relative">
+          {/* <div className="w-full h-[100vw] md:h-[85vw] lg:h-[55vw] 2xl:h-[70vw] z-0 mt-[-20vw] relative">
             <Container className="h-full relative z-10" />
 
             <div className="absolute inset-0 flex items-end z-0 px-3 md:px-4 lg:px-5 text-soft-black-dark text-[4vw] md:text-[2.9vw] leading-none md:leading-none overflow-hidden" ref={charts}>
@@ -269,7 +269,7 @@ export default function Mission(initialData) {
                 )
               })}
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="bg-white border-b border-black">
