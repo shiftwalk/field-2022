@@ -108,9 +108,14 @@ const pageService = new SanityPageService(query)
 export default function Views(initialData) {
   const { data: { views, categories, viewsLanding, contact }  } = pageService.getPreviewHook(initialData)()
   const [currentCategory, setCurrentCategory] = useState('All')
+  const [currentCap, setCurrentCap] = useState(8)
 
   const updateCategory = (e) => {
     setCurrentCategory(e)
+  }
+
+  const loadMore = (e) => {
+    setCurrentCap(currentCap+5)
   }
 
   let filteredViews = views
@@ -240,7 +245,7 @@ export default function Views(initialData) {
         </div>
 
         <div className="border-t border-black">
-          {filteredViews.slice(3,8).map((e, i) => {
+          {filteredViews.slice(3,currentCap).map((e, i) => {
             let d = new Date(e.publishDate);
             let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
             let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
@@ -289,8 +294,14 @@ export default function Views(initialData) {
         
         
         <Container className="pb-[10vw] pt-8">
-          {filteredViews.length > 10 && (
-            <Button href="#" label="+&nbsp;Show&nbsp;More&nbsp;Articles" className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug" a11yText="Navigate to the contact page" />
+          {(filteredViews.length >= currentCap) && (
+            <button onClick={loadMore} className="block md:inline-block text-xl text-center lg:text-2xl leading-snug lg:leading-snug group relative px-6 md:px-8 lg:px-10 pt-3 md:pt-4 pb-[15px] md:pb-[18px] border border-black rounded-full overflow-hidden">
+              <span className={`absolute w-0 left-0 right-0 bottom-0 h-full bg-black md:group-hover:w-full transition-all ease-in-out duration-[450ms] z-0`}></span>
+
+              <span className={`relative block overflow-hidden z-10 md:group-hover:text-white transition-colors ease-in-out duration-[450ms]`}>
+                + Show More Articles
+              </span>
+            </button>
           )}
         </Container>
       </main>

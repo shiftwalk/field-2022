@@ -176,7 +176,7 @@ export default function Footer({ noCta, contact }) {
         <Container>
           <div className="flex flex-wrap">
             <div className="w-full md:flex-1 mb-6 md:mb-0">
-              <span className="block text-base leading-tight">Copyright 2022, Virmati Energy Ltd T/A Field (CN: {contact.companyNumber})</span>
+              <span className="block text-base leading-tight">Copyright { new Date().getFullYear() }, Virmati Energy Ltd T/A Field (CN: {contact.companyNumber})</span>
             </div>
             <div className="w-full md:flex-1 md:ml-auto flex md:justify-end items-center space-x-6">
               {/* <span className="block text-base leading-tight">
