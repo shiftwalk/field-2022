@@ -48,6 +48,12 @@ const query = `{
       text,
       authorName,
       authorJobTitle,
+      videoFile {
+        asset-> {
+          ...
+        }
+      },
+      embedCode,
       image {
         asset-> {
           ...

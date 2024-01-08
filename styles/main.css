@@ -282,3 +282,9 @@ scrollbar-width: none;
     clear: both;
   }
 }
+
+iframe {
+  width: 100% !important;
+  height: auto !important;
+  @apply aspect-video;
+}

@@ -3,6 +3,8 @@ import ModularImageBlock from '@/components/modular-image-block'
 import ModularContentImageBlock from '@/components/modular-content-image-block'
 import ModularTextBlock from '@/components/modular-text-block'
 import ModularQuoteBlock from '@/components/modular-quote-block'
+import ModularEmbedBlock from '@/components/modular-embed-block'
+import ModularSanityVideoBlock from '@/components/modular-sanity-video-block'
 
 const notImplemented = ({ type }) => <h1>Not implemented {type}</h1>
 
@@ -30,6 +32,20 @@ const bodySerializers = {
   },
   modularQuoteBlock: {
     component: ModularQuoteBlock,
+    wrapper: ({ children }) => 
+      <div>
+        {children}
+      </div>
+  },
+  modularEmbedBlock: {
+    component: ModularEmbedBlock,
+    wrapper: ({ children }) => 
+      <div>
+        {children}
+      </div>
+  },
+  modularSanityVideoBlock: {
+    component: ModularSanityVideoBlock,
     wrapper: ({ children }) => 
       <div>
         {children}
